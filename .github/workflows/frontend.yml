@@ -2,22 +2,22 @@ name: Frontend Unit Tests
 on:
   pull_request:
     branches:
-      - main
+      - master
       - dev
     paths:
       - frontend/**
 
   push:
     branches:
-      - main
+      - master
       - dev
     paths:
       - frontend/**
 
   workflow_dispatch:
     branches:
+      - master
       - dev
-      - main
     paths:
       - frontend/**
 
