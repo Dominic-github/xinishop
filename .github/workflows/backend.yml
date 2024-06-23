@@ -1,0 +1,44 @@
+name: Backend Unit Tests
+on:
+  pull_request:
+    branches:
+      - main
+      - dev
+    paths:
+      - backend/**
+    paths-ignore:
+      - frontend/**
+  push:
+    branches:
+      - main
+      - dev
+    paths:
+      - backend/**
+    paths-ignore:
+      - frontend/**
+  workflow_dispatch:
+    branches:
+      - dev
+      - main
+    paths:
+      - backend/**
+    paths-ignore:
+      - frontend/**
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: [20]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install dependencies
+        run: yarn install
+      - name: Collect coverage
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
