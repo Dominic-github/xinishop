@@ -6,24 +6,21 @@ on:
       - dev
     paths:
       - frontend/**
-    paths-ignore:
-      - backend/**
+
   push:
     branches:
       - main
       - dev
     paths:
       - frontend/**
-    paths-ignore:
-      - backend/**
+
   workflow_dispatch:
     branches:
       - dev
       - main
     paths:
       - frontend/**
-    paths-ignore:
-      - backend/**
+
 jobs:
   test:
     runs-on: ubuntu-latest
