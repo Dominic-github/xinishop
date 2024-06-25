@@ -6,6 +6,11 @@
   "engines": {
     "node": "v20.x"
   },
+  "author": {
+    "name": "Dominic-gihub"
+  },
+  "keywords": [],
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
