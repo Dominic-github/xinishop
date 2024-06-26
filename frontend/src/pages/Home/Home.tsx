@@ -1,7 +1,13 @@
 // import React from 'react'
 
+import MainLayout from "~/layouts/MainLayout/MainLayout"
+
 function Home() {
-  return <div>Home</div>
+  return <>
+    <MainLayout>
+      <p>Home</p>
+    </MainLayout>
+  </>
 }
 
 export default Home
