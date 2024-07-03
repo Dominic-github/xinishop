@@ -3,7 +3,7 @@ import streamifier from 'streamifier'
 
 const uploadToCloudinary = (file: { buffer: string | Buffer | Uint8Array }) => {
   return new Promise<UploadApiResponse>((resolve, reject) => {
-    let stream = cloudinary.uploader.upload_stream((error, result) => {
+    const stream = cloudinary.uploader.upload_stream((error, result) => {
       if (result) {
         resolve(result)
       } else {
