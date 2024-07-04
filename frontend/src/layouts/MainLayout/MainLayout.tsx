@@ -1,7 +1,7 @@
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
-function MainLayout({ children }) {
+function MainLayout({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Header />
