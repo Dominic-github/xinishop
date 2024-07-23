@@ -1,5 +1,17 @@
 import _ from 'lodash'
 
-export const getInfoData = ({ fileds = [], object = {} }) => {
-  return _.pick(object, fileds)
+export const getInfoData = ({ fields = [], object = {} }) => {
+  return _.pick(object, fields)
+}
+
+export const getSelectData = (select = []) => {
+  return Object.fromEntries(select.map((el) => [el, 1]))
+}
+
+export const unGetSelectData = (select = []) => {
+  return Object.fromEntries(select.map((el) => [el, 0]))
+}
+
+export const checkEnable = (value: any) => {
+  return value === 'true'
 }
