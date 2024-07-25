@@ -1,0 +1,11 @@
+model Token {
+  // Relation fields
+  user               User?    @relation(fields: [user_id], references: [id])
+  user_id            String   @unique
+  public_key         String?
+  private_key        String?
+  refresh_token      String?
+  refresh_token_used String[]
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+}

@@ -1,0 +1,9 @@
+model Otp {
+  id         String   @id @default(uuid())
+  key        String
+  otp        String
+  data       String
+  time       DateTime @default(now())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}

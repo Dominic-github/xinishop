@@ -1,0 +1,12 @@
+model Product {
+  id             String   @id @default(uuid())
+  username       String   @unique @db.VarChar(20)
+  password       String
+  email          String   @unique
+  emailConfirmed Boolean  @default(false)
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+
+  Comment     Comment[]
+  CartProduct CartProduct[]
+}

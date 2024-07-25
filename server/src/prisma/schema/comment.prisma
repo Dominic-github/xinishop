@@ -1,0 +1,15 @@
+model Comment {
+  product            Product  @relation(fields: [comment_product_id], references: [id])
+  user               User     @relation(fields: [comment_user_id], references: [id])
+  comment_product_id String   @unique
+  comment_user_id    String   @unique
+  comment_left       Int
+  comment_right      Int
+  comment_parent_id  String
+  is_deleted         Boolean  @default(false)
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+  commentId          String
+
+  @@id([comment_product_id, comment_user_id])
+}
