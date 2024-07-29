@@ -4,12 +4,114 @@ model Address {
   updated_at DateTime @updatedAt
 }
 
+model AdministrativeRegions {
+  id           Int         @id @default(autoincrement())
+  name         String?
+  name_en      String?
+  code_name    String
+  code_name_en String
+  Provinces    Provinces[]
+}
+
+model AdministrativeUnits {
+  id            Int         @id @default(autoincrement())
+  full_name     String?
+  full_name_en  String?
+  short_name    String?
+  short_name_en String?
+  code_name     String?
+  code_name_en  String?
+  Provinces     Provinces[]
+  Districts     Districts[]
+  Wards         Wards[]
+}
+
+model Provinces {
+  code                     String                @id
+  name                     String
+  name_en                  String
+  full_name                String
+  full_name_en             String
+  code_name                String
+  administrativeRegions    AdministrativeRegions @relation(fields: [administrative_region_id], references: [id])
+  administrative_region_id Int
+  administrativeUnits      AdministrativeUnits   @relation(fields: [administrative_unit_id], references: [id])
+  administrative_unit_id   Int
+  Districts                Districts[]
+
+  @@index([administrative_region_id])
+  @@index([administrative_unit_id])
+}
+
+model Districts {
+  code                   String              @id
+  name                   String
+  name_en                String?
+  full_name              String?
+  full_name_en           String?
+  code_name              String?
+  provinces              Provinces           @relation(fields: [province_code], references: [code])
+  province_code          String
+  administrativeUnits    AdministrativeUnits @relation(fields: [administrative_unit_id], references: [id])
+  administrative_unit_id Int
+  Wards                  Wards[]
+
+  @@index([province_code])
+  @@index([administrative_unit_id])
+}
+
+model Wards {
+  code                   String              @id
+  name                   String
+  name_en                String?
+  full_name              String?
+  full_name_en           String?
+  code_name              String?
+  districts              Districts           @relation(fields: [district_code], references: [code])
+  district_code          String
+  administrativeUnits    AdministrativeUnits @relation(fields: [administrative_unit_id], references: [id])
+  administrative_unit_id Int
+
+  @@index([district_code])
+  @@index([administrative_unit_id])
+}
+
 model ApiKey {
   key         String   @unique
   status      Boolean  @unique @default(true)
   permissions String[] @unique
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
+}
+
+model Cart {
+  id                 String        @id @default(uuid())
+  cart_state         cart_state    @default(active)
+  cart_products      CartProduct[]
+  cart_count_product Int           @default(0)
+  user               User          @relation(fields: [cart_user_id], references: [id])
+  cart_user_id       String
+  created_at         DateTime      @default(now())
+  updated_at         DateTime      @updatedAt
+}
+
+enum cart_state {
+  active
+  completed
+  fail
+  pending
+  lock
+}
+
+model CartProduct {
+  cart       Cart     @relation(fields: [cart_id], references: [id])
+  cart_id    String
+  product    Product  @relation(fields: [product_id], references: [id])
+  product_id String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@id([cart_id, product_id])
 }
 
 model Category {
@@ -19,9 +121,19 @@ model Category {
 }
 
 model Comment {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  product            Product  @relation(fields: [comment_product_id], references: [id])
+  user               User     @relation(fields: [comment_user_id], references: [id])
+  comment_product_id String   @unique
+  comment_user_id    String   @unique
+  comment_left       Int
+  comment_right      Int
+  comment_parent_id  String
+  is_deleted         Boolean  @default(false)
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+  commentId          String
+
+  @@id([comment_product_id, comment_user_id])
 }
 
 model Discount {
@@ -50,6 +162,10 @@ model Order {
 
 model Otp {
   id         String   @id @default(uuid())
+  key        String
+  otp        String
+  data       String
+  time       DateTime @default(now())
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
@@ -64,10 +180,49 @@ model Payment {
   updated_at     DateTime @updatedAt
 }
 
+model Product {
+  id             String   @id @default(uuid())
+  username       String   @unique @db.VarChar(20)
+  password       String
+  email          String   @unique
+  emailConfirmed Boolean  @default(false)
+  created_at     DateTime @default(now())
+  updated_at     DateTime @updatedAt
+
+  Comment     Comment[]
+  CartProduct CartProduct[]
+}
+
 model Role {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  id          Int          @id @default(autoincrement())
+  role_name   role_name?   @default(user)
+  role_slug   String?
+  role_status role_status?
+  role_grants Grant[]
+  created_at  DateTime     @default(now())
+  updated_at  DateTime     @updatedAt
+
+  User User[]
+}
+
+model Grant {
+  resource   String  @id @default(uuid())
+  actions    String?
+  attributes String  @default("*")
+  Role       Role?   @relation(fields: [role_id], references: [id])
+  role_id    Int?
+}
+
+enum role_name {
+  user
+  shop
+  admin
+}
+
+enum role_status {
+  pending
+  active
+  block
 }
 
 datasource db {
@@ -88,13 +243,6 @@ model Shipping {
 }
 
 model Shop {
-  id         String   @id @default(uuid())
-  shopName   String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-}
-
-model User {
   id             String   @id @default(uuid())
   username       String   @unique @db.VarChar(20)
   password       String
@@ -102,4 +250,36 @@ model User {
   emailConfirmed Boolean  @default(false)
   created_at     DateTime @default(now())
   updated_at     DateTime @updatedAt
+}
+
+model Token {
+  // Relation fields
+  user               User?    @relation(fields: [user_id], references: [id])
+  user_id            String   @unique
+  public_key         String?
+  private_key        String?
+  refresh_token      String?
+  refresh_token_used String[]
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+}
+
+model User {
+  id                   String   @id @default(uuid())
+  user_name            String?  @unique @db.VarChar(20)
+  user_slug            String?
+  user_password        String?
+  user_email           String?  @unique
+  user_email_confirmed Boolean? @default(false)
+  user_salt            String?
+  user_phone           String
+  user_sex             String
+  role                 Role     @relation(fields: [user_role], references: [id])
+  user_role            Int      @unique
+  user_token           Token?
+  created_at           DateTime @default(now())
+  updated_at           DateTime @updatedAt
+
+  Comment Comment[]
+  Cart    Cart[]
 }

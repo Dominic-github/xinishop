@@ -1,3 +1,9 @@
-export const findById = async (key: any) => {
-  // return await apiKeyModel.findOne({ key, status: true }).lean()
+import { createKey } from '~/prisma/repository/apiKey.repo'
+
+class ApiKeyService {
+  static async createApiKey(permissions: Array<string>) {
+    return await createKey(permissions)
+  }
 }
+
+export default ApiKeyService

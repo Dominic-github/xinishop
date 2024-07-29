@@ -60,12 +60,13 @@ export const returnError = (err: IError, req: Request, res: Response) => {
 
   return res.status(statusCode).json({
     status: statusCode,
+    stack: error.stack,
     message: error.message || 'Internal server error',
     errors: error.errors
   })
 }
 
-export const isOperationalError = (error: { isOperational: any }) => {
+export const isOperationalError = (error: { isOperational: boolean }) => {
   if (error instanceof BaseError) {
     return error.isOperational
   }

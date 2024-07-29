@@ -27,7 +27,6 @@ app.use(cookieParser())
 // init db
 if (checkEnable(config.db.enable)) {
   import('~/configs/database.config')
-  
 }
 
 // Config view engine
@@ -79,9 +78,5 @@ app.use(returnError)
 
 // process handler
 import('~/middlewares/processHandler.middleware')
-
-app.get('/', (_, res) => {
-  return res.render('index')
-})
 
 export default app

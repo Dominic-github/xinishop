@@ -45,7 +45,7 @@ class DiscordLogConfig {
   }) {
     const channel: any = this.client.channels.cache.get(this.channelId)
     if (!channel) {
-      console.error(`Couldn't find the channel ... ${this.channelId}`)
+      console.error(`Couldn't find the channel: ${this.channelId}`)
       return
     }
 

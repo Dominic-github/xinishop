@@ -4,7 +4,7 @@ const HEADER = {
   AUTHORIZATION: 'authorization'
 }
 
-import { findById } from '~/services/apiKey.service'
+import { findbyKey } from '~/prisma/repository/apiKey.repo'
 const URL_WHITELIST = ['/api-docs', '/healthcheck', '/api/v1/auth/register']
 
 export const apiKey = async (req: any, res: Response, next: NextFunction) => {
@@ -16,7 +16,7 @@ export const apiKey = async (req: any, res: Response, next: NextFunction) => {
       return returnForbiddenError(res)
     }
     // check objKey
-    const objKey = await findById(key)
+    const objKey = await findbyKey(key)
     if (!objKey) {
       return returnForbiddenError(res)
     }
