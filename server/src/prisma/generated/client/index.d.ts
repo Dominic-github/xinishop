@@ -74,11 +74,6 @@ export type Comment = $Result.DefaultSelection<Prisma.$CommentPayload>
  */
 export type Discount = $Result.DefaultSelection<Prisma.$DiscountPayload>
 /**
- * Model KeyToken
- * 
- */
-export type KeyToken = $Result.DefaultSelection<Prisma.$KeyTokenPayload>
-/**
  * Model Notification
  * 
  */
@@ -149,6 +144,13 @@ export namespace $Enums {
 export type cart_state = (typeof cart_state)[keyof typeof cart_state]
 
 
+export const ProductType: {
+  clothing: 'clothing'
+};
+
+export type ProductType = (typeof ProductType)[keyof typeof ProductType]
+
+
 export const role_name: {
   user: 'user',
   shop: 'shop',
@@ -166,11 +168,33 @@ export const role_status: {
 
 export type role_status = (typeof role_status)[keyof typeof role_status]
 
+
+export const ShopStatus: {
+  active: 'active',
+  inactive: 'inactive',
+  deleted: 'deleted'
+};
+
+export type ShopStatus = (typeof ShopStatus)[keyof typeof ShopStatus]
+
+
+export const UserStatus: {
+  pending: 'pending',
+  active: 'active',
+  block: 'block'
+};
+
+export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
+
 }
 
 export type cart_state = $Enums.cart_state
 
 export const cart_state: typeof $Enums.cart_state
+
+export type ProductType = $Enums.ProductType
+
+export const ProductType: typeof $Enums.ProductType
 
 export type role_name = $Enums.role_name
 
@@ -179,6 +203,14 @@ export const role_name: typeof $Enums.role_name
 export type role_status = $Enums.role_status
 
 export const role_status: typeof $Enums.role_status
+
+export type ShopStatus = $Enums.ShopStatus
+
+export const ShopStatus: typeof $Enums.ShopStatus
+
+export type UserStatus = $Enums.UserStatus
+
+export const UserStatus: typeof $Enums.UserStatus
 
 /**
  * ##  Prisma Client ʲˢ
@@ -421,16 +453,6 @@ export class PrismaClient<
     * ```
     */
   get discount(): Prisma.DiscountDelegate<ExtArgs>;
-
-  /**
-   * `prisma.keyToken`: Exposes CRUD operations for the **KeyToken** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more KeyTokens
-    * const keyTokens = await prisma.keyToken.findMany()
-    * ```
-    */
-  get keyToken(): Prisma.KeyTokenDelegate<ExtArgs>;
 
   /**
    * `prisma.notification`: Exposes CRUD operations for the **Notification** model.
@@ -1030,7 +1052,6 @@ export namespace Prisma {
     Category: 'Category',
     Comment: 'Comment',
     Discount: 'Discount',
-    KeyToken: 'KeyToken',
     Notification: 'Notification',
     Order: 'Order',
     Otp: 'Otp',
@@ -1057,7 +1078,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "address" | "administrativeRegions" | "administrativeUnits" | "provinces" | "districts" | "wards" | "apiKey" | "cart" | "cartProduct" | "category" | "comment" | "discount" | "keyToken" | "notification" | "order" | "otp" | "payment" | "product" | "role" | "grant" | "shipping" | "shop" | "token" | "user"
+      modelProps: "address" | "administrativeRegions" | "administrativeUnits" | "provinces" | "districts" | "wards" | "apiKey" | "cart" | "cartProduct" | "category" | "comment" | "discount" | "notification" | "order" | "otp" | "payment" | "product" | "role" | "grant" | "shipping" | "shop" | "token" | "user"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1898,76 +1919,6 @@ export namespace Prisma {
           count: {
             args: Prisma.DiscountCountArgs<ExtArgs>
             result: $Utils.Optional<DiscountCountAggregateOutputType> | number
-          }
-        }
-      }
-      KeyToken: {
-        payload: Prisma.$KeyTokenPayload<ExtArgs>
-        fields: Prisma.KeyTokenFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.KeyTokenFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KeyTokenPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.KeyTokenFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KeyTokenPayload>
-          }
-          findFirst: {
-            args: Prisma.KeyTokenFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KeyTokenPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.KeyTokenFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KeyTokenPayload>
-          }
-          findMany: {
-            args: Prisma.KeyTokenFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KeyTokenPayload>[]
-          }
-          create: {
-            args: Prisma.KeyTokenCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KeyTokenPayload>
-          }
-          createMany: {
-            args: Prisma.KeyTokenCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.KeyTokenCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KeyTokenPayload>[]
-          }
-          delete: {
-            args: Prisma.KeyTokenDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KeyTokenPayload>
-          }
-          update: {
-            args: Prisma.KeyTokenUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KeyTokenPayload>
-          }
-          deleteMany: {
-            args: Prisma.KeyTokenDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.KeyTokenUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.KeyTokenUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$KeyTokenPayload>
-          }
-          aggregate: {
-            args: Prisma.KeyTokenAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateKeyToken>
-          }
-          groupBy: {
-            args: Prisma.KeyTokenGroupByArgs<ExtArgs>
-            result: $Utils.Optional<KeyTokenGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.KeyTokenCountArgs<ExtArgs>
-            result: $Utils.Optional<KeyTokenCountAggregateOutputType> | number
           }
         }
       }
@@ -3155,11 +3106,13 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
+    Token: number
     Comment: number
     Cart: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Token?: boolean | UserCountOutputTypeCountTokenArgs
     Comment?: boolean | UserCountOutputTypeCountCommentArgs
     Cart?: boolean | UserCountOutputTypeCountCartArgs
   }
@@ -3173,6 +3126,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserCountOutputType
      */
     select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountTokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TokenWhereInput
   }
 
   /**
@@ -14707,860 +14667,6 @@ export namespace Prisma {
 
 
   /**
-   * Model KeyToken
-   */
-
-  export type AggregateKeyToken = {
-    _count: KeyTokenCountAggregateOutputType | null
-    _min: KeyTokenMinAggregateOutputType | null
-    _max: KeyTokenMaxAggregateOutputType | null
-  }
-
-  export type KeyTokenMinAggregateOutputType = {
-    id: string | null
-    created_at: Date | null
-    updated_at: Date | null
-  }
-
-  export type KeyTokenMaxAggregateOutputType = {
-    id: string | null
-    created_at: Date | null
-    updated_at: Date | null
-  }
-
-  export type KeyTokenCountAggregateOutputType = {
-    id: number
-    created_at: number
-    updated_at: number
-    _all: number
-  }
-
-
-  export type KeyTokenMinAggregateInputType = {
-    id?: true
-    created_at?: true
-    updated_at?: true
-  }
-
-  export type KeyTokenMaxAggregateInputType = {
-    id?: true
-    created_at?: true
-    updated_at?: true
-  }
-
-  export type KeyTokenCountAggregateInputType = {
-    id?: true
-    created_at?: true
-    updated_at?: true
-    _all?: true
-  }
-
-  export type KeyTokenAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which KeyToken to aggregate.
-     */
-    where?: KeyTokenWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of KeyTokens to fetch.
-     */
-    orderBy?: KeyTokenOrderByWithRelationInput | KeyTokenOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: KeyTokenWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` KeyTokens from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` KeyTokens.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned KeyTokens
-    **/
-    _count?: true | KeyTokenCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: KeyTokenMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: KeyTokenMaxAggregateInputType
-  }
-
-  export type GetKeyTokenAggregateType<T extends KeyTokenAggregateArgs> = {
-        [P in keyof T & keyof AggregateKeyToken]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateKeyToken[P]>
-      : GetScalarType<T[P], AggregateKeyToken[P]>
-  }
-
-
-
-
-  export type KeyTokenGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: KeyTokenWhereInput
-    orderBy?: KeyTokenOrderByWithAggregationInput | KeyTokenOrderByWithAggregationInput[]
-    by: KeyTokenScalarFieldEnum[] | KeyTokenScalarFieldEnum
-    having?: KeyTokenScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: KeyTokenCountAggregateInputType | true
-    _min?: KeyTokenMinAggregateInputType
-    _max?: KeyTokenMaxAggregateInputType
-  }
-
-  export type KeyTokenGroupByOutputType = {
-    id: string
-    created_at: Date
-    updated_at: Date
-    _count: KeyTokenCountAggregateOutputType | null
-    _min: KeyTokenMinAggregateOutputType | null
-    _max: KeyTokenMaxAggregateOutputType | null
-  }
-
-  type GetKeyTokenGroupByPayload<T extends KeyTokenGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<KeyTokenGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof KeyTokenGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], KeyTokenGroupByOutputType[P]>
-            : GetScalarType<T[P], KeyTokenGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type KeyTokenSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-  }, ExtArgs["result"]["keyToken"]>
-
-  export type KeyTokenSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-  }, ExtArgs["result"]["keyToken"]>
-
-  export type KeyTokenSelectScalar = {
-    id?: boolean
-    created_at?: boolean
-    updated_at?: boolean
-  }
-
-
-  export type $KeyTokenPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "KeyToken"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      created_at: Date
-      updated_at: Date
-    }, ExtArgs["result"]["keyToken"]>
-    composites: {}
-  }
-
-  type KeyTokenGetPayload<S extends boolean | null | undefined | KeyTokenDefaultArgs> = $Result.GetResult<Prisma.$KeyTokenPayload, S>
-
-  type KeyTokenCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = 
-    Omit<KeyTokenFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: KeyTokenCountAggregateInputType | true
-    }
-
-  export interface KeyTokenDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['KeyToken'], meta: { name: 'KeyToken' } }
-    /**
-     * Find zero or one KeyToken that matches the filter.
-     * @param {KeyTokenFindUniqueArgs} args - Arguments to find a KeyToken
-     * @example
-     * // Get one KeyToken
-     * const keyToken = await prisma.keyToken.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends KeyTokenFindUniqueArgs>(args: SelectSubset<T, KeyTokenFindUniqueArgs<ExtArgs>>): Prisma__KeyTokenClient<$Result.GetResult<Prisma.$KeyTokenPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
-
-    /**
-     * Find one KeyToken that matches the filter or throw an error with `error.code='P2025'` 
-     * if no matches were found.
-     * @param {KeyTokenFindUniqueOrThrowArgs} args - Arguments to find a KeyToken
-     * @example
-     * // Get one KeyToken
-     * const keyToken = await prisma.keyToken.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends KeyTokenFindUniqueOrThrowArgs>(args: SelectSubset<T, KeyTokenFindUniqueOrThrowArgs<ExtArgs>>): Prisma__KeyTokenClient<$Result.GetResult<Prisma.$KeyTokenPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
-
-    /**
-     * Find the first KeyToken that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {KeyTokenFindFirstArgs} args - Arguments to find a KeyToken
-     * @example
-     * // Get one KeyToken
-     * const keyToken = await prisma.keyToken.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends KeyTokenFindFirstArgs>(args?: SelectSubset<T, KeyTokenFindFirstArgs<ExtArgs>>): Prisma__KeyTokenClient<$Result.GetResult<Prisma.$KeyTokenPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
-
-    /**
-     * Find the first KeyToken that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {KeyTokenFindFirstOrThrowArgs} args - Arguments to find a KeyToken
-     * @example
-     * // Get one KeyToken
-     * const keyToken = await prisma.keyToken.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends KeyTokenFindFirstOrThrowArgs>(args?: SelectSubset<T, KeyTokenFindFirstOrThrowArgs<ExtArgs>>): Prisma__KeyTokenClient<$Result.GetResult<Prisma.$KeyTokenPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
-
-    /**
-     * Find zero or more KeyTokens that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {KeyTokenFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all KeyTokens
-     * const keyTokens = await prisma.keyToken.findMany()
-     * 
-     * // Get first 10 KeyTokens
-     * const keyTokens = await prisma.keyToken.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const keyTokenWithIdOnly = await prisma.keyToken.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends KeyTokenFindManyArgs>(args?: SelectSubset<T, KeyTokenFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KeyTokenPayload<ExtArgs>, T, "findMany">>
-
-    /**
-     * Create a KeyToken.
-     * @param {KeyTokenCreateArgs} args - Arguments to create a KeyToken.
-     * @example
-     * // Create one KeyToken
-     * const KeyToken = await prisma.keyToken.create({
-     *   data: {
-     *     // ... data to create a KeyToken
-     *   }
-     * })
-     * 
-     */
-    create<T extends KeyTokenCreateArgs>(args: SelectSubset<T, KeyTokenCreateArgs<ExtArgs>>): Prisma__KeyTokenClient<$Result.GetResult<Prisma.$KeyTokenPayload<ExtArgs>, T, "create">, never, ExtArgs>
-
-    /**
-     * Create many KeyTokens.
-     * @param {KeyTokenCreateManyArgs} args - Arguments to create many KeyTokens.
-     * @example
-     * // Create many KeyTokens
-     * const keyToken = await prisma.keyToken.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends KeyTokenCreateManyArgs>(args?: SelectSubset<T, KeyTokenCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many KeyTokens and returns the data saved in the database.
-     * @param {KeyTokenCreateManyAndReturnArgs} args - Arguments to create many KeyTokens.
-     * @example
-     * // Create many KeyTokens
-     * const keyToken = await prisma.keyToken.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many KeyTokens and only return the `id`
-     * const keyTokenWithIdOnly = await prisma.keyToken.createManyAndReturn({ 
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends KeyTokenCreateManyAndReturnArgs>(args?: SelectSubset<T, KeyTokenCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$KeyTokenPayload<ExtArgs>, T, "createManyAndReturn">>
-
-    /**
-     * Delete a KeyToken.
-     * @param {KeyTokenDeleteArgs} args - Arguments to delete one KeyToken.
-     * @example
-     * // Delete one KeyToken
-     * const KeyToken = await prisma.keyToken.delete({
-     *   where: {
-     *     // ... filter to delete one KeyToken
-     *   }
-     * })
-     * 
-     */
-    delete<T extends KeyTokenDeleteArgs>(args: SelectSubset<T, KeyTokenDeleteArgs<ExtArgs>>): Prisma__KeyTokenClient<$Result.GetResult<Prisma.$KeyTokenPayload<ExtArgs>, T, "delete">, never, ExtArgs>
-
-    /**
-     * Update one KeyToken.
-     * @param {KeyTokenUpdateArgs} args - Arguments to update one KeyToken.
-     * @example
-     * // Update one KeyToken
-     * const keyToken = await prisma.keyToken.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends KeyTokenUpdateArgs>(args: SelectSubset<T, KeyTokenUpdateArgs<ExtArgs>>): Prisma__KeyTokenClient<$Result.GetResult<Prisma.$KeyTokenPayload<ExtArgs>, T, "update">, never, ExtArgs>
-
-    /**
-     * Delete zero or more KeyTokens.
-     * @param {KeyTokenDeleteManyArgs} args - Arguments to filter KeyTokens to delete.
-     * @example
-     * // Delete a few KeyTokens
-     * const { count } = await prisma.keyToken.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends KeyTokenDeleteManyArgs>(args?: SelectSubset<T, KeyTokenDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more KeyTokens.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {KeyTokenUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many KeyTokens
-     * const keyToken = await prisma.keyToken.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends KeyTokenUpdateManyArgs>(args: SelectSubset<T, KeyTokenUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one KeyToken.
-     * @param {KeyTokenUpsertArgs} args - Arguments to update or create a KeyToken.
-     * @example
-     * // Update or create a KeyToken
-     * const keyToken = await prisma.keyToken.upsert({
-     *   create: {
-     *     // ... data to create a KeyToken
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the KeyToken we want to update
-     *   }
-     * })
-     */
-    upsert<T extends KeyTokenUpsertArgs>(args: SelectSubset<T, KeyTokenUpsertArgs<ExtArgs>>): Prisma__KeyTokenClient<$Result.GetResult<Prisma.$KeyTokenPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
-
-
-    /**
-     * Count the number of KeyTokens.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {KeyTokenCountArgs} args - Arguments to filter KeyTokens to count.
-     * @example
-     * // Count the number of KeyTokens
-     * const count = await prisma.keyToken.count({
-     *   where: {
-     *     // ... the filter for the KeyTokens we want to count
-     *   }
-     * })
-    **/
-    count<T extends KeyTokenCountArgs>(
-      args?: Subset<T, KeyTokenCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], KeyTokenCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a KeyToken.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {KeyTokenAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends KeyTokenAggregateArgs>(args: Subset<T, KeyTokenAggregateArgs>): Prisma.PrismaPromise<GetKeyTokenAggregateType<T>>
-
-    /**
-     * Group by KeyToken.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {KeyTokenGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends KeyTokenGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: KeyTokenGroupByArgs['orderBy'] }
-        : { orderBy?: KeyTokenGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, KeyTokenGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetKeyTokenGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the KeyToken model
-   */
-  readonly fields: KeyTokenFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for KeyToken.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__KeyTokenClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the KeyToken model
-   */ 
-  interface KeyTokenFieldRefs {
-    readonly id: FieldRef<"KeyToken", 'String'>
-    readonly created_at: FieldRef<"KeyToken", 'DateTime'>
-    readonly updated_at: FieldRef<"KeyToken", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * KeyToken findUnique
-   */
-  export type KeyTokenFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the KeyToken
-     */
-    select?: KeyTokenSelect<ExtArgs> | null
-    /**
-     * Filter, which KeyToken to fetch.
-     */
-    where: KeyTokenWhereUniqueInput
-  }
-
-  /**
-   * KeyToken findUniqueOrThrow
-   */
-  export type KeyTokenFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the KeyToken
-     */
-    select?: KeyTokenSelect<ExtArgs> | null
-    /**
-     * Filter, which KeyToken to fetch.
-     */
-    where: KeyTokenWhereUniqueInput
-  }
-
-  /**
-   * KeyToken findFirst
-   */
-  export type KeyTokenFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the KeyToken
-     */
-    select?: KeyTokenSelect<ExtArgs> | null
-    /**
-     * Filter, which KeyToken to fetch.
-     */
-    where?: KeyTokenWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of KeyTokens to fetch.
-     */
-    orderBy?: KeyTokenOrderByWithRelationInput | KeyTokenOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for KeyTokens.
-     */
-    cursor?: KeyTokenWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` KeyTokens from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` KeyTokens.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of KeyTokens.
-     */
-    distinct?: KeyTokenScalarFieldEnum | KeyTokenScalarFieldEnum[]
-  }
-
-  /**
-   * KeyToken findFirstOrThrow
-   */
-  export type KeyTokenFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the KeyToken
-     */
-    select?: KeyTokenSelect<ExtArgs> | null
-    /**
-     * Filter, which KeyToken to fetch.
-     */
-    where?: KeyTokenWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of KeyTokens to fetch.
-     */
-    orderBy?: KeyTokenOrderByWithRelationInput | KeyTokenOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for KeyTokens.
-     */
-    cursor?: KeyTokenWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` KeyTokens from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` KeyTokens.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of KeyTokens.
-     */
-    distinct?: KeyTokenScalarFieldEnum | KeyTokenScalarFieldEnum[]
-  }
-
-  /**
-   * KeyToken findMany
-   */
-  export type KeyTokenFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the KeyToken
-     */
-    select?: KeyTokenSelect<ExtArgs> | null
-    /**
-     * Filter, which KeyTokens to fetch.
-     */
-    where?: KeyTokenWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of KeyTokens to fetch.
-     */
-    orderBy?: KeyTokenOrderByWithRelationInput | KeyTokenOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing KeyTokens.
-     */
-    cursor?: KeyTokenWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` KeyTokens from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` KeyTokens.
-     */
-    skip?: number
-    distinct?: KeyTokenScalarFieldEnum | KeyTokenScalarFieldEnum[]
-  }
-
-  /**
-   * KeyToken create
-   */
-  export type KeyTokenCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the KeyToken
-     */
-    select?: KeyTokenSelect<ExtArgs> | null
-    /**
-     * The data needed to create a KeyToken.
-     */
-    data: XOR<KeyTokenCreateInput, KeyTokenUncheckedCreateInput>
-  }
-
-  /**
-   * KeyToken createMany
-   */
-  export type KeyTokenCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many KeyTokens.
-     */
-    data: KeyTokenCreateManyInput | KeyTokenCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * KeyToken createManyAndReturn
-   */
-  export type KeyTokenCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the KeyToken
-     */
-    select?: KeyTokenSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many KeyTokens.
-     */
-    data: KeyTokenCreateManyInput | KeyTokenCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * KeyToken update
-   */
-  export type KeyTokenUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the KeyToken
-     */
-    select?: KeyTokenSelect<ExtArgs> | null
-    /**
-     * The data needed to update a KeyToken.
-     */
-    data: XOR<KeyTokenUpdateInput, KeyTokenUncheckedUpdateInput>
-    /**
-     * Choose, which KeyToken to update.
-     */
-    where: KeyTokenWhereUniqueInput
-  }
-
-  /**
-   * KeyToken updateMany
-   */
-  export type KeyTokenUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update KeyTokens.
-     */
-    data: XOR<KeyTokenUpdateManyMutationInput, KeyTokenUncheckedUpdateManyInput>
-    /**
-     * Filter which KeyTokens to update
-     */
-    where?: KeyTokenWhereInput
-  }
-
-  /**
-   * KeyToken upsert
-   */
-  export type KeyTokenUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the KeyToken
-     */
-    select?: KeyTokenSelect<ExtArgs> | null
-    /**
-     * The filter to search for the KeyToken to update in case it exists.
-     */
-    where: KeyTokenWhereUniqueInput
-    /**
-     * In case the KeyToken found by the `where` argument doesn't exist, create a new KeyToken with this data.
-     */
-    create: XOR<KeyTokenCreateInput, KeyTokenUncheckedCreateInput>
-    /**
-     * In case the KeyToken was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<KeyTokenUpdateInput, KeyTokenUncheckedUpdateInput>
-  }
-
-  /**
-   * KeyToken delete
-   */
-  export type KeyTokenDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the KeyToken
-     */
-    select?: KeyTokenSelect<ExtArgs> | null
-    /**
-     * Filter which KeyToken to delete.
-     */
-    where: KeyTokenWhereUniqueInput
-  }
-
-  /**
-   * KeyToken deleteMany
-   */
-  export type KeyTokenDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which KeyTokens to delete
-     */
-    where?: KeyTokenWhereInput
-  }
-
-  /**
-   * KeyToken without action
-   */
-  export type KeyTokenDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the KeyToken
-     */
-    select?: KeyTokenSelect<ExtArgs> | null
-  }
-
-
-  /**
    * Model Notification
    */
 
@@ -19078,68 +18184,148 @@ export namespace Prisma {
 
   export type AggregateProduct = {
     _count: ProductCountAggregateOutputType | null
+    _avg: ProductAvgAggregateOutputType | null
+    _sum: ProductSumAggregateOutputType | null
     _min: ProductMinAggregateOutputType | null
     _max: ProductMaxAggregateOutputType | null
   }
 
+  export type ProductAvgAggregateOutputType = {
+    product_price: number | null
+    product_quality: number | null
+    product_ratingsAverage: number | null
+  }
+
+  export type ProductSumAggregateOutputType = {
+    product_price: number | null
+    product_quality: number | null
+    product_ratingsAverage: number | null
+  }
+
   export type ProductMinAggregateOutputType = {
     id: string | null
-    username: string | null
-    password: string | null
-    email: string | null
-    emailConfirmed: boolean | null
+    product_name: string | null
+    product_thumb: string | null
+    product_description: string | null
+    product_slug: string | null
+    product_price: number | null
+    product_quality: number | null
+    product_type: $Enums.ProductType | null
+    product_shop: string | null
+    product_attributes: string | null
+    product_ratingsAverage: number | null
+    product_variations: string | null
+    isDraft: string | null
+    isPublished: boolean | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type ProductMaxAggregateOutputType = {
     id: string | null
-    username: string | null
-    password: string | null
-    email: string | null
-    emailConfirmed: boolean | null
+    product_name: string | null
+    product_thumb: string | null
+    product_description: string | null
+    product_slug: string | null
+    product_price: number | null
+    product_quality: number | null
+    product_type: $Enums.ProductType | null
+    product_shop: string | null
+    product_attributes: string | null
+    product_ratingsAverage: number | null
+    product_variations: string | null
+    isDraft: string | null
+    isPublished: boolean | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type ProductCountAggregateOutputType = {
     id: number
-    username: number
-    password: number
-    email: number
-    emailConfirmed: number
+    product_name: number
+    product_thumb: number
+    product_description: number
+    product_slug: number
+    product_price: number
+    product_quality: number
+    product_type: number
+    product_shop: number
+    product_attributes: number
+    product_ratingsAverage: number
+    product_variations: number
+    isDraft: number
+    isPublished: number
     created_at: number
     updated_at: number
     _all: number
   }
 
 
+  export type ProductAvgAggregateInputType = {
+    product_price?: true
+    product_quality?: true
+    product_ratingsAverage?: true
+  }
+
+  export type ProductSumAggregateInputType = {
+    product_price?: true
+    product_quality?: true
+    product_ratingsAverage?: true
+  }
+
   export type ProductMinAggregateInputType = {
     id?: true
-    username?: true
-    password?: true
-    email?: true
-    emailConfirmed?: true
+    product_name?: true
+    product_thumb?: true
+    product_description?: true
+    product_slug?: true
+    product_price?: true
+    product_quality?: true
+    product_type?: true
+    product_shop?: true
+    product_attributes?: true
+    product_ratingsAverage?: true
+    product_variations?: true
+    isDraft?: true
+    isPublished?: true
     created_at?: true
     updated_at?: true
   }
 
   export type ProductMaxAggregateInputType = {
     id?: true
-    username?: true
-    password?: true
-    email?: true
-    emailConfirmed?: true
+    product_name?: true
+    product_thumb?: true
+    product_description?: true
+    product_slug?: true
+    product_price?: true
+    product_quality?: true
+    product_type?: true
+    product_shop?: true
+    product_attributes?: true
+    product_ratingsAverage?: true
+    product_variations?: true
+    isDraft?: true
+    isPublished?: true
     created_at?: true
     updated_at?: true
   }
 
   export type ProductCountAggregateInputType = {
     id?: true
-    username?: true
-    password?: true
-    email?: true
-    emailConfirmed?: true
+    product_name?: true
+    product_thumb?: true
+    product_description?: true
+    product_slug?: true
+    product_price?: true
+    product_quality?: true
+    product_type?: true
+    product_shop?: true
+    product_attributes?: true
+    product_ratingsAverage?: true
+    product_variations?: true
+    isDraft?: true
+    isPublished?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -19183,6 +18369,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: ProductAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: ProductSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: ProductMinAggregateInputType
@@ -19213,19 +18411,32 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: ProductCountAggregateInputType | true
+    _avg?: ProductAvgAggregateInputType
+    _sum?: ProductSumAggregateInputType
     _min?: ProductMinAggregateInputType
     _max?: ProductMaxAggregateInputType
   }
 
   export type ProductGroupByOutputType = {
     id: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed: boolean
+    product_name: string
+    product_thumb: string
+    product_description: string
+    product_slug: string
+    product_price: number
+    product_quality: number
+    product_type: $Enums.ProductType
+    product_shop: string
+    product_attributes: string
+    product_ratingsAverage: number
+    product_variations: string
+    isDraft: string
+    isPublished: boolean
     created_at: Date
     updated_at: Date
     _count: ProductCountAggregateOutputType | null
+    _avg: ProductAvgAggregateOutputType | null
+    _sum: ProductSumAggregateOutputType | null
     _min: ProductMinAggregateOutputType | null
     _max: ProductMaxAggregateOutputType | null
   }
@@ -19246,10 +18457,19 @@ export namespace Prisma {
 
   export type ProductSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    username?: boolean
-    password?: boolean
-    email?: boolean
-    emailConfirmed?: boolean
+    product_name?: boolean
+    product_thumb?: boolean
+    product_description?: boolean
+    product_slug?: boolean
+    product_price?: boolean
+    product_quality?: boolean
+    product_type?: boolean
+    product_shop?: boolean
+    product_attributes?: boolean
+    product_ratingsAverage?: boolean
+    product_variations?: boolean
+    isDraft?: boolean
+    isPublished?: boolean
     created_at?: boolean
     updated_at?: boolean
     Comment?: boolean | Product$CommentArgs<ExtArgs>
@@ -19259,20 +18479,38 @@ export namespace Prisma {
 
   export type ProductSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
-    username?: boolean
-    password?: boolean
-    email?: boolean
-    emailConfirmed?: boolean
+    product_name?: boolean
+    product_thumb?: boolean
+    product_description?: boolean
+    product_slug?: boolean
+    product_price?: boolean
+    product_quality?: boolean
+    product_type?: boolean
+    product_shop?: boolean
+    product_attributes?: boolean
+    product_ratingsAverage?: boolean
+    product_variations?: boolean
+    isDraft?: boolean
+    isPublished?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectScalar = {
     id?: boolean
-    username?: boolean
-    password?: boolean
-    email?: boolean
-    emailConfirmed?: boolean
+    product_name?: boolean
+    product_thumb?: boolean
+    product_description?: boolean
+    product_slug?: boolean
+    product_price?: boolean
+    product_quality?: boolean
+    product_type?: boolean
+    product_shop?: boolean
+    product_attributes?: boolean
+    product_ratingsAverage?: boolean
+    product_variations?: boolean
+    isDraft?: boolean
+    isPublished?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
@@ -19292,10 +18530,19 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      username: string
-      password: string
-      email: string
-      emailConfirmed: boolean
+      product_name: string
+      product_thumb: string
+      product_description: string
+      product_slug: string
+      product_price: number
+      product_quality: number
+      product_type: $Enums.ProductType
+      product_shop: string
+      product_attributes: string
+      product_ratingsAverage: number
+      product_variations: string
+      isDraft: string
+      isPublished: boolean
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["product"]>
@@ -19694,10 +18941,19 @@ export namespace Prisma {
    */ 
   interface ProductFieldRefs {
     readonly id: FieldRef<"Product", 'String'>
-    readonly username: FieldRef<"Product", 'String'>
-    readonly password: FieldRef<"Product", 'String'>
-    readonly email: FieldRef<"Product", 'String'>
-    readonly emailConfirmed: FieldRef<"Product", 'Boolean'>
+    readonly product_name: FieldRef<"Product", 'String'>
+    readonly product_thumb: FieldRef<"Product", 'String'>
+    readonly product_description: FieldRef<"Product", 'String'>
+    readonly product_slug: FieldRef<"Product", 'String'>
+    readonly product_price: FieldRef<"Product", 'Int'>
+    readonly product_quality: FieldRef<"Product", 'Int'>
+    readonly product_type: FieldRef<"Product", 'ProductType'>
+    readonly product_shop: FieldRef<"Product", 'String'>
+    readonly product_attributes: FieldRef<"Product", 'String'>
+    readonly product_ratingsAverage: FieldRef<"Product", 'Float'>
+    readonly product_variations: FieldRef<"Product", 'String'>
+    readonly isDraft: FieldRef<"Product", 'String'>
+    readonly isPublished: FieldRef<"Product", 'Boolean'>
     readonly created_at: FieldRef<"Product", 'DateTime'>
     readonly updated_at: FieldRef<"Product", 'DateTime'>
   }
@@ -20241,9 +19497,9 @@ export namespace Prisma {
 
   export type RoleGroupByOutputType = {
     id: number
-    role_name: $Enums.role_name | null
-    role_slug: string | null
-    role_status: $Enums.role_status | null
+    role_name: $Enums.role_name
+    role_slug: string
+    role_status: $Enums.role_status
     created_at: Date
     updated_at: Date
     _count: RoleCountAggregateOutputType | null
@@ -20312,9 +19568,9 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      role_name: $Enums.role_name | null
-      role_slug: string | null
-      role_status: $Enums.role_status | null
+      role_name: $Enums.role_name
+      role_slug: string
+      role_status: $Enums.role_status
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["role"]>
@@ -22921,31 +22177,37 @@ export namespace Prisma {
   }
 
   export type ShopMinAggregateOutputType = {
-    id: string | null
-    username: string | null
-    password: string | null
-    email: string | null
-    emailConfirmed: boolean | null
+    user_id: string | null
+    shop_name: string | null
+    shop_password: string | null
+    shop_email: string | null
+    shop_msisdn: string | null
+    shop_status: $Enums.ShopStatus | null
+    shop_verify: boolean | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type ShopMaxAggregateOutputType = {
-    id: string | null
-    username: string | null
-    password: string | null
-    email: string | null
-    emailConfirmed: boolean | null
+    user_id: string | null
+    shop_name: string | null
+    shop_password: string | null
+    shop_email: string | null
+    shop_msisdn: string | null
+    shop_status: $Enums.ShopStatus | null
+    shop_verify: boolean | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type ShopCountAggregateOutputType = {
-    id: number
-    username: number
-    password: number
-    email: number
-    emailConfirmed: number
+    user_id: number
+    shop_name: number
+    shop_password: number
+    shop_email: number
+    shop_msisdn: number
+    shop_status: number
+    shop_verify: number
     created_at: number
     updated_at: number
     _all: number
@@ -22953,31 +22215,37 @@ export namespace Prisma {
 
 
   export type ShopMinAggregateInputType = {
-    id?: true
-    username?: true
-    password?: true
-    email?: true
-    emailConfirmed?: true
+    user_id?: true
+    shop_name?: true
+    shop_password?: true
+    shop_email?: true
+    shop_msisdn?: true
+    shop_status?: true
+    shop_verify?: true
     created_at?: true
     updated_at?: true
   }
 
   export type ShopMaxAggregateInputType = {
-    id?: true
-    username?: true
-    password?: true
-    email?: true
-    emailConfirmed?: true
+    user_id?: true
+    shop_name?: true
+    shop_password?: true
+    shop_email?: true
+    shop_msisdn?: true
+    shop_status?: true
+    shop_verify?: true
     created_at?: true
     updated_at?: true
   }
 
   export type ShopCountAggregateInputType = {
-    id?: true
-    username?: true
-    password?: true
-    email?: true
-    emailConfirmed?: true
+    user_id?: true
+    shop_name?: true
+    shop_password?: true
+    shop_email?: true
+    shop_msisdn?: true
+    shop_status?: true
+    shop_verify?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -23056,11 +22324,13 @@ export namespace Prisma {
   }
 
   export type ShopGroupByOutputType = {
-    id: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed: boolean
+    user_id: string
+    shop_name: string
+    shop_password: string
+    shop_email: string
+    shop_msisdn: string
+    shop_status: $Enums.ShopStatus
+    shop_verify: boolean
     created_at: Date
     updated_at: Date
     _count: ShopCountAggregateOutputType | null
@@ -23083,31 +22353,37 @@ export namespace Prisma {
 
 
   export type ShopSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    username?: boolean
-    password?: boolean
-    email?: boolean
-    emailConfirmed?: boolean
+    user_id?: boolean
+    shop_name?: boolean
+    shop_password?: boolean
+    shop_email?: boolean
+    shop_msisdn?: boolean
+    shop_status?: boolean
+    shop_verify?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["shop"]>
 
   export type ShopSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    username?: boolean
-    password?: boolean
-    email?: boolean
-    emailConfirmed?: boolean
+    user_id?: boolean
+    shop_name?: boolean
+    shop_password?: boolean
+    shop_email?: boolean
+    shop_msisdn?: boolean
+    shop_status?: boolean
+    shop_verify?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["shop"]>
 
   export type ShopSelectScalar = {
-    id?: boolean
-    username?: boolean
-    password?: boolean
-    email?: boolean
-    emailConfirmed?: boolean
+    user_id?: boolean
+    shop_name?: boolean
+    shop_password?: boolean
+    shop_email?: boolean
+    shop_msisdn?: boolean
+    shop_status?: boolean
+    shop_verify?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
@@ -23117,11 +22393,13 @@ export namespace Prisma {
     name: "Shop"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: string
-      username: string
-      password: string
-      email: string
-      emailConfirmed: boolean
+      user_id: string
+      shop_name: string
+      shop_password: string
+      shop_email: string
+      shop_msisdn: string
+      shop_status: $Enums.ShopStatus
+      shop_verify: boolean
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["shop"]>
@@ -23207,8 +22485,8 @@ export namespace Prisma {
      * // Get first 10 Shops
      * const shops = await prisma.shop.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const shopWithIdOnly = await prisma.shop.findMany({ select: { id: true } })
+     * // Only select the `user_id`
+     * const shopWithUser_idOnly = await prisma.shop.findMany({ select: { user_id: true } })
      * 
      */
     findMany<T extends ShopFindManyArgs>(args?: SelectSubset<T, ShopFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShopPayload<ExtArgs>, T, "findMany">>
@@ -23252,9 +22530,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Shops and only return the `id`
-     * const shopWithIdOnly = await prisma.shop.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many Shops and only return the `user_id`
+     * const shopWithUser_idOnly = await prisma.shop.createManyAndReturn({ 
+     *   select: { user_id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -23517,11 +22795,13 @@ export namespace Prisma {
    * Fields of the Shop model
    */ 
   interface ShopFieldRefs {
-    readonly id: FieldRef<"Shop", 'String'>
-    readonly username: FieldRef<"Shop", 'String'>
-    readonly password: FieldRef<"Shop", 'String'>
-    readonly email: FieldRef<"Shop", 'String'>
-    readonly emailConfirmed: FieldRef<"Shop", 'Boolean'>
+    readonly user_id: FieldRef<"Shop", 'String'>
+    readonly shop_name: FieldRef<"Shop", 'String'>
+    readonly shop_password: FieldRef<"Shop", 'String'>
+    readonly shop_email: FieldRef<"Shop", 'String'>
+    readonly shop_msisdn: FieldRef<"Shop", 'String'>
+    readonly shop_status: FieldRef<"Shop", 'ShopStatus'>
+    readonly shop_verify: FieldRef<"Shop", 'Boolean'>
     readonly created_at: FieldRef<"Shop", 'DateTime'>
     readonly updated_at: FieldRef<"Shop", 'DateTime'>
   }
@@ -23823,6 +23103,7 @@ export namespace Prisma {
   }
 
   export type TokenMinAggregateOutputType = {
+    id: string | null
     user_id: string | null
     public_key: string | null
     private_key: string | null
@@ -23832,6 +23113,7 @@ export namespace Prisma {
   }
 
   export type TokenMaxAggregateOutputType = {
+    id: string | null
     user_id: string | null
     public_key: string | null
     private_key: string | null
@@ -23841,6 +23123,7 @@ export namespace Prisma {
   }
 
   export type TokenCountAggregateOutputType = {
+    id: number
     user_id: number
     public_key: number
     private_key: number
@@ -23853,6 +23136,7 @@ export namespace Prisma {
 
 
   export type TokenMinAggregateInputType = {
+    id?: true
     user_id?: true
     public_key?: true
     private_key?: true
@@ -23862,6 +23146,7 @@ export namespace Prisma {
   }
 
   export type TokenMaxAggregateInputType = {
+    id?: true
     user_id?: true
     public_key?: true
     private_key?: true
@@ -23871,6 +23156,7 @@ export namespace Prisma {
   }
 
   export type TokenCountAggregateInputType = {
+    id?: true
     user_id?: true
     public_key?: true
     private_key?: true
@@ -23954,6 +23240,7 @@ export namespace Prisma {
   }
 
   export type TokenGroupByOutputType = {
+    id: string
     user_id: string
     public_key: string | null
     private_key: string | null
@@ -23981,6 +23268,7 @@ export namespace Prisma {
 
 
   export type TokenSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     user_id?: boolean
     public_key?: boolean
     private_key?: boolean
@@ -23988,10 +23276,11 @@ export namespace Prisma {
     refresh_token_used?: boolean
     created_at?: boolean
     updated_at?: boolean
-    user?: boolean | Token$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["token"]>
 
   export type TokenSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
     user_id?: boolean
     public_key?: boolean
     private_key?: boolean
@@ -23999,10 +23288,11 @@ export namespace Prisma {
     refresh_token_used?: boolean
     created_at?: boolean
     updated_at?: boolean
-    user?: boolean | Token$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["token"]>
 
   export type TokenSelectScalar = {
+    id?: boolean
     user_id?: boolean
     public_key?: boolean
     private_key?: boolean
@@ -24013,18 +23303,19 @@ export namespace Prisma {
   }
 
   export type TokenInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Token$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
   export type TokenIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | Token$userArgs<ExtArgs>
+    user?: boolean | UserDefaultArgs<ExtArgs>
   }
 
   export type $TokenPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Token"
     objects: {
-      user: Prisma.$UserPayload<ExtArgs> | null
+      user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
+      id: string
       user_id: string
       public_key: string | null
       private_key: string | null
@@ -24115,8 +23406,8 @@ export namespace Prisma {
      * // Get first 10 Tokens
      * const tokens = await prisma.token.findMany({ take: 10 })
      * 
-     * // Only select the `user_id`
-     * const tokenWithUser_idOnly = await prisma.token.findMany({ select: { user_id: true } })
+     * // Only select the `id`
+     * const tokenWithIdOnly = await prisma.token.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends TokenFindManyArgs>(args?: SelectSubset<T, TokenFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany">>
@@ -24160,9 +23451,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Tokens and only return the `user_id`
-     * const tokenWithUser_idOnly = await prisma.token.createManyAndReturn({ 
-     *   select: { user_id: true },
+     * // Create many Tokens and only return the `id`
+     * const tokenWithIdOnly = await prisma.token.createManyAndReturn({ 
+     *   select: { id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -24396,7 +23687,7 @@ export namespace Prisma {
    */
   export interface Prisma__TokenClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends Token$userArgs<ExtArgs> = {}>(args?: Subset<T, Token$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -24426,6 +23717,7 @@ export namespace Prisma {
    * Fields of the Token model
    */ 
   interface TokenFieldRefs {
+    readonly id: FieldRef<"Token", 'String'>
     readonly user_id: FieldRef<"Token", 'String'>
     readonly public_key: FieldRef<"Token", 'String'>
     readonly private_key: FieldRef<"Token", 'String'>
@@ -24751,21 +24043,6 @@ export namespace Prisma {
   }
 
   /**
-   * Token.user
-   */
-  export type Token$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the User
-     */
-    select?: UserSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UserInclude<ExtArgs> | null
-    where?: UserWhereInput
-  }
-
-  /**
    * Token without action
    */
   export type TokenDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -24803,6 +24080,7 @@ export namespace Prisma {
   export type UserMinAggregateOutputType = {
     id: string | null
     user_name: string | null
+    user_full_name: string | null
     user_slug: string | null
     user_password: string | null
     user_email: string | null
@@ -24810,6 +24088,7 @@ export namespace Prisma {
     user_salt: string | null
     user_phone: string | null
     user_sex: string | null
+    user_status: $Enums.UserStatus | null
     user_role: number | null
     created_at: Date | null
     updated_at: Date | null
@@ -24818,6 +24097,7 @@ export namespace Prisma {
   export type UserMaxAggregateOutputType = {
     id: string | null
     user_name: string | null
+    user_full_name: string | null
     user_slug: string | null
     user_password: string | null
     user_email: string | null
@@ -24825,6 +24105,7 @@ export namespace Prisma {
     user_salt: string | null
     user_phone: string | null
     user_sex: string | null
+    user_status: $Enums.UserStatus | null
     user_role: number | null
     created_at: Date | null
     updated_at: Date | null
@@ -24833,6 +24114,7 @@ export namespace Prisma {
   export type UserCountAggregateOutputType = {
     id: number
     user_name: number
+    user_full_name: number
     user_slug: number
     user_password: number
     user_email: number
@@ -24840,6 +24122,7 @@ export namespace Prisma {
     user_salt: number
     user_phone: number
     user_sex: number
+    user_status: number
     user_role: number
     created_at: number
     updated_at: number
@@ -24858,6 +24141,7 @@ export namespace Prisma {
   export type UserMinAggregateInputType = {
     id?: true
     user_name?: true
+    user_full_name?: true
     user_slug?: true
     user_password?: true
     user_email?: true
@@ -24865,6 +24149,7 @@ export namespace Prisma {
     user_salt?: true
     user_phone?: true
     user_sex?: true
+    user_status?: true
     user_role?: true
     created_at?: true
     updated_at?: true
@@ -24873,6 +24158,7 @@ export namespace Prisma {
   export type UserMaxAggregateInputType = {
     id?: true
     user_name?: true
+    user_full_name?: true
     user_slug?: true
     user_password?: true
     user_email?: true
@@ -24880,6 +24166,7 @@ export namespace Prisma {
     user_salt?: true
     user_phone?: true
     user_sex?: true
+    user_status?: true
     user_role?: true
     created_at?: true
     updated_at?: true
@@ -24888,6 +24175,7 @@ export namespace Prisma {
   export type UserCountAggregateInputType = {
     id?: true
     user_name?: true
+    user_full_name?: true
     user_slug?: true
     user_password?: true
     user_email?: true
@@ -24895,6 +24183,7 @@ export namespace Prisma {
     user_salt?: true
     user_phone?: true
     user_sex?: true
+    user_status?: true
     user_role?: true
     created_at?: true
     updated_at?: true
@@ -24989,14 +24278,16 @@ export namespace Prisma {
 
   export type UserGroupByOutputType = {
     id: string
-    user_name: string | null
-    user_slug: string | null
-    user_password: string | null
-    user_email: string | null
-    user_email_confirmed: boolean | null
+    user_name: string
+    user_full_name: string
+    user_slug: string
+    user_password: string
+    user_email: string
+    user_email_confirmed: boolean
     user_salt: string | null
-    user_phone: string
-    user_sex: string
+    user_phone: string | null
+    user_sex: string | null
+    user_status: $Enums.UserStatus
     user_role: number
     created_at: Date
     updated_at: Date
@@ -25024,6 +24315,7 @@ export namespace Prisma {
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     user_name?: boolean
+    user_full_name?: boolean
     user_slug?: boolean
     user_password?: boolean
     user_email?: boolean
@@ -25031,11 +24323,12 @@ export namespace Prisma {
     user_salt?: boolean
     user_phone?: boolean
     user_sex?: boolean
+    user_status?: boolean
     user_role?: boolean
     created_at?: boolean
     updated_at?: boolean
     role?: boolean | RoleDefaultArgs<ExtArgs>
-    user_token?: boolean | User$user_tokenArgs<ExtArgs>
+    Token?: boolean | User$TokenArgs<ExtArgs>
     Comment?: boolean | User$CommentArgs<ExtArgs>
     Cart?: boolean | User$CartArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -25044,6 +24337,7 @@ export namespace Prisma {
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     user_name?: boolean
+    user_full_name?: boolean
     user_slug?: boolean
     user_password?: boolean
     user_email?: boolean
@@ -25051,6 +24345,7 @@ export namespace Prisma {
     user_salt?: boolean
     user_phone?: boolean
     user_sex?: boolean
+    user_status?: boolean
     user_role?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -25060,6 +24355,7 @@ export namespace Prisma {
   export type UserSelectScalar = {
     id?: boolean
     user_name?: boolean
+    user_full_name?: boolean
     user_slug?: boolean
     user_password?: boolean
     user_email?: boolean
@@ -25067,6 +24363,7 @@ export namespace Prisma {
     user_salt?: boolean
     user_phone?: boolean
     user_sex?: boolean
+    user_status?: boolean
     user_role?: boolean
     created_at?: boolean
     updated_at?: boolean
@@ -25074,7 +24371,7 @@ export namespace Prisma {
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     role?: boolean | RoleDefaultArgs<ExtArgs>
-    user_token?: boolean | User$user_tokenArgs<ExtArgs>
+    Token?: boolean | User$TokenArgs<ExtArgs>
     Comment?: boolean | User$CommentArgs<ExtArgs>
     Cart?: boolean | User$CartArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -25087,20 +24384,22 @@ export namespace Prisma {
     name: "User"
     objects: {
       role: Prisma.$RolePayload<ExtArgs>
-      user_token: Prisma.$TokenPayload<ExtArgs> | null
+      Token: Prisma.$TokenPayload<ExtArgs>[]
       Comment: Prisma.$CommentPayload<ExtArgs>[]
       Cart: Prisma.$CartPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
-      user_name: string | null
-      user_slug: string | null
-      user_password: string | null
-      user_email: string | null
-      user_email_confirmed: boolean | null
+      user_name: string
+      user_full_name: string
+      user_slug: string
+      user_password: string
+      user_email: string
+      user_email_confirmed: boolean
       user_salt: string | null
-      user_phone: string
-      user_sex: string
+      user_phone: string | null
+      user_sex: string | null
+      user_status: $Enums.UserStatus
       user_role: number
       created_at: Date
       updated_at: Date
@@ -25469,7 +24768,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     role<T extends RoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoleDefaultArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
-    user_token<T extends User$user_tokenArgs<ExtArgs> = {}>(args?: Subset<T, User$user_tokenArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findUniqueOrThrow"> | null, null, ExtArgs>
+    Token<T extends User$TokenArgs<ExtArgs> = {}>(args?: Subset<T, User$TokenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany"> | Null>
     Comment<T extends User$CommentArgs<ExtArgs> = {}>(args?: Subset<T, User$CommentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany"> | Null>
     Cart<T extends User$CartArgs<ExtArgs> = {}>(args?: Subset<T, User$CartArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CartPayload<ExtArgs>, T, "findMany"> | Null>
     /**
@@ -25503,6 +24802,7 @@ export namespace Prisma {
   interface UserFieldRefs {
     readonly id: FieldRef<"User", 'String'>
     readonly user_name: FieldRef<"User", 'String'>
+    readonly user_full_name: FieldRef<"User", 'String'>
     readonly user_slug: FieldRef<"User", 'String'>
     readonly user_password: FieldRef<"User", 'String'>
     readonly user_email: FieldRef<"User", 'String'>
@@ -25510,6 +24810,7 @@ export namespace Prisma {
     readonly user_salt: FieldRef<"User", 'String'>
     readonly user_phone: FieldRef<"User", 'String'>
     readonly user_sex: FieldRef<"User", 'String'>
+    readonly user_status: FieldRef<"User", 'UserStatus'>
     readonly user_role: FieldRef<"User", 'Int'>
     readonly created_at: FieldRef<"User", 'DateTime'>
     readonly updated_at: FieldRef<"User", 'DateTime'>
@@ -25831,9 +25132,9 @@ export namespace Prisma {
   }
 
   /**
-   * User.user_token
+   * User.Token
    */
-  export type User$user_tokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type User$TokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the Token
      */
@@ -25843,6 +25144,11 @@ export namespace Prisma {
      */
     include?: TokenInclude<ExtArgs> | null
     where?: TokenWhereInput
+    orderBy?: TokenOrderByWithRelationInput | TokenOrderByWithRelationInput[]
+    cursor?: TokenWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TokenScalarFieldEnum | TokenScalarFieldEnum[]
   }
 
   /**
@@ -26055,15 +25361,6 @@ export namespace Prisma {
   export type DiscountScalarFieldEnum = (typeof DiscountScalarFieldEnum)[keyof typeof DiscountScalarFieldEnum]
 
 
-  export const KeyTokenScalarFieldEnum: {
-    id: 'id',
-    created_at: 'created_at',
-    updated_at: 'updated_at'
-  };
-
-  export type KeyTokenScalarFieldEnum = (typeof KeyTokenScalarFieldEnum)[keyof typeof KeyTokenScalarFieldEnum]
-
-
   export const NotificationScalarFieldEnum: {
     id: 'id',
     created_at: 'created_at',
@@ -26110,10 +25407,19 @@ export namespace Prisma {
 
   export const ProductScalarFieldEnum: {
     id: 'id',
-    username: 'username',
-    password: 'password',
-    email: 'email',
-    emailConfirmed: 'emailConfirmed',
+    product_name: 'product_name',
+    product_thumb: 'product_thumb',
+    product_description: 'product_description',
+    product_slug: 'product_slug',
+    product_price: 'product_price',
+    product_quality: 'product_quality',
+    product_type: 'product_type',
+    product_shop: 'product_shop',
+    product_attributes: 'product_attributes',
+    product_ratingsAverage: 'product_ratingsAverage',
+    product_variations: 'product_variations',
+    isDraft: 'isDraft',
+    isPublished: 'isPublished',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -26153,11 +25459,13 @@ export namespace Prisma {
 
 
   export const ShopScalarFieldEnum: {
-    id: 'id',
-    username: 'username',
-    password: 'password',
-    email: 'email',
-    emailConfirmed: 'emailConfirmed',
+    user_id: 'user_id',
+    shop_name: 'shop_name',
+    shop_password: 'shop_password',
+    shop_email: 'shop_email',
+    shop_msisdn: 'shop_msisdn',
+    shop_status: 'shop_status',
+    shop_verify: 'shop_verify',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -26166,6 +25474,7 @@ export namespace Prisma {
 
 
   export const TokenScalarFieldEnum: {
+    id: 'id',
     user_id: 'user_id',
     public_key: 'public_key',
     private_key: 'private_key',
@@ -26181,6 +25490,7 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     user_name: 'user_name',
+    user_full_name: 'user_full_name',
     user_slug: 'user_slug',
     user_password: 'user_password',
     user_email: 'user_email',
@@ -26188,6 +25498,7 @@ export namespace Prisma {
     user_salt: 'user_salt',
     user_phone: 'user_phone',
     user_sex: 'user_sex',
+    user_status: 'user_status',
     user_role: 'user_role',
     created_at: 'created_at',
     updated_at: 'updated_at'
@@ -26289,6 +25600,34 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'ProductType'
+   */
+  export type EnumProductTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductType'>
+    
+
+
+  /**
+   * Reference to a field of type 'ProductType[]'
+   */
+  export type ListEnumProductTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ProductType[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+    
+
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+    
+
+
+  /**
    * Reference to a field of type 'role_name'
    */
   export type Enumrole_nameFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'role_name'>
@@ -26317,16 +25656,30 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Float'
+   * Reference to a field of type 'ShopStatus'
    */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
+  export type EnumShopStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ShopStatus'>
     
 
 
   /**
-   * Reference to a field of type 'Float[]'
+   * Reference to a field of type 'ShopStatus[]'
    */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
+  export type ListEnumShopStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ShopStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserStatus'
+   */
+  export type EnumUserStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserStatus'>
+    
+
+
+  /**
+   * Reference to a field of type 'UserStatus[]'
+   */
+  export type ListEnumUserStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UserStatus[]'>
     
   /**
    * Deep Input Types
@@ -27072,48 +26425,6 @@ export namespace Prisma {
     updated_at?: DateTimeWithAggregatesFilter<"Discount"> | Date | string
   }
 
-  export type KeyTokenWhereInput = {
-    AND?: KeyTokenWhereInput | KeyTokenWhereInput[]
-    OR?: KeyTokenWhereInput[]
-    NOT?: KeyTokenWhereInput | KeyTokenWhereInput[]
-    id?: StringFilter<"KeyToken"> | string
-    created_at?: DateTimeFilter<"KeyToken"> | Date | string
-    updated_at?: DateTimeFilter<"KeyToken"> | Date | string
-  }
-
-  export type KeyTokenOrderByWithRelationInput = {
-    id?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-  }
-
-  export type KeyTokenWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: KeyTokenWhereInput | KeyTokenWhereInput[]
-    OR?: KeyTokenWhereInput[]
-    NOT?: KeyTokenWhereInput | KeyTokenWhereInput[]
-    created_at?: DateTimeFilter<"KeyToken"> | Date | string
-    updated_at?: DateTimeFilter<"KeyToken"> | Date | string
-  }, "id">
-
-  export type KeyTokenOrderByWithAggregationInput = {
-    id?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-    _count?: KeyTokenCountOrderByAggregateInput
-    _max?: KeyTokenMaxOrderByAggregateInput
-    _min?: KeyTokenMinOrderByAggregateInput
-  }
-
-  export type KeyTokenScalarWhereWithAggregatesInput = {
-    AND?: KeyTokenScalarWhereWithAggregatesInput | KeyTokenScalarWhereWithAggregatesInput[]
-    OR?: KeyTokenScalarWhereWithAggregatesInput[]
-    NOT?: KeyTokenScalarWhereWithAggregatesInput | KeyTokenScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"KeyToken"> | string
-    created_at?: DateTimeWithAggregatesFilter<"KeyToken"> | Date | string
-    updated_at?: DateTimeWithAggregatesFilter<"KeyToken"> | Date | string
-  }
-
   export type NotificationWhereInput = {
     AND?: NotificationWhereInput | NotificationWhereInput[]
     OR?: NotificationWhereInput[]
@@ -27327,10 +26638,19 @@ export namespace Prisma {
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
     id?: StringFilter<"Product"> | string
-    username?: StringFilter<"Product"> | string
-    password?: StringFilter<"Product"> | string
-    email?: StringFilter<"Product"> | string
-    emailConfirmed?: BoolFilter<"Product"> | boolean
+    product_name?: StringFilter<"Product"> | string
+    product_thumb?: StringFilter<"Product"> | string
+    product_description?: StringFilter<"Product"> | string
+    product_slug?: StringFilter<"Product"> | string
+    product_price?: IntFilter<"Product"> | number
+    product_quality?: IntFilter<"Product"> | number
+    product_type?: EnumProductTypeFilter<"Product"> | $Enums.ProductType
+    product_shop?: StringFilter<"Product"> | string
+    product_attributes?: StringFilter<"Product"> | string
+    product_ratingsAverage?: FloatFilter<"Product"> | number
+    product_variations?: StringFilter<"Product"> | string
+    isDraft?: StringFilter<"Product"> | string
+    isPublished?: BoolFilter<"Product"> | boolean
     created_at?: DateTimeFilter<"Product"> | Date | string
     updated_at?: DateTimeFilter<"Product"> | Date | string
     Comment?: CommentListRelationFilter
@@ -27339,10 +26659,19 @@ export namespace Prisma {
 
   export type ProductOrderByWithRelationInput = {
     id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    product_name?: SortOrder
+    product_thumb?: SortOrder
+    product_description?: SortOrder
+    product_slug?: SortOrder
+    product_price?: SortOrder
+    product_quality?: SortOrder
+    product_type?: SortOrder
+    product_shop?: SortOrder
+    product_attributes?: SortOrder
+    product_ratingsAverage?: SortOrder
+    product_variations?: SortOrder
+    isDraft?: SortOrder
+    isPublished?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     Comment?: CommentOrderByRelationAggregateInput
@@ -27351,30 +26680,50 @@ export namespace Prisma {
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    username?: string
-    email?: string
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
-    password?: StringFilter<"Product"> | string
-    emailConfirmed?: BoolFilter<"Product"> | boolean
+    product_name?: StringFilter<"Product"> | string
+    product_thumb?: StringFilter<"Product"> | string
+    product_description?: StringFilter<"Product"> | string
+    product_slug?: StringFilter<"Product"> | string
+    product_price?: IntFilter<"Product"> | number
+    product_quality?: IntFilter<"Product"> | number
+    product_type?: EnumProductTypeFilter<"Product"> | $Enums.ProductType
+    product_shop?: StringFilter<"Product"> | string
+    product_attributes?: StringFilter<"Product"> | string
+    product_ratingsAverage?: FloatFilter<"Product"> | number
+    product_variations?: StringFilter<"Product"> | string
+    isDraft?: StringFilter<"Product"> | string
+    isPublished?: BoolFilter<"Product"> | boolean
     created_at?: DateTimeFilter<"Product"> | Date | string
     updated_at?: DateTimeFilter<"Product"> | Date | string
     Comment?: CommentListRelationFilter
     CartProduct?: CartProductListRelationFilter
-  }, "id" | "username" | "email">
+  }, "id">
 
   export type ProductOrderByWithAggregationInput = {
     id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    product_name?: SortOrder
+    product_thumb?: SortOrder
+    product_description?: SortOrder
+    product_slug?: SortOrder
+    product_price?: SortOrder
+    product_quality?: SortOrder
+    product_type?: SortOrder
+    product_shop?: SortOrder
+    product_attributes?: SortOrder
+    product_ratingsAverage?: SortOrder
+    product_variations?: SortOrder
+    isDraft?: SortOrder
+    isPublished?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: ProductCountOrderByAggregateInput
+    _avg?: ProductAvgOrderByAggregateInput
     _max?: ProductMaxOrderByAggregateInput
     _min?: ProductMinOrderByAggregateInput
+    _sum?: ProductSumOrderByAggregateInput
   }
 
   export type ProductScalarWhereWithAggregatesInput = {
@@ -27382,10 +26731,19 @@ export namespace Prisma {
     OR?: ProductScalarWhereWithAggregatesInput[]
     NOT?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Product"> | string
-    username?: StringWithAggregatesFilter<"Product"> | string
-    password?: StringWithAggregatesFilter<"Product"> | string
-    email?: StringWithAggregatesFilter<"Product"> | string
-    emailConfirmed?: BoolWithAggregatesFilter<"Product"> | boolean
+    product_name?: StringWithAggregatesFilter<"Product"> | string
+    product_thumb?: StringWithAggregatesFilter<"Product"> | string
+    product_description?: StringWithAggregatesFilter<"Product"> | string
+    product_slug?: StringWithAggregatesFilter<"Product"> | string
+    product_price?: IntWithAggregatesFilter<"Product"> | number
+    product_quality?: IntWithAggregatesFilter<"Product"> | number
+    product_type?: EnumProductTypeWithAggregatesFilter<"Product"> | $Enums.ProductType
+    product_shop?: StringWithAggregatesFilter<"Product"> | string
+    product_attributes?: StringWithAggregatesFilter<"Product"> | string
+    product_ratingsAverage?: FloatWithAggregatesFilter<"Product"> | number
+    product_variations?: StringWithAggregatesFilter<"Product"> | string
+    isDraft?: StringWithAggregatesFilter<"Product"> | string
+    isPublished?: BoolWithAggregatesFilter<"Product"> | boolean
     created_at?: DateTimeWithAggregatesFilter<"Product"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Product"> | Date | string
   }
@@ -27395,9 +26753,9 @@ export namespace Prisma {
     OR?: RoleWhereInput[]
     NOT?: RoleWhereInput | RoleWhereInput[]
     id?: IntFilter<"Role"> | number
-    role_name?: Enumrole_nameNullableFilter<"Role"> | $Enums.role_name | null
-    role_slug?: StringNullableFilter<"Role"> | string | null
-    role_status?: Enumrole_statusNullableFilter<"Role"> | $Enums.role_status | null
+    role_name?: Enumrole_nameFilter<"Role"> | $Enums.role_name
+    role_slug?: StringFilter<"Role"> | string
+    role_status?: Enumrole_statusFilter<"Role"> | $Enums.role_status
     created_at?: DateTimeFilter<"Role"> | Date | string
     updated_at?: DateTimeFilter<"Role"> | Date | string
     role_grants?: GrantListRelationFilter
@@ -27406,9 +26764,9 @@ export namespace Prisma {
 
   export type RoleOrderByWithRelationInput = {
     id?: SortOrder
-    role_name?: SortOrderInput | SortOrder
-    role_slug?: SortOrderInput | SortOrder
-    role_status?: SortOrderInput | SortOrder
+    role_name?: SortOrder
+    role_slug?: SortOrder
+    role_status?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     role_grants?: GrantOrderByRelationAggregateInput
@@ -27420,9 +26778,9 @@ export namespace Prisma {
     AND?: RoleWhereInput | RoleWhereInput[]
     OR?: RoleWhereInput[]
     NOT?: RoleWhereInput | RoleWhereInput[]
-    role_name?: Enumrole_nameNullableFilter<"Role"> | $Enums.role_name | null
-    role_slug?: StringNullableFilter<"Role"> | string | null
-    role_status?: Enumrole_statusNullableFilter<"Role"> | $Enums.role_status | null
+    role_name?: Enumrole_nameFilter<"Role"> | $Enums.role_name
+    role_slug?: StringFilter<"Role"> | string
+    role_status?: Enumrole_statusFilter<"Role"> | $Enums.role_status
     created_at?: DateTimeFilter<"Role"> | Date | string
     updated_at?: DateTimeFilter<"Role"> | Date | string
     role_grants?: GrantListRelationFilter
@@ -27431,9 +26789,9 @@ export namespace Prisma {
 
   export type RoleOrderByWithAggregationInput = {
     id?: SortOrder
-    role_name?: SortOrderInput | SortOrder
-    role_slug?: SortOrderInput | SortOrder
-    role_status?: SortOrderInput | SortOrder
+    role_name?: SortOrder
+    role_slug?: SortOrder
+    role_status?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: RoleCountOrderByAggregateInput
@@ -27448,9 +26806,9 @@ export namespace Prisma {
     OR?: RoleScalarWhereWithAggregatesInput[]
     NOT?: RoleScalarWhereWithAggregatesInput | RoleScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Role"> | number
-    role_name?: Enumrole_nameNullableWithAggregatesFilter<"Role"> | $Enums.role_name | null
-    role_slug?: StringNullableWithAggregatesFilter<"Role"> | string | null
-    role_status?: Enumrole_statusNullableWithAggregatesFilter<"Role"> | $Enums.role_status | null
+    role_name?: Enumrole_nameWithAggregatesFilter<"Role"> | $Enums.role_name
+    role_slug?: StringWithAggregatesFilter<"Role"> | string
+    role_status?: Enumrole_statusWithAggregatesFilter<"Role"> | $Enums.role_status
     created_at?: DateTimeWithAggregatesFilter<"Role"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Role"> | Date | string
   }
@@ -27553,44 +26911,52 @@ export namespace Prisma {
     AND?: ShopWhereInput | ShopWhereInput[]
     OR?: ShopWhereInput[]
     NOT?: ShopWhereInput | ShopWhereInput[]
-    id?: StringFilter<"Shop"> | string
-    username?: StringFilter<"Shop"> | string
-    password?: StringFilter<"Shop"> | string
-    email?: StringFilter<"Shop"> | string
-    emailConfirmed?: BoolFilter<"Shop"> | boolean
+    user_id?: StringFilter<"Shop"> | string
+    shop_name?: StringFilter<"Shop"> | string
+    shop_password?: StringFilter<"Shop"> | string
+    shop_email?: StringFilter<"Shop"> | string
+    shop_msisdn?: StringFilter<"Shop"> | string
+    shop_status?: EnumShopStatusFilter<"Shop"> | $Enums.ShopStatus
+    shop_verify?: BoolFilter<"Shop"> | boolean
     created_at?: DateTimeFilter<"Shop"> | Date | string
     updated_at?: DateTimeFilter<"Shop"> | Date | string
   }
 
   export type ShopOrderByWithRelationInput = {
-    id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    user_id?: SortOrder
+    shop_name?: SortOrder
+    shop_password?: SortOrder
+    shop_email?: SortOrder
+    shop_msisdn?: SortOrder
+    shop_status?: SortOrder
+    shop_verify?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type ShopWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    username?: string
-    email?: string
+    user_id?: string
+    shop_email?: string
     AND?: ShopWhereInput | ShopWhereInput[]
     OR?: ShopWhereInput[]
     NOT?: ShopWhereInput | ShopWhereInput[]
-    password?: StringFilter<"Shop"> | string
-    emailConfirmed?: BoolFilter<"Shop"> | boolean
+    shop_name?: StringFilter<"Shop"> | string
+    shop_password?: StringFilter<"Shop"> | string
+    shop_msisdn?: StringFilter<"Shop"> | string
+    shop_status?: EnumShopStatusFilter<"Shop"> | $Enums.ShopStatus
+    shop_verify?: BoolFilter<"Shop"> | boolean
     created_at?: DateTimeFilter<"Shop"> | Date | string
     updated_at?: DateTimeFilter<"Shop"> | Date | string
-  }, "id" | "username" | "email">
+  }, "user_id" | "shop_email">
 
   export type ShopOrderByWithAggregationInput = {
-    id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    user_id?: SortOrder
+    shop_name?: SortOrder
+    shop_password?: SortOrder
+    shop_email?: SortOrder
+    shop_msisdn?: SortOrder
+    shop_status?: SortOrder
+    shop_verify?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: ShopCountOrderByAggregateInput
@@ -27602,11 +26968,13 @@ export namespace Prisma {
     AND?: ShopScalarWhereWithAggregatesInput | ShopScalarWhereWithAggregatesInput[]
     OR?: ShopScalarWhereWithAggregatesInput[]
     NOT?: ShopScalarWhereWithAggregatesInput | ShopScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Shop"> | string
-    username?: StringWithAggregatesFilter<"Shop"> | string
-    password?: StringWithAggregatesFilter<"Shop"> | string
-    email?: StringWithAggregatesFilter<"Shop"> | string
-    emailConfirmed?: BoolWithAggregatesFilter<"Shop"> | boolean
+    user_id?: StringWithAggregatesFilter<"Shop"> | string
+    shop_name?: StringWithAggregatesFilter<"Shop"> | string
+    shop_password?: StringWithAggregatesFilter<"Shop"> | string
+    shop_email?: StringWithAggregatesFilter<"Shop"> | string
+    shop_msisdn?: StringWithAggregatesFilter<"Shop"> | string
+    shop_status?: EnumShopStatusWithAggregatesFilter<"Shop"> | $Enums.ShopStatus
+    shop_verify?: BoolWithAggregatesFilter<"Shop"> | boolean
     created_at?: DateTimeWithAggregatesFilter<"Shop"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Shop"> | Date | string
   }
@@ -27615,6 +26983,7 @@ export namespace Prisma {
     AND?: TokenWhereInput | TokenWhereInput[]
     OR?: TokenWhereInput[]
     NOT?: TokenWhereInput | TokenWhereInput[]
+    id?: StringFilter<"Token"> | string
     user_id?: StringFilter<"Token"> | string
     public_key?: StringNullableFilter<"Token"> | string | null
     private_key?: StringNullableFilter<"Token"> | string | null
@@ -27622,10 +26991,11 @@ export namespace Prisma {
     refresh_token_used?: StringNullableListFilter<"Token">
     created_at?: DateTimeFilter<"Token"> | Date | string
     updated_at?: DateTimeFilter<"Token"> | Date | string
-    user?: XOR<UserNullableRelationFilter, UserWhereInput> | null
+    user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type TokenOrderByWithRelationInput = {
+    id?: SortOrder
     user_id?: SortOrder
     public_key?: SortOrderInput | SortOrder
     private_key?: SortOrderInput | SortOrder
@@ -27637,6 +27007,7 @@ export namespace Prisma {
   }
 
   export type TokenWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
     user_id?: string
     AND?: TokenWhereInput | TokenWhereInput[]
     OR?: TokenWhereInput[]
@@ -27647,10 +27018,11 @@ export namespace Prisma {
     refresh_token_used?: StringNullableListFilter<"Token">
     created_at?: DateTimeFilter<"Token"> | Date | string
     updated_at?: DateTimeFilter<"Token"> | Date | string
-    user?: XOR<UserNullableRelationFilter, UserWhereInput> | null
-  }, "user_id">
+    user?: XOR<UserRelationFilter, UserWhereInput>
+  }, "id" | "id" | "user_id">
 
   export type TokenOrderByWithAggregationInput = {
+    id?: SortOrder
     user_id?: SortOrder
     public_key?: SortOrderInput | SortOrder
     private_key?: SortOrderInput | SortOrder
@@ -27667,6 +27039,7 @@ export namespace Prisma {
     AND?: TokenScalarWhereWithAggregatesInput | TokenScalarWhereWithAggregatesInput[]
     OR?: TokenScalarWhereWithAggregatesInput[]
     NOT?: TokenScalarWhereWithAggregatesInput | TokenScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Token"> | string
     user_id?: StringWithAggregatesFilter<"Token"> | string
     public_key?: StringNullableWithAggregatesFilter<"Token"> | string | null
     private_key?: StringNullableWithAggregatesFilter<"Token"> | string | null
@@ -27681,38 +27054,42 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     id?: StringFilter<"User"> | string
-    user_name?: StringNullableFilter<"User"> | string | null
-    user_slug?: StringNullableFilter<"User"> | string | null
-    user_password?: StringNullableFilter<"User"> | string | null
-    user_email?: StringNullableFilter<"User"> | string | null
-    user_email_confirmed?: BoolNullableFilter<"User"> | boolean | null
+    user_name?: StringFilter<"User"> | string
+    user_full_name?: StringFilter<"User"> | string
+    user_slug?: StringFilter<"User"> | string
+    user_password?: StringFilter<"User"> | string
+    user_email?: StringFilter<"User"> | string
+    user_email_confirmed?: BoolFilter<"User"> | boolean
     user_salt?: StringNullableFilter<"User"> | string | null
-    user_phone?: StringFilter<"User"> | string
-    user_sex?: StringFilter<"User"> | string
+    user_phone?: StringNullableFilter<"User"> | string | null
+    user_sex?: StringNullableFilter<"User"> | string | null
+    user_status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     user_role?: IntFilter<"User"> | number
     created_at?: DateTimeFilter<"User"> | Date | string
     updated_at?: DateTimeFilter<"User"> | Date | string
     role?: XOR<RoleRelationFilter, RoleWhereInput>
-    user_token?: XOR<TokenNullableRelationFilter, TokenWhereInput> | null
+    Token?: TokenListRelationFilter
     Comment?: CommentListRelationFilter
     Cart?: CartListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
-    user_name?: SortOrderInput | SortOrder
-    user_slug?: SortOrderInput | SortOrder
-    user_password?: SortOrderInput | SortOrder
-    user_email?: SortOrderInput | SortOrder
-    user_email_confirmed?: SortOrderInput | SortOrder
+    user_name?: SortOrder
+    user_full_name?: SortOrder
+    user_slug?: SortOrder
+    user_password?: SortOrder
+    user_email?: SortOrder
+    user_email_confirmed?: SortOrder
     user_salt?: SortOrderInput | SortOrder
-    user_phone?: SortOrder
-    user_sex?: SortOrder
+    user_phone?: SortOrderInput | SortOrder
+    user_sex?: SortOrderInput | SortOrder
+    user_status?: SortOrder
     user_role?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     role?: RoleOrderByWithRelationInput
-    user_token?: TokenOrderByWithRelationInput
+    Token?: TokenOrderByRelationAggregateInput
     Comment?: CommentOrderByRelationAggregateInput
     Cart?: CartOrderByRelationAggregateInput
   }
@@ -27725,30 +27102,34 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    user_slug?: StringNullableFilter<"User"> | string | null
-    user_password?: StringNullableFilter<"User"> | string | null
-    user_email_confirmed?: BoolNullableFilter<"User"> | boolean | null
+    user_full_name?: StringFilter<"User"> | string
+    user_slug?: StringFilter<"User"> | string
+    user_password?: StringFilter<"User"> | string
+    user_email_confirmed?: BoolFilter<"User"> | boolean
     user_salt?: StringNullableFilter<"User"> | string | null
-    user_phone?: StringFilter<"User"> | string
-    user_sex?: StringFilter<"User"> | string
+    user_phone?: StringNullableFilter<"User"> | string | null
+    user_sex?: StringNullableFilter<"User"> | string | null
+    user_status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     created_at?: DateTimeFilter<"User"> | Date | string
     updated_at?: DateTimeFilter<"User"> | Date | string
     role?: XOR<RoleRelationFilter, RoleWhereInput>
-    user_token?: XOR<TokenNullableRelationFilter, TokenWhereInput> | null
+    Token?: TokenListRelationFilter
     Comment?: CommentListRelationFilter
     Cart?: CartListRelationFilter
   }, "id" | "user_name" | "user_email" | "user_role">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
-    user_name?: SortOrderInput | SortOrder
-    user_slug?: SortOrderInput | SortOrder
-    user_password?: SortOrderInput | SortOrder
-    user_email?: SortOrderInput | SortOrder
-    user_email_confirmed?: SortOrderInput | SortOrder
+    user_name?: SortOrder
+    user_full_name?: SortOrder
+    user_slug?: SortOrder
+    user_password?: SortOrder
+    user_email?: SortOrder
+    user_email_confirmed?: SortOrder
     user_salt?: SortOrderInput | SortOrder
-    user_phone?: SortOrder
-    user_sex?: SortOrder
+    user_phone?: SortOrderInput | SortOrder
+    user_sex?: SortOrderInput | SortOrder
+    user_status?: SortOrder
     user_role?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -27764,14 +27145,16 @@ export namespace Prisma {
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"User"> | string
-    user_name?: StringNullableWithAggregatesFilter<"User"> | string | null
-    user_slug?: StringNullableWithAggregatesFilter<"User"> | string | null
-    user_password?: StringNullableWithAggregatesFilter<"User"> | string | null
-    user_email?: StringNullableWithAggregatesFilter<"User"> | string | null
-    user_email_confirmed?: BoolNullableWithAggregatesFilter<"User"> | boolean | null
+    user_name?: StringWithAggregatesFilter<"User"> | string
+    user_full_name?: StringWithAggregatesFilter<"User"> | string
+    user_slug?: StringWithAggregatesFilter<"User"> | string
+    user_password?: StringWithAggregatesFilter<"User"> | string
+    user_email?: StringWithAggregatesFilter<"User"> | string
+    user_email_confirmed?: BoolWithAggregatesFilter<"User"> | boolean
     user_salt?: StringNullableWithAggregatesFilter<"User"> | string | null
-    user_phone?: StringWithAggregatesFilter<"User"> | string
-    user_sex?: StringWithAggregatesFilter<"User"> | string
+    user_phone?: StringNullableWithAggregatesFilter<"User"> | string | null
+    user_sex?: StringNullableWithAggregatesFilter<"User"> | string | null
+    user_status?: EnumUserStatusWithAggregatesFilter<"User"> | $Enums.UserStatus
     user_role?: IntWithAggregatesFilter<"User"> | number
     created_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -28523,48 +27906,6 @@ export namespace Prisma {
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type KeyTokenCreateInput = {
-    id?: string
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type KeyTokenUncheckedCreateInput = {
-    id?: string
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type KeyTokenUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type KeyTokenUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type KeyTokenCreateManyInput = {
-    id?: string
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type KeyTokenUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type KeyTokenUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type NotificationCreateInput = {
     id?: string
     created_at?: Date | string
@@ -28791,10 +28132,19 @@ export namespace Prisma {
 
   export type ProductCreateInput = {
     id?: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed?: boolean
+    product_name: string
+    product_thumb: string
+    product_description: string
+    product_slug: string
+    product_price: number
+    product_quality: number
+    product_type: $Enums.ProductType
+    product_shop: string
+    product_attributes: string
+    product_ratingsAverage: number
+    product_variations: string
+    isDraft: string
+    isPublished: boolean
     created_at?: Date | string
     updated_at?: Date | string
     Comment?: CommentCreateNestedManyWithoutProductInput
@@ -28803,10 +28153,19 @@ export namespace Prisma {
 
   export type ProductUncheckedCreateInput = {
     id?: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed?: boolean
+    product_name: string
+    product_thumb: string
+    product_description: string
+    product_slug: string
+    product_price: number
+    product_quality: number
+    product_type: $Enums.ProductType
+    product_shop: string
+    product_attributes: string
+    product_ratingsAverage: number
+    product_variations: string
+    isDraft: string
+    isPublished: boolean
     created_at?: Date | string
     updated_at?: Date | string
     Comment?: CommentUncheckedCreateNestedManyWithoutProductInput
@@ -28815,10 +28174,19 @@ export namespace Prisma {
 
   export type ProductUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    product_name?: StringFieldUpdateOperationsInput | string
+    product_thumb?: StringFieldUpdateOperationsInput | string
+    product_description?: StringFieldUpdateOperationsInput | string
+    product_slug?: StringFieldUpdateOperationsInput | string
+    product_price?: IntFieldUpdateOperationsInput | number
+    product_quality?: IntFieldUpdateOperationsInput | number
+    product_type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    product_shop?: StringFieldUpdateOperationsInput | string
+    product_attributes?: StringFieldUpdateOperationsInput | string
+    product_ratingsAverage?: FloatFieldUpdateOperationsInput | number
+    product_variations?: StringFieldUpdateOperationsInput | string
+    isDraft?: StringFieldUpdateOperationsInput | string
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     Comment?: CommentUpdateManyWithoutProductNestedInput
@@ -28827,10 +28195,19 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    product_name?: StringFieldUpdateOperationsInput | string
+    product_thumb?: StringFieldUpdateOperationsInput | string
+    product_description?: StringFieldUpdateOperationsInput | string
+    product_slug?: StringFieldUpdateOperationsInput | string
+    product_price?: IntFieldUpdateOperationsInput | number
+    product_quality?: IntFieldUpdateOperationsInput | number
+    product_type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    product_shop?: StringFieldUpdateOperationsInput | string
+    product_attributes?: StringFieldUpdateOperationsInput | string
+    product_ratingsAverage?: FloatFieldUpdateOperationsInput | number
+    product_variations?: StringFieldUpdateOperationsInput | string
+    isDraft?: StringFieldUpdateOperationsInput | string
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     Comment?: CommentUncheckedUpdateManyWithoutProductNestedInput
@@ -28839,38 +28216,65 @@ export namespace Prisma {
 
   export type ProductCreateManyInput = {
     id?: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed?: boolean
+    product_name: string
+    product_thumb: string
+    product_description: string
+    product_slug: string
+    product_price: number
+    product_quality: number
+    product_type: $Enums.ProductType
+    product_shop: string
+    product_attributes: string
+    product_ratingsAverage: number
+    product_variations: string
+    isDraft: string
+    isPublished: boolean
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type ProductUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    product_name?: StringFieldUpdateOperationsInput | string
+    product_thumb?: StringFieldUpdateOperationsInput | string
+    product_description?: StringFieldUpdateOperationsInput | string
+    product_slug?: StringFieldUpdateOperationsInput | string
+    product_price?: IntFieldUpdateOperationsInput | number
+    product_quality?: IntFieldUpdateOperationsInput | number
+    product_type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    product_shop?: StringFieldUpdateOperationsInput | string
+    product_attributes?: StringFieldUpdateOperationsInput | string
+    product_ratingsAverage?: FloatFieldUpdateOperationsInput | number
+    product_variations?: StringFieldUpdateOperationsInput | string
+    isDraft?: StringFieldUpdateOperationsInput | string
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProductUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    product_name?: StringFieldUpdateOperationsInput | string
+    product_thumb?: StringFieldUpdateOperationsInput | string
+    product_description?: StringFieldUpdateOperationsInput | string
+    product_slug?: StringFieldUpdateOperationsInput | string
+    product_price?: IntFieldUpdateOperationsInput | number
+    product_quality?: IntFieldUpdateOperationsInput | number
+    product_type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    product_shop?: StringFieldUpdateOperationsInput | string
+    product_attributes?: StringFieldUpdateOperationsInput | string
+    product_ratingsAverage?: FloatFieldUpdateOperationsInput | number
+    product_variations?: StringFieldUpdateOperationsInput | string
+    isDraft?: StringFieldUpdateOperationsInput | string
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RoleCreateInput = {
-    role_name?: $Enums.role_name | null
-    role_slug?: string | null
-    role_status?: $Enums.role_status | null
+    role_name?: $Enums.role_name
+    role_slug: string
+    role_status?: $Enums.role_status
     created_at?: Date | string
     updated_at?: Date | string
     role_grants?: GrantCreateNestedManyWithoutRoleInput
@@ -28879,9 +28283,9 @@ export namespace Prisma {
 
   export type RoleUncheckedCreateInput = {
     id?: number
-    role_name?: $Enums.role_name | null
-    role_slug?: string | null
-    role_status?: $Enums.role_status | null
+    role_name?: $Enums.role_name
+    role_slug: string
+    role_status?: $Enums.role_status
     created_at?: Date | string
     updated_at?: Date | string
     role_grants?: GrantUncheckedCreateNestedManyWithoutRoleInput
@@ -28889,9 +28293,9 @@ export namespace Prisma {
   }
 
   export type RoleUpdateInput = {
-    role_name?: NullableEnumrole_nameFieldUpdateOperationsInput | $Enums.role_name | null
-    role_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    role_status?: NullableEnumrole_statusFieldUpdateOperationsInput | $Enums.role_status | null
+    role_name?: Enumrole_nameFieldUpdateOperationsInput | $Enums.role_name
+    role_slug?: StringFieldUpdateOperationsInput | string
+    role_status?: Enumrole_statusFieldUpdateOperationsInput | $Enums.role_status
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role_grants?: GrantUpdateManyWithoutRoleNestedInput
@@ -28900,9 +28304,9 @@ export namespace Prisma {
 
   export type RoleUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    role_name?: NullableEnumrole_nameFieldUpdateOperationsInput | $Enums.role_name | null
-    role_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    role_status?: NullableEnumrole_statusFieldUpdateOperationsInput | $Enums.role_status | null
+    role_name?: Enumrole_nameFieldUpdateOperationsInput | $Enums.role_name
+    role_slug?: StringFieldUpdateOperationsInput | string
+    role_status?: Enumrole_statusFieldUpdateOperationsInput | $Enums.role_status
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role_grants?: GrantUncheckedUpdateManyWithoutRoleNestedInput
@@ -28911,26 +28315,26 @@ export namespace Prisma {
 
   export type RoleCreateManyInput = {
     id?: number
-    role_name?: $Enums.role_name | null
-    role_slug?: string | null
-    role_status?: $Enums.role_status | null
+    role_name?: $Enums.role_name
+    role_slug: string
+    role_status?: $Enums.role_status
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type RoleUpdateManyMutationInput = {
-    role_name?: NullableEnumrole_nameFieldUpdateOperationsInput | $Enums.role_name | null
-    role_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    role_status?: NullableEnumrole_statusFieldUpdateOperationsInput | $Enums.role_status | null
+    role_name?: Enumrole_nameFieldUpdateOperationsInput | $Enums.role_name
+    role_slug?: StringFieldUpdateOperationsInput | string
+    role_status?: Enumrole_statusFieldUpdateOperationsInput | $Enums.role_status
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type RoleUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    role_name?: NullableEnumrole_nameFieldUpdateOperationsInput | $Enums.role_name | null
-    role_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    role_status?: NullableEnumrole_statusFieldUpdateOperationsInput | $Enums.role_status | null
+    role_name?: Enumrole_nameFieldUpdateOperationsInput | $Enums.role_name
+    role_slug?: StringFieldUpdateOperationsInput | string
+    role_status?: Enumrole_statusFieldUpdateOperationsInput | $Enums.role_status
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -29026,86 +28430,102 @@ export namespace Prisma {
   }
 
   export type ShopCreateInput = {
-    id?: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed?: boolean
+    user_id: string
+    shop_name: string
+    shop_password: string
+    shop_email: string
+    shop_msisdn: string
+    shop_status?: $Enums.ShopStatus
+    shop_verify?: boolean
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type ShopUncheckedCreateInput = {
-    id?: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed?: boolean
+    user_id: string
+    shop_name: string
+    shop_password: string
+    shop_email: string
+    shop_msisdn: string
+    shop_status?: $Enums.ShopStatus
+    shop_verify?: boolean
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type ShopUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    user_id?: StringFieldUpdateOperationsInput | string
+    shop_name?: StringFieldUpdateOperationsInput | string
+    shop_password?: StringFieldUpdateOperationsInput | string
+    shop_email?: StringFieldUpdateOperationsInput | string
+    shop_msisdn?: StringFieldUpdateOperationsInput | string
+    shop_status?: EnumShopStatusFieldUpdateOperationsInput | $Enums.ShopStatus
+    shop_verify?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ShopUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    user_id?: StringFieldUpdateOperationsInput | string
+    shop_name?: StringFieldUpdateOperationsInput | string
+    shop_password?: StringFieldUpdateOperationsInput | string
+    shop_email?: StringFieldUpdateOperationsInput | string
+    shop_msisdn?: StringFieldUpdateOperationsInput | string
+    shop_status?: EnumShopStatusFieldUpdateOperationsInput | $Enums.ShopStatus
+    shop_verify?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ShopCreateManyInput = {
-    id?: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed?: boolean
+    user_id: string
+    shop_name: string
+    shop_password: string
+    shop_email: string
+    shop_msisdn: string
+    shop_status?: $Enums.ShopStatus
+    shop_verify?: boolean
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type ShopUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    user_id?: StringFieldUpdateOperationsInput | string
+    shop_name?: StringFieldUpdateOperationsInput | string
+    shop_password?: StringFieldUpdateOperationsInput | string
+    shop_email?: StringFieldUpdateOperationsInput | string
+    shop_msisdn?: StringFieldUpdateOperationsInput | string
+    shop_status?: EnumShopStatusFieldUpdateOperationsInput | $Enums.ShopStatus
+    shop_verify?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ShopUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    user_id?: StringFieldUpdateOperationsInput | string
+    shop_name?: StringFieldUpdateOperationsInput | string
+    shop_password?: StringFieldUpdateOperationsInput | string
+    shop_email?: StringFieldUpdateOperationsInput | string
+    shop_msisdn?: StringFieldUpdateOperationsInput | string
+    shop_status?: EnumShopStatusFieldUpdateOperationsInput | $Enums.ShopStatus
+    shop_verify?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TokenCreateInput = {
+    id?: string
     public_key?: string | null
     private_key?: string | null
     refresh_token?: string | null
     refresh_token_used?: TokenCreaterefresh_token_usedInput | string[]
     created_at?: Date | string
     updated_at?: Date | string
-    user?: UserCreateNestedOneWithoutUser_tokenInput
+    user: UserCreateNestedOneWithoutTokenInput
   }
 
   export type TokenUncheckedCreateInput = {
+    id?: string
     user_id: string
     public_key?: string | null
     private_key?: string | null
@@ -29116,16 +28536,18 @@ export namespace Prisma {
   }
 
   export type TokenUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     public_key?: NullableStringFieldUpdateOperationsInput | string | null
     private_key?: NullableStringFieldUpdateOperationsInput | string | null
     refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
     refresh_token_used?: TokenUpdaterefresh_token_usedInput | string[]
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneWithoutUser_tokenNestedInput
+    user?: UserUpdateOneRequiredWithoutTokenNestedInput
   }
 
   export type TokenUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     public_key?: NullableStringFieldUpdateOperationsInput | string | null
     private_key?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29136,6 +28558,7 @@ export namespace Prisma {
   }
 
   export type TokenCreateManyInput = {
+    id?: string
     user_id: string
     public_key?: string | null
     private_key?: string | null
@@ -29146,6 +28569,7 @@ export namespace Prisma {
   }
 
   export type TokenUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     public_key?: NullableStringFieldUpdateOperationsInput | string | null
     private_key?: NullableStringFieldUpdateOperationsInput | string | null
     refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29155,6 +28579,7 @@ export namespace Prisma {
   }
 
   export type TokenUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
     public_key?: NullableStringFieldUpdateOperationsInput | string | null
     private_key?: NullableStringFieldUpdateOperationsInput | string | null
@@ -29166,86 +28591,96 @@ export namespace Prisma {
 
   export type UserCreateInput = {
     id?: string
-    user_name?: string | null
-    user_slug?: string | null
-    user_password?: string | null
-    user_email?: string | null
-    user_email_confirmed?: boolean | null
+    user_name: string
+    user_full_name: string
+    user_slug: string
+    user_password: string
+    user_email: string
+    user_email_confirmed?: boolean
     user_salt?: string | null
-    user_phone: string
-    user_sex: string
+    user_phone?: string | null
+    user_sex?: string | null
+    user_status?: $Enums.UserStatus
     created_at?: Date | string
     updated_at?: Date | string
     role: RoleCreateNestedOneWithoutUserInput
-    user_token?: TokenCreateNestedOneWithoutUserInput
+    Token?: TokenCreateNestedManyWithoutUserInput
     Comment?: CommentCreateNestedManyWithoutUserInput
     Cart?: CartCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
     id?: string
-    user_name?: string | null
-    user_slug?: string | null
-    user_password?: string | null
-    user_email?: string | null
-    user_email_confirmed?: boolean | null
+    user_name: string
+    user_full_name: string
+    user_slug: string
+    user_password: string
+    user_email: string
+    user_email_confirmed?: boolean
     user_salt?: string | null
-    user_phone: string
-    user_sex: string
+    user_phone?: string | null
+    user_sex?: string | null
+    user_status?: $Enums.UserStatus
     user_role: number
     created_at?: Date | string
     updated_at?: Date | string
-    user_token?: TokenUncheckedCreateNestedOneWithoutUserInput
+    Token?: TokenUncheckedCreateNestedManyWithoutUserInput
     Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
     Cart?: CartUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_name?: NullableStringFieldUpdateOperationsInput | string | null
-    user_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    user_password?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email_confirmed?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user_name?: StringFieldUpdateOperationsInput | string
+    user_full_name?: StringFieldUpdateOperationsInput | string
+    user_slug?: StringFieldUpdateOperationsInput | string
+    user_password?: StringFieldUpdateOperationsInput | string
+    user_email?: StringFieldUpdateOperationsInput | string
+    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
     user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: StringFieldUpdateOperationsInput | string
-    user_sex?: StringFieldUpdateOperationsInput | string
+    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
+    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUserNestedInput
-    user_token?: TokenUpdateOneWithoutUserNestedInput
+    Token?: TokenUpdateManyWithoutUserNestedInput
     Comment?: CommentUpdateManyWithoutUserNestedInput
     Cart?: CartUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_name?: NullableStringFieldUpdateOperationsInput | string | null
-    user_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    user_password?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email_confirmed?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user_name?: StringFieldUpdateOperationsInput | string
+    user_full_name?: StringFieldUpdateOperationsInput | string
+    user_slug?: StringFieldUpdateOperationsInput | string
+    user_password?: StringFieldUpdateOperationsInput | string
+    user_email?: StringFieldUpdateOperationsInput | string
+    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
     user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: StringFieldUpdateOperationsInput | string
-    user_sex?: StringFieldUpdateOperationsInput | string
+    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
+    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     user_role?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_token?: TokenUncheckedUpdateOneWithoutUserNestedInput
+    Token?: TokenUncheckedUpdateManyWithoutUserNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
     Cart?: CartUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
     id?: string
-    user_name?: string | null
-    user_slug?: string | null
-    user_password?: string | null
-    user_email?: string | null
-    user_email_confirmed?: boolean | null
+    user_name: string
+    user_full_name: string
+    user_slug: string
+    user_password: string
+    user_email: string
+    user_email_confirmed?: boolean
     user_salt?: string | null
-    user_phone: string
-    user_sex: string
+    user_phone?: string | null
+    user_sex?: string | null
+    user_status?: $Enums.UserStatus
     user_role: number
     created_at?: Date | string
     updated_at?: Date | string
@@ -29253,28 +28688,32 @@ export namespace Prisma {
 
   export type UserUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_name?: NullableStringFieldUpdateOperationsInput | string | null
-    user_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    user_password?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email_confirmed?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user_name?: StringFieldUpdateOperationsInput | string
+    user_full_name?: StringFieldUpdateOperationsInput | string
+    user_slug?: StringFieldUpdateOperationsInput | string
+    user_password?: StringFieldUpdateOperationsInput | string
+    user_email?: StringFieldUpdateOperationsInput | string
+    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
     user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: StringFieldUpdateOperationsInput | string
-    user_sex?: StringFieldUpdateOperationsInput | string
+    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
+    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_name?: NullableStringFieldUpdateOperationsInput | string | null
-    user_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    user_password?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email_confirmed?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user_name?: StringFieldUpdateOperationsInput | string
+    user_full_name?: StringFieldUpdateOperationsInput | string
+    user_slug?: StringFieldUpdateOperationsInput | string
+    user_password?: StringFieldUpdateOperationsInput | string
+    user_email?: StringFieldUpdateOperationsInput | string
+    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
     user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: StringFieldUpdateOperationsInput | string
-    user_sex?: StringFieldUpdateOperationsInput | string
+    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
+    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     user_role?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29899,24 +29338,6 @@ export namespace Prisma {
     updated_at?: SortOrder
   }
 
-  export type KeyTokenCountOrderByAggregateInput = {
-    id?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-  }
-
-  export type KeyTokenMaxOrderByAggregateInput = {
-    id?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-  }
-
-  export type KeyTokenMinOrderByAggregateInput = {
-    id?: SortOrder
-    created_at?: SortOrder
-    updated_at?: SortOrder
-  }
-
   export type NotificationCountOrderByAggregateInput = {
     id?: SortOrder
     created_at?: SortOrder
@@ -30013,6 +29434,24 @@ export namespace Prisma {
     updated_at?: SortOrder
   }
 
+  export type EnumProductTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumProductTypeFilter<$PrismaModel> | $Enums.ProductType
+  }
+
+  export type FloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type CommentListRelationFilter = {
     every?: CommentWhereInput
     some?: CommentWhereInput
@@ -30025,46 +29464,111 @@ export namespace Prisma {
 
   export type ProductCountOrderByAggregateInput = {
     id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    product_name?: SortOrder
+    product_thumb?: SortOrder
+    product_description?: SortOrder
+    product_slug?: SortOrder
+    product_price?: SortOrder
+    product_quality?: SortOrder
+    product_type?: SortOrder
+    product_shop?: SortOrder
+    product_attributes?: SortOrder
+    product_ratingsAverage?: SortOrder
+    product_variations?: SortOrder
+    isDraft?: SortOrder
+    isPublished?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
+  export type ProductAvgOrderByAggregateInput = {
+    product_price?: SortOrder
+    product_quality?: SortOrder
+    product_ratingsAverage?: SortOrder
+  }
+
   export type ProductMaxOrderByAggregateInput = {
     id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    product_name?: SortOrder
+    product_thumb?: SortOrder
+    product_description?: SortOrder
+    product_slug?: SortOrder
+    product_price?: SortOrder
+    product_quality?: SortOrder
+    product_type?: SortOrder
+    product_shop?: SortOrder
+    product_attributes?: SortOrder
+    product_ratingsAverage?: SortOrder
+    product_variations?: SortOrder
+    isDraft?: SortOrder
+    isPublished?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type ProductMinOrderByAggregateInput = {
     id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    product_name?: SortOrder
+    product_thumb?: SortOrder
+    product_description?: SortOrder
+    product_slug?: SortOrder
+    product_price?: SortOrder
+    product_quality?: SortOrder
+    product_type?: SortOrder
+    product_shop?: SortOrder
+    product_attributes?: SortOrder
+    product_ratingsAverage?: SortOrder
+    product_variations?: SortOrder
+    isDraft?: SortOrder
+    isPublished?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
-  export type Enumrole_nameNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.role_name | Enumrole_nameFieldRefInput<$PrismaModel> | null
-    in?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumrole_nameNullableFilter<$PrismaModel> | $Enums.role_name | null
+  export type ProductSumOrderByAggregateInput = {
+    product_price?: SortOrder
+    product_quality?: SortOrder
+    product_ratingsAverage?: SortOrder
   }
 
-  export type Enumrole_statusNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.role_status | Enumrole_statusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumrole_statusNullableFilter<$PrismaModel> | $Enums.role_status | null
+  export type EnumProductTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumProductTypeWithAggregatesFilter<$PrismaModel> | $Enums.ProductType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProductTypeFilter<$PrismaModel>
+    _max?: NestedEnumProductTypeFilter<$PrismaModel>
+  }
+
+  export type FloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type Enumrole_nameFilter<$PrismaModel = never> = {
+    equals?: $Enums.role_name | Enumrole_nameFieldRefInput<$PrismaModel>
+    in?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel>
+    notIn?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel>
+    not?: NestedEnumrole_nameFilter<$PrismaModel> | $Enums.role_name
+  }
+
+  export type Enumrole_statusFilter<$PrismaModel = never> = {
+    equals?: $Enums.role_status | Enumrole_statusFieldRefInput<$PrismaModel>
+    in?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel>
+    not?: NestedEnumrole_statusFilter<$PrismaModel> | $Enums.role_status
   }
 
   export type GrantListRelationFilter = {
@@ -30122,24 +29626,24 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type Enumrole_nameNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.role_name | Enumrole_nameFieldRefInput<$PrismaModel> | null
-    in?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumrole_nameNullableWithAggregatesFilter<$PrismaModel> | $Enums.role_name | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumrole_nameNullableFilter<$PrismaModel>
-    _max?: NestedEnumrole_nameNullableFilter<$PrismaModel>
+  export type Enumrole_nameWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.role_name | Enumrole_nameFieldRefInput<$PrismaModel>
+    in?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel>
+    notIn?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel>
+    not?: NestedEnumrole_nameWithAggregatesFilter<$PrismaModel> | $Enums.role_name
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumrole_nameFilter<$PrismaModel>
+    _max?: NestedEnumrole_nameFilter<$PrismaModel>
   }
 
-  export type Enumrole_statusNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.role_status | Enumrole_statusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumrole_statusNullableWithAggregatesFilter<$PrismaModel> | $Enums.role_status | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumrole_statusNullableFilter<$PrismaModel>
-    _max?: NestedEnumrole_statusNullableFilter<$PrismaModel>
+  export type Enumrole_statusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.role_status | Enumrole_statusFieldRefInput<$PrismaModel>
+    in?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel>
+    not?: NestedEnumrole_statusWithAggregatesFilter<$PrismaModel> | $Enums.role_status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumrole_statusFilter<$PrismaModel>
+    _max?: NestedEnumrole_statusFilter<$PrismaModel>
   }
 
   export type IntNullableFilter<$PrismaModel = never> = {
@@ -30221,42 +29725,61 @@ export namespace Prisma {
     updated_at?: SortOrder
   }
 
+  export type EnumShopStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShopStatus | EnumShopStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ShopStatus[] | ListEnumShopStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ShopStatus[] | ListEnumShopStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumShopStatusFilter<$PrismaModel> | $Enums.ShopStatus
+  }
+
   export type ShopCountOrderByAggregateInput = {
-    id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    user_id?: SortOrder
+    shop_name?: SortOrder
+    shop_password?: SortOrder
+    shop_email?: SortOrder
+    shop_msisdn?: SortOrder
+    shop_status?: SortOrder
+    shop_verify?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type ShopMaxOrderByAggregateInput = {
-    id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    user_id?: SortOrder
+    shop_name?: SortOrder
+    shop_password?: SortOrder
+    shop_email?: SortOrder
+    shop_msisdn?: SortOrder
+    shop_status?: SortOrder
+    shop_verify?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type ShopMinOrderByAggregateInput = {
-    id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    user_id?: SortOrder
+    shop_name?: SortOrder
+    shop_password?: SortOrder
+    shop_email?: SortOrder
+    shop_msisdn?: SortOrder
+    shop_status?: SortOrder
+    shop_verify?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
-  export type UserNullableRelationFilter = {
-    is?: UserWhereInput | null
-    isNot?: UserWhereInput | null
+  export type EnumShopStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShopStatus | EnumShopStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ShopStatus[] | ListEnumShopStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ShopStatus[] | ListEnumShopStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumShopStatusWithAggregatesFilter<$PrismaModel> | $Enums.ShopStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumShopStatusFilter<$PrismaModel>
+    _max?: NestedEnumShopStatusFilter<$PrismaModel>
   }
 
   export type TokenCountOrderByAggregateInput = {
+    id?: SortOrder
     user_id?: SortOrder
     public_key?: SortOrder
     private_key?: SortOrder
@@ -30267,6 +29790,7 @@ export namespace Prisma {
   }
 
   export type TokenMaxOrderByAggregateInput = {
+    id?: SortOrder
     user_id?: SortOrder
     public_key?: SortOrder
     private_key?: SortOrder
@@ -30276,6 +29800,7 @@ export namespace Prisma {
   }
 
   export type TokenMinOrderByAggregateInput = {
+    id?: SortOrder
     user_id?: SortOrder
     public_key?: SortOrder
     private_key?: SortOrder
@@ -30284,9 +29809,11 @@ export namespace Prisma {
     updated_at?: SortOrder
   }
 
-  export type BoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  export type EnumUserStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserStatusFilter<$PrismaModel> | $Enums.UserStatus
   }
 
   export type RoleRelationFilter = {
@@ -30294,15 +29821,20 @@ export namespace Prisma {
     isNot?: RoleWhereInput
   }
 
-  export type TokenNullableRelationFilter = {
-    is?: TokenWhereInput | null
-    isNot?: TokenWhereInput | null
+  export type TokenListRelationFilter = {
+    every?: TokenWhereInput
+    some?: TokenWhereInput
+    none?: TokenWhereInput
   }
 
   export type CartListRelationFilter = {
     every?: CartWhereInput
     some?: CartWhereInput
     none?: CartWhereInput
+  }
+
+  export type TokenOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type CartOrderByRelationAggregateInput = {
@@ -30312,6 +29844,7 @@ export namespace Prisma {
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     user_name?: SortOrder
+    user_full_name?: SortOrder
     user_slug?: SortOrder
     user_password?: SortOrder
     user_email?: SortOrder
@@ -30319,6 +29852,7 @@ export namespace Prisma {
     user_salt?: SortOrder
     user_phone?: SortOrder
     user_sex?: SortOrder
+    user_status?: SortOrder
     user_role?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -30331,6 +29865,7 @@ export namespace Prisma {
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     user_name?: SortOrder
+    user_full_name?: SortOrder
     user_slug?: SortOrder
     user_password?: SortOrder
     user_email?: SortOrder
@@ -30338,6 +29873,7 @@ export namespace Prisma {
     user_salt?: SortOrder
     user_phone?: SortOrder
     user_sex?: SortOrder
+    user_status?: SortOrder
     user_role?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -30346,6 +29882,7 @@ export namespace Prisma {
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     user_name?: SortOrder
+    user_full_name?: SortOrder
     user_slug?: SortOrder
     user_password?: SortOrder
     user_email?: SortOrder
@@ -30353,6 +29890,7 @@ export namespace Prisma {
     user_salt?: SortOrder
     user_phone?: SortOrder
     user_sex?: SortOrder
+    user_status?: SortOrder
     user_role?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -30362,12 +29900,14 @@ export namespace Prisma {
     user_role?: SortOrder
   }
 
-  export type BoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
+  export type EnumUserStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserStatusWithAggregatesFilter<$PrismaModel> | $Enums.UserStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserStatusFilter<$PrismaModel>
+    _max?: NestedEnumUserStatusFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -30883,6 +30423,18 @@ export namespace Prisma {
     connect?: CartProductWhereUniqueInput | CartProductWhereUniqueInput[]
   }
 
+  export type EnumProductTypeFieldUpdateOperationsInput = {
+    set?: $Enums.ProductType
+  }
+
+  export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type CommentUpdateManyWithoutProductNestedInput = {
     create?: XOR<CommentCreateWithoutProductInput, CommentUncheckedCreateWithoutProductInput> | CommentCreateWithoutProductInput[] | CommentUncheckedCreateWithoutProductInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutProductInput | CommentCreateOrConnectWithoutProductInput[]
@@ -30967,12 +30519,12 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput | UserWhereUniqueInput[]
   }
 
-  export type NullableEnumrole_nameFieldUpdateOperationsInput = {
-    set?: $Enums.role_name | null
+  export type Enumrole_nameFieldUpdateOperationsInput = {
+    set?: $Enums.role_name
   }
 
-  export type NullableEnumrole_statusFieldUpdateOperationsInput = {
-    set?: $Enums.role_status | null
+  export type Enumrole_statusFieldUpdateOperationsInput = {
+    set?: $Enums.role_status
   }
 
   export type GrantUpdateManyWithoutRoleNestedInput = {
@@ -31055,13 +30607,17 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type EnumShopStatusFieldUpdateOperationsInput = {
+    set?: $Enums.ShopStatus
+  }
+
   export type TokenCreaterefresh_token_usedInput = {
     set: string[]
   }
 
-  export type UserCreateNestedOneWithoutUser_tokenInput = {
-    create?: XOR<UserCreateWithoutUser_tokenInput, UserUncheckedCreateWithoutUser_tokenInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUser_tokenInput
+  export type UserCreateNestedOneWithoutTokenInput = {
+    create?: XOR<UserCreateWithoutTokenInput, UserUncheckedCreateWithoutTokenInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTokenInput
     connect?: UserWhereUniqueInput
   }
 
@@ -31070,14 +30626,12 @@ export namespace Prisma {
     push?: string | string[]
   }
 
-  export type UserUpdateOneWithoutUser_tokenNestedInput = {
-    create?: XOR<UserCreateWithoutUser_tokenInput, UserUncheckedCreateWithoutUser_tokenInput>
-    connectOrCreate?: UserCreateOrConnectWithoutUser_tokenInput
-    upsert?: UserUpsertWithoutUser_tokenInput
-    disconnect?: UserWhereInput | boolean
-    delete?: UserWhereInput | boolean
+  export type UserUpdateOneRequiredWithoutTokenNestedInput = {
+    create?: XOR<UserCreateWithoutTokenInput, UserUncheckedCreateWithoutTokenInput>
+    connectOrCreate?: UserCreateOrConnectWithoutTokenInput
+    upsert?: UserUpsertWithoutTokenInput
     connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutUser_tokenInput, UserUpdateWithoutUser_tokenInput>, UserUncheckedUpdateWithoutUser_tokenInput>
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTokenInput, UserUpdateWithoutTokenInput>, UserUncheckedUpdateWithoutTokenInput>
   }
 
   export type RoleCreateNestedOneWithoutUserInput = {
@@ -31086,10 +30640,11 @@ export namespace Prisma {
     connect?: RoleWhereUniqueInput
   }
 
-  export type TokenCreateNestedOneWithoutUserInput = {
-    create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput>
-    connectOrCreate?: TokenCreateOrConnectWithoutUserInput
-    connect?: TokenWhereUniqueInput
+  export type TokenCreateNestedManyWithoutUserInput = {
+    create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput> | TokenCreateWithoutUserInput[] | TokenUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TokenCreateOrConnectWithoutUserInput | TokenCreateOrConnectWithoutUserInput[]
+    createMany?: TokenCreateManyUserInputEnvelope
+    connect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
   }
 
   export type CommentCreateNestedManyWithoutUserInput = {
@@ -31106,10 +30661,11 @@ export namespace Prisma {
     connect?: CartWhereUniqueInput | CartWhereUniqueInput[]
   }
 
-  export type TokenUncheckedCreateNestedOneWithoutUserInput = {
-    create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput>
-    connectOrCreate?: TokenCreateOrConnectWithoutUserInput
-    connect?: TokenWhereUniqueInput
+  export type TokenUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput> | TokenCreateWithoutUserInput[] | TokenUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TokenCreateOrConnectWithoutUserInput | TokenCreateOrConnectWithoutUserInput[]
+    createMany?: TokenCreateManyUserInputEnvelope
+    connect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
   }
 
   export type CommentUncheckedCreateNestedManyWithoutUserInput = {
@@ -31126,8 +30682,8 @@ export namespace Prisma {
     connect?: CartWhereUniqueInput | CartWhereUniqueInput[]
   }
 
-  export type NullableBoolFieldUpdateOperationsInput = {
-    set?: boolean | null
+  export type EnumUserStatusFieldUpdateOperationsInput = {
+    set?: $Enums.UserStatus
   }
 
   export type RoleUpdateOneRequiredWithoutUserNestedInput = {
@@ -31138,14 +30694,18 @@ export namespace Prisma {
     update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutUserInput, RoleUpdateWithoutUserInput>, RoleUncheckedUpdateWithoutUserInput>
   }
 
-  export type TokenUpdateOneWithoutUserNestedInput = {
-    create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput>
-    connectOrCreate?: TokenCreateOrConnectWithoutUserInput
-    upsert?: TokenUpsertWithoutUserInput
-    disconnect?: TokenWhereInput | boolean
-    delete?: TokenWhereInput | boolean
-    connect?: TokenWhereUniqueInput
-    update?: XOR<XOR<TokenUpdateToOneWithWhereWithoutUserInput, TokenUpdateWithoutUserInput>, TokenUncheckedUpdateWithoutUserInput>
+  export type TokenUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput> | TokenCreateWithoutUserInput[] | TokenUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TokenCreateOrConnectWithoutUserInput | TokenCreateOrConnectWithoutUserInput[]
+    upsert?: TokenUpsertWithWhereUniqueWithoutUserInput | TokenUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TokenCreateManyUserInputEnvelope
+    set?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
+    disconnect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
+    delete?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
+    connect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
+    update?: TokenUpdateWithWhereUniqueWithoutUserInput | TokenUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TokenUpdateManyWithWhereWithoutUserInput | TokenUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TokenScalarWhereInput | TokenScalarWhereInput[]
   }
 
   export type CommentUpdateManyWithoutUserNestedInput = {
@@ -31176,14 +30736,18 @@ export namespace Prisma {
     deleteMany?: CartScalarWhereInput | CartScalarWhereInput[]
   }
 
-  export type TokenUncheckedUpdateOneWithoutUserNestedInput = {
-    create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput>
-    connectOrCreate?: TokenCreateOrConnectWithoutUserInput
-    upsert?: TokenUpsertWithoutUserInput
-    disconnect?: TokenWhereInput | boolean
-    delete?: TokenWhereInput | boolean
-    connect?: TokenWhereUniqueInput
-    update?: XOR<XOR<TokenUpdateToOneWithWhereWithoutUserInput, TokenUpdateWithoutUserInput>, TokenUncheckedUpdateWithoutUserInput>
+  export type TokenUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput> | TokenCreateWithoutUserInput[] | TokenUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: TokenCreateOrConnectWithoutUserInput | TokenCreateOrConnectWithoutUserInput[]
+    upsert?: TokenUpsertWithWhereUniqueWithoutUserInput | TokenUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: TokenCreateManyUserInputEnvelope
+    set?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
+    disconnect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
+    delete?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
+    connect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
+    update?: TokenUpdateWithWhereUniqueWithoutUserInput | TokenUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: TokenUpdateManyWithWhereWithoutUserInput | TokenUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: TokenScalarWhereInput | TokenScalarWhereInput[]
   }
 
   export type CommentUncheckedUpdateManyWithoutUserNestedInput = {
@@ -31380,38 +30944,71 @@ export namespace Prisma {
     _max?: NestedEnumcart_stateFilter<$PrismaModel>
   }
 
-  export type NestedEnumrole_nameNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.role_name | Enumrole_nameFieldRefInput<$PrismaModel> | null
-    in?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumrole_nameNullableFilter<$PrismaModel> | $Enums.role_name | null
+  export type NestedEnumProductTypeFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumProductTypeFilter<$PrismaModel> | $Enums.ProductType
   }
 
-  export type NestedEnumrole_statusNullableFilter<$PrismaModel = never> = {
-    equals?: $Enums.role_status | Enumrole_statusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumrole_statusNullableFilter<$PrismaModel> | $Enums.role_status | null
+  export type NestedEnumProductTypeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ProductType | EnumProductTypeFieldRefInput<$PrismaModel>
+    in?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ProductType[] | ListEnumProductTypeFieldRefInput<$PrismaModel>
+    not?: NestedEnumProductTypeWithAggregatesFilter<$PrismaModel> | $Enums.ProductType
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumProductTypeFilter<$PrismaModel>
+    _max?: NestedEnumProductTypeFilter<$PrismaModel>
   }
 
-  export type NestedEnumrole_nameNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.role_name | Enumrole_nameFieldRefInput<$PrismaModel> | null
-    in?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumrole_nameNullableWithAggregatesFilter<$PrismaModel> | $Enums.role_name | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumrole_nameNullableFilter<$PrismaModel>
-    _max?: NestedEnumrole_nameNullableFilter<$PrismaModel>
+  export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedFloatFilter<$PrismaModel>
+    _min?: NestedFloatFilter<$PrismaModel>
+    _max?: NestedFloatFilter<$PrismaModel>
   }
 
-  export type NestedEnumrole_statusNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.role_status | Enumrole_statusFieldRefInput<$PrismaModel> | null
-    in?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel> | null
-    notIn?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel> | null
-    not?: NestedEnumrole_statusNullableWithAggregatesFilter<$PrismaModel> | $Enums.role_status | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedEnumrole_statusNullableFilter<$PrismaModel>
-    _max?: NestedEnumrole_statusNullableFilter<$PrismaModel>
+  export type NestedEnumrole_nameFilter<$PrismaModel = never> = {
+    equals?: $Enums.role_name | Enumrole_nameFieldRefInput<$PrismaModel>
+    in?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel>
+    notIn?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel>
+    not?: NestedEnumrole_nameFilter<$PrismaModel> | $Enums.role_name
+  }
+
+  export type NestedEnumrole_statusFilter<$PrismaModel = never> = {
+    equals?: $Enums.role_status | Enumrole_statusFieldRefInput<$PrismaModel>
+    in?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel>
+    not?: NestedEnumrole_statusFilter<$PrismaModel> | $Enums.role_status
+  }
+
+  export type NestedEnumrole_nameWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.role_name | Enumrole_nameFieldRefInput<$PrismaModel>
+    in?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel>
+    notIn?: $Enums.role_name[] | ListEnumrole_nameFieldRefInput<$PrismaModel>
+    not?: NestedEnumrole_nameWithAggregatesFilter<$PrismaModel> | $Enums.role_name
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumrole_nameFilter<$PrismaModel>
+    _max?: NestedEnumrole_nameFilter<$PrismaModel>
+  }
+
+  export type NestedEnumrole_statusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.role_status | Enumrole_statusFieldRefInput<$PrismaModel>
+    in?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.role_status[] | ListEnumrole_statusFieldRefInput<$PrismaModel>
+    not?: NestedEnumrole_statusWithAggregatesFilter<$PrismaModel> | $Enums.role_status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumrole_statusFilter<$PrismaModel>
+    _max?: NestedEnumrole_statusFilter<$PrismaModel>
   }
 
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -31441,17 +31038,38 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
-  export type NestedBoolNullableFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableFilter<$PrismaModel> | boolean | null
+  export type NestedEnumShopStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShopStatus | EnumShopStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ShopStatus[] | ListEnumShopStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ShopStatus[] | ListEnumShopStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumShopStatusFilter<$PrismaModel> | $Enums.ShopStatus
   }
 
-  export type NestedBoolNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel> | null
-    not?: NestedBoolNullableWithAggregatesFilter<$PrismaModel> | boolean | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedBoolNullableFilter<$PrismaModel>
-    _max?: NestedBoolNullableFilter<$PrismaModel>
+  export type NestedEnumShopStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.ShopStatus | EnumShopStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.ShopStatus[] | ListEnumShopStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.ShopStatus[] | ListEnumShopStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumShopStatusWithAggregatesFilter<$PrismaModel> | $Enums.ShopStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumShopStatusFilter<$PrismaModel>
+    _max?: NestedEnumShopStatusFilter<$PrismaModel>
+  }
+
+  export type NestedEnumUserStatusFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserStatusFilter<$PrismaModel> | $Enums.UserStatus
+  }
+
+  export type NestedEnumUserStatusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.UserStatus | EnumUserStatusFieldRefInput<$PrismaModel>
+    in?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    notIn?: $Enums.UserStatus[] | ListEnumUserStatusFieldRefInput<$PrismaModel>
+    not?: NestedEnumUserStatusWithAggregatesFilter<$PrismaModel> | $Enums.UserStatus
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumUserStatusFilter<$PrismaModel>
+    _max?: NestedEnumUserStatusFilter<$PrismaModel>
   }
 
   export type ProvincesCreateWithoutAdministrativeRegionsInput = {
@@ -32156,35 +31774,39 @@ export namespace Prisma {
 
   export type UserCreateWithoutCartInput = {
     id?: string
-    user_name?: string | null
-    user_slug?: string | null
-    user_password?: string | null
-    user_email?: string | null
-    user_email_confirmed?: boolean | null
+    user_name: string
+    user_full_name: string
+    user_slug: string
+    user_password: string
+    user_email: string
+    user_email_confirmed?: boolean
     user_salt?: string | null
-    user_phone: string
-    user_sex: string
+    user_phone?: string | null
+    user_sex?: string | null
+    user_status?: $Enums.UserStatus
     created_at?: Date | string
     updated_at?: Date | string
     role: RoleCreateNestedOneWithoutUserInput
-    user_token?: TokenCreateNestedOneWithoutUserInput
+    Token?: TokenCreateNestedManyWithoutUserInput
     Comment?: CommentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCartInput = {
     id?: string
-    user_name?: string | null
-    user_slug?: string | null
-    user_password?: string | null
-    user_email?: string | null
-    user_email_confirmed?: boolean | null
+    user_name: string
+    user_full_name: string
+    user_slug: string
+    user_password: string
+    user_email: string
+    user_email_confirmed?: boolean
     user_salt?: string | null
-    user_phone: string
-    user_sex: string
+    user_phone?: string | null
+    user_sex?: string | null
+    user_status?: $Enums.UserStatus
     user_role: number
     created_at?: Date | string
     updated_at?: Date | string
-    user_token?: TokenUncheckedCreateNestedOneWithoutUserInput
+    Token?: TokenUncheckedCreateNestedManyWithoutUserInput
     Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -32232,35 +31854,39 @@ export namespace Prisma {
 
   export type UserUpdateWithoutCartInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_name?: NullableStringFieldUpdateOperationsInput | string | null
-    user_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    user_password?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email_confirmed?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user_name?: StringFieldUpdateOperationsInput | string
+    user_full_name?: StringFieldUpdateOperationsInput | string
+    user_slug?: StringFieldUpdateOperationsInput | string
+    user_password?: StringFieldUpdateOperationsInput | string
+    user_email?: StringFieldUpdateOperationsInput | string
+    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
     user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: StringFieldUpdateOperationsInput | string
-    user_sex?: StringFieldUpdateOperationsInput | string
+    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
+    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUserNestedInput
-    user_token?: TokenUpdateOneWithoutUserNestedInput
+    Token?: TokenUpdateManyWithoutUserNestedInput
     Comment?: CommentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCartInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_name?: NullableStringFieldUpdateOperationsInput | string | null
-    user_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    user_password?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email_confirmed?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user_name?: StringFieldUpdateOperationsInput | string
+    user_full_name?: StringFieldUpdateOperationsInput | string
+    user_slug?: StringFieldUpdateOperationsInput | string
+    user_password?: StringFieldUpdateOperationsInput | string
+    user_email?: StringFieldUpdateOperationsInput | string
+    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
     user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: StringFieldUpdateOperationsInput | string
-    user_sex?: StringFieldUpdateOperationsInput | string
+    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
+    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     user_role?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_token?: TokenUncheckedUpdateOneWithoutUserNestedInput
+    Token?: TokenUncheckedUpdateManyWithoutUserNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -32289,10 +31915,19 @@ export namespace Prisma {
 
   export type ProductCreateWithoutCartProductInput = {
     id?: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed?: boolean
+    product_name: string
+    product_thumb: string
+    product_description: string
+    product_slug: string
+    product_price: number
+    product_quality: number
+    product_type: $Enums.ProductType
+    product_shop: string
+    product_attributes: string
+    product_ratingsAverage: number
+    product_variations: string
+    isDraft: string
+    isPublished: boolean
     created_at?: Date | string
     updated_at?: Date | string
     Comment?: CommentCreateNestedManyWithoutProductInput
@@ -32300,10 +31935,19 @@ export namespace Prisma {
 
   export type ProductUncheckedCreateWithoutCartProductInput = {
     id?: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed?: boolean
+    product_name: string
+    product_thumb: string
+    product_description: string
+    product_slug: string
+    product_price: number
+    product_quality: number
+    product_type: $Enums.ProductType
+    product_shop: string
+    product_attributes: string
+    product_ratingsAverage: number
+    product_variations: string
+    isDraft: string
+    isPublished: boolean
     created_at?: Date | string
     updated_at?: Date | string
     Comment?: CommentUncheckedCreateNestedManyWithoutProductInput
@@ -32356,10 +32000,19 @@ export namespace Prisma {
 
   export type ProductUpdateWithoutCartProductInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    product_name?: StringFieldUpdateOperationsInput | string
+    product_thumb?: StringFieldUpdateOperationsInput | string
+    product_description?: StringFieldUpdateOperationsInput | string
+    product_slug?: StringFieldUpdateOperationsInput | string
+    product_price?: IntFieldUpdateOperationsInput | number
+    product_quality?: IntFieldUpdateOperationsInput | number
+    product_type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    product_shop?: StringFieldUpdateOperationsInput | string
+    product_attributes?: StringFieldUpdateOperationsInput | string
+    product_ratingsAverage?: FloatFieldUpdateOperationsInput | number
+    product_variations?: StringFieldUpdateOperationsInput | string
+    isDraft?: StringFieldUpdateOperationsInput | string
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     Comment?: CommentUpdateManyWithoutProductNestedInput
@@ -32367,10 +32020,19 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateWithoutCartProductInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    product_name?: StringFieldUpdateOperationsInput | string
+    product_thumb?: StringFieldUpdateOperationsInput | string
+    product_description?: StringFieldUpdateOperationsInput | string
+    product_slug?: StringFieldUpdateOperationsInput | string
+    product_price?: IntFieldUpdateOperationsInput | number
+    product_quality?: IntFieldUpdateOperationsInput | number
+    product_type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    product_shop?: StringFieldUpdateOperationsInput | string
+    product_attributes?: StringFieldUpdateOperationsInput | string
+    product_ratingsAverage?: FloatFieldUpdateOperationsInput | number
+    product_variations?: StringFieldUpdateOperationsInput | string
+    isDraft?: StringFieldUpdateOperationsInput | string
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     Comment?: CommentUncheckedUpdateManyWithoutProductNestedInput
@@ -32378,10 +32040,19 @@ export namespace Prisma {
 
   export type ProductCreateWithoutCommentInput = {
     id?: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed?: boolean
+    product_name: string
+    product_thumb: string
+    product_description: string
+    product_slug: string
+    product_price: number
+    product_quality: number
+    product_type: $Enums.ProductType
+    product_shop: string
+    product_attributes: string
+    product_ratingsAverage: number
+    product_variations: string
+    isDraft: string
+    isPublished: boolean
     created_at?: Date | string
     updated_at?: Date | string
     CartProduct?: CartProductCreateNestedManyWithoutProductInput
@@ -32389,10 +32060,19 @@ export namespace Prisma {
 
   export type ProductUncheckedCreateWithoutCommentInput = {
     id?: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed?: boolean
+    product_name: string
+    product_thumb: string
+    product_description: string
+    product_slug: string
+    product_price: number
+    product_quality: number
+    product_type: $Enums.ProductType
+    product_shop: string
+    product_attributes: string
+    product_ratingsAverage: number
+    product_variations: string
+    isDraft: string
+    isPublished: boolean
     created_at?: Date | string
     updated_at?: Date | string
     CartProduct?: CartProductUncheckedCreateNestedManyWithoutProductInput
@@ -32405,35 +32085,39 @@ export namespace Prisma {
 
   export type UserCreateWithoutCommentInput = {
     id?: string
-    user_name?: string | null
-    user_slug?: string | null
-    user_password?: string | null
-    user_email?: string | null
-    user_email_confirmed?: boolean | null
+    user_name: string
+    user_full_name: string
+    user_slug: string
+    user_password: string
+    user_email: string
+    user_email_confirmed?: boolean
     user_salt?: string | null
-    user_phone: string
-    user_sex: string
+    user_phone?: string | null
+    user_sex?: string | null
+    user_status?: $Enums.UserStatus
     created_at?: Date | string
     updated_at?: Date | string
     role: RoleCreateNestedOneWithoutUserInput
-    user_token?: TokenCreateNestedOneWithoutUserInput
+    Token?: TokenCreateNestedManyWithoutUserInput
     Cart?: CartCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentInput = {
     id?: string
-    user_name?: string | null
-    user_slug?: string | null
-    user_password?: string | null
-    user_email?: string | null
-    user_email_confirmed?: boolean | null
+    user_name: string
+    user_full_name: string
+    user_slug: string
+    user_password: string
+    user_email: string
+    user_email_confirmed?: boolean
     user_salt?: string | null
-    user_phone: string
-    user_sex: string
+    user_phone?: string | null
+    user_sex?: string | null
+    user_status?: $Enums.UserStatus
     user_role: number
     created_at?: Date | string
     updated_at?: Date | string
-    user_token?: TokenUncheckedCreateNestedOneWithoutUserInput
+    Token?: TokenUncheckedCreateNestedManyWithoutUserInput
     Cart?: CartUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -32455,10 +32139,19 @@ export namespace Prisma {
 
   export type ProductUpdateWithoutCommentInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    product_name?: StringFieldUpdateOperationsInput | string
+    product_thumb?: StringFieldUpdateOperationsInput | string
+    product_description?: StringFieldUpdateOperationsInput | string
+    product_slug?: StringFieldUpdateOperationsInput | string
+    product_price?: IntFieldUpdateOperationsInput | number
+    product_quality?: IntFieldUpdateOperationsInput | number
+    product_type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    product_shop?: StringFieldUpdateOperationsInput | string
+    product_attributes?: StringFieldUpdateOperationsInput | string
+    product_ratingsAverage?: FloatFieldUpdateOperationsInput | number
+    product_variations?: StringFieldUpdateOperationsInput | string
+    isDraft?: StringFieldUpdateOperationsInput | string
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     CartProduct?: CartProductUpdateManyWithoutProductNestedInput
@@ -32466,10 +32159,19 @@ export namespace Prisma {
 
   export type ProductUncheckedUpdateWithoutCommentInput = {
     id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    product_name?: StringFieldUpdateOperationsInput | string
+    product_thumb?: StringFieldUpdateOperationsInput | string
+    product_description?: StringFieldUpdateOperationsInput | string
+    product_slug?: StringFieldUpdateOperationsInput | string
+    product_price?: IntFieldUpdateOperationsInput | number
+    product_quality?: IntFieldUpdateOperationsInput | number
+    product_type?: EnumProductTypeFieldUpdateOperationsInput | $Enums.ProductType
+    product_shop?: StringFieldUpdateOperationsInput | string
+    product_attributes?: StringFieldUpdateOperationsInput | string
+    product_ratingsAverage?: FloatFieldUpdateOperationsInput | number
+    product_variations?: StringFieldUpdateOperationsInput | string
+    isDraft?: StringFieldUpdateOperationsInput | string
+    isPublished?: BoolFieldUpdateOperationsInput | boolean
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     CartProduct?: CartProductUncheckedUpdateManyWithoutProductNestedInput
@@ -32488,35 +32190,39 @@ export namespace Prisma {
 
   export type UserUpdateWithoutCommentInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_name?: NullableStringFieldUpdateOperationsInput | string | null
-    user_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    user_password?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email_confirmed?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user_name?: StringFieldUpdateOperationsInput | string
+    user_full_name?: StringFieldUpdateOperationsInput | string
+    user_slug?: StringFieldUpdateOperationsInput | string
+    user_password?: StringFieldUpdateOperationsInput | string
+    user_email?: StringFieldUpdateOperationsInput | string
+    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
     user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: StringFieldUpdateOperationsInput | string
-    user_sex?: StringFieldUpdateOperationsInput | string
+    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
+    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUserNestedInput
-    user_token?: TokenUpdateOneWithoutUserNestedInput
+    Token?: TokenUpdateManyWithoutUserNestedInput
     Cart?: CartUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_name?: NullableStringFieldUpdateOperationsInput | string | null
-    user_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    user_password?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email_confirmed?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user_name?: StringFieldUpdateOperationsInput | string
+    user_full_name?: StringFieldUpdateOperationsInput | string
+    user_slug?: StringFieldUpdateOperationsInput | string
+    user_password?: StringFieldUpdateOperationsInput | string
+    user_email?: StringFieldUpdateOperationsInput | string
+    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
     user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: StringFieldUpdateOperationsInput | string
-    user_sex?: StringFieldUpdateOperationsInput | string
+    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
+    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     user_role?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_token?: TokenUncheckedUpdateOneWithoutUserNestedInput
+    Token?: TokenUncheckedUpdateManyWithoutUserNestedInput
     Cart?: CartUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -32645,34 +32351,38 @@ export namespace Prisma {
 
   export type UserCreateWithoutRoleInput = {
     id?: string
-    user_name?: string | null
-    user_slug?: string | null
-    user_password?: string | null
-    user_email?: string | null
-    user_email_confirmed?: boolean | null
+    user_name: string
+    user_full_name: string
+    user_slug: string
+    user_password: string
+    user_email: string
+    user_email_confirmed?: boolean
     user_salt?: string | null
-    user_phone: string
-    user_sex: string
+    user_phone?: string | null
+    user_sex?: string | null
+    user_status?: $Enums.UserStatus
     created_at?: Date | string
     updated_at?: Date | string
-    user_token?: TokenCreateNestedOneWithoutUserInput
+    Token?: TokenCreateNestedManyWithoutUserInput
     Comment?: CommentCreateNestedManyWithoutUserInput
     Cart?: CartCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRoleInput = {
     id?: string
-    user_name?: string | null
-    user_slug?: string | null
-    user_password?: string | null
-    user_email?: string | null
-    user_email_confirmed?: boolean | null
+    user_name: string
+    user_full_name: string
+    user_slug: string
+    user_password: string
+    user_email: string
+    user_email_confirmed?: boolean
     user_salt?: string | null
-    user_phone: string
-    user_sex: string
+    user_phone?: string | null
+    user_sex?: string | null
+    user_status?: $Enums.UserStatus
     created_at?: Date | string
     updated_at?: Date | string
-    user_token?: TokenUncheckedCreateNestedOneWithoutUserInput
+    Token?: TokenUncheckedCreateNestedManyWithoutUserInput
     Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
     Cart?: CartUncheckedCreateNestedManyWithoutUserInput
   }
@@ -32734,23 +32444,25 @@ export namespace Prisma {
     OR?: UserScalarWhereInput[]
     NOT?: UserScalarWhereInput | UserScalarWhereInput[]
     id?: StringFilter<"User"> | string
-    user_name?: StringNullableFilter<"User"> | string | null
-    user_slug?: StringNullableFilter<"User"> | string | null
-    user_password?: StringNullableFilter<"User"> | string | null
-    user_email?: StringNullableFilter<"User"> | string | null
-    user_email_confirmed?: BoolNullableFilter<"User"> | boolean | null
+    user_name?: StringFilter<"User"> | string
+    user_full_name?: StringFilter<"User"> | string
+    user_slug?: StringFilter<"User"> | string
+    user_password?: StringFilter<"User"> | string
+    user_email?: StringFilter<"User"> | string
+    user_email_confirmed?: BoolFilter<"User"> | boolean
     user_salt?: StringNullableFilter<"User"> | string | null
-    user_phone?: StringFilter<"User"> | string
-    user_sex?: StringFilter<"User"> | string
+    user_phone?: StringNullableFilter<"User"> | string | null
+    user_sex?: StringNullableFilter<"User"> | string | null
+    user_status?: EnumUserStatusFilter<"User"> | $Enums.UserStatus
     user_role?: IntFilter<"User"> | number
     created_at?: DateTimeFilter<"User"> | Date | string
     updated_at?: DateTimeFilter<"User"> | Date | string
   }
 
   export type RoleCreateWithoutRole_grantsInput = {
-    role_name?: $Enums.role_name | null
-    role_slug?: string | null
-    role_status?: $Enums.role_status | null
+    role_name?: $Enums.role_name
+    role_slug: string
+    role_status?: $Enums.role_status
     created_at?: Date | string
     updated_at?: Date | string
     User?: UserCreateNestedManyWithoutRoleInput
@@ -32758,9 +32470,9 @@ export namespace Prisma {
 
   export type RoleUncheckedCreateWithoutRole_grantsInput = {
     id?: number
-    role_name?: $Enums.role_name | null
-    role_slug?: string | null
-    role_status?: $Enums.role_status | null
+    role_name?: $Enums.role_name
+    role_slug: string
+    role_status?: $Enums.role_status
     created_at?: Date | string
     updated_at?: Date | string
     User?: UserUncheckedCreateNestedManyWithoutRoleInput
@@ -32783,9 +32495,9 @@ export namespace Prisma {
   }
 
   export type RoleUpdateWithoutRole_grantsInput = {
-    role_name?: NullableEnumrole_nameFieldUpdateOperationsInput | $Enums.role_name | null
-    role_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    role_status?: NullableEnumrole_statusFieldUpdateOperationsInput | $Enums.role_status | null
+    role_name?: Enumrole_nameFieldUpdateOperationsInput | $Enums.role_name
+    role_slug?: StringFieldUpdateOperationsInput | string
+    role_status?: Enumrole_statusFieldUpdateOperationsInput | $Enums.role_status
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     User?: UserUpdateManyWithoutRoleNestedInput
@@ -32793,24 +32505,26 @@ export namespace Prisma {
 
   export type RoleUncheckedUpdateWithoutRole_grantsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    role_name?: NullableEnumrole_nameFieldUpdateOperationsInput | $Enums.role_name | null
-    role_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    role_status?: NullableEnumrole_statusFieldUpdateOperationsInput | $Enums.role_status | null
+    role_name?: Enumrole_nameFieldUpdateOperationsInput | $Enums.role_name
+    role_slug?: StringFieldUpdateOperationsInput | string
+    role_status?: Enumrole_statusFieldUpdateOperationsInput | $Enums.role_status
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     User?: UserUncheckedUpdateManyWithoutRoleNestedInput
   }
 
-  export type UserCreateWithoutUser_tokenInput = {
+  export type UserCreateWithoutTokenInput = {
     id?: string
-    user_name?: string | null
-    user_slug?: string | null
-    user_password?: string | null
-    user_email?: string | null
-    user_email_confirmed?: boolean | null
+    user_name: string
+    user_full_name: string
+    user_slug: string
+    user_password: string
+    user_email: string
+    user_email_confirmed?: boolean
     user_salt?: string | null
-    user_phone: string
-    user_sex: string
+    user_phone?: string | null
+    user_sex?: string | null
+    user_status?: $Enums.UserStatus
     created_at?: Date | string
     updated_at?: Date | string
     role: RoleCreateNestedOneWithoutUserInput
@@ -32818,16 +32532,18 @@ export namespace Prisma {
     Cart?: CartCreateNestedManyWithoutUserInput
   }
 
-  export type UserUncheckedCreateWithoutUser_tokenInput = {
+  export type UserUncheckedCreateWithoutTokenInput = {
     id?: string
-    user_name?: string | null
-    user_slug?: string | null
-    user_password?: string | null
-    user_email?: string | null
-    user_email_confirmed?: boolean | null
+    user_name: string
+    user_full_name: string
+    user_slug: string
+    user_password: string
+    user_email: string
+    user_email_confirmed?: boolean
     user_salt?: string | null
-    user_phone: string
-    user_sex: string
+    user_phone?: string | null
+    user_sex?: string | null
+    user_status?: $Enums.UserStatus
     user_role: number
     created_at?: Date | string
     updated_at?: Date | string
@@ -32835,32 +32551,34 @@ export namespace Prisma {
     Cart?: CartUncheckedCreateNestedManyWithoutUserInput
   }
 
-  export type UserCreateOrConnectWithoutUser_tokenInput = {
+  export type UserCreateOrConnectWithoutTokenInput = {
     where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutUser_tokenInput, UserUncheckedCreateWithoutUser_tokenInput>
+    create: XOR<UserCreateWithoutTokenInput, UserUncheckedCreateWithoutTokenInput>
   }
 
-  export type UserUpsertWithoutUser_tokenInput = {
-    update: XOR<UserUpdateWithoutUser_tokenInput, UserUncheckedUpdateWithoutUser_tokenInput>
-    create: XOR<UserCreateWithoutUser_tokenInput, UserUncheckedCreateWithoutUser_tokenInput>
+  export type UserUpsertWithoutTokenInput = {
+    update: XOR<UserUpdateWithoutTokenInput, UserUncheckedUpdateWithoutTokenInput>
+    create: XOR<UserCreateWithoutTokenInput, UserUncheckedCreateWithoutTokenInput>
     where?: UserWhereInput
   }
 
-  export type UserUpdateToOneWithWhereWithoutUser_tokenInput = {
+  export type UserUpdateToOneWithWhereWithoutTokenInput = {
     where?: UserWhereInput
-    data: XOR<UserUpdateWithoutUser_tokenInput, UserUncheckedUpdateWithoutUser_tokenInput>
+    data: XOR<UserUpdateWithoutTokenInput, UserUncheckedUpdateWithoutTokenInput>
   }
 
-  export type UserUpdateWithoutUser_tokenInput = {
+  export type UserUpdateWithoutTokenInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_name?: NullableStringFieldUpdateOperationsInput | string | null
-    user_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    user_password?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email_confirmed?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user_name?: StringFieldUpdateOperationsInput | string
+    user_full_name?: StringFieldUpdateOperationsInput | string
+    user_slug?: StringFieldUpdateOperationsInput | string
+    user_password?: StringFieldUpdateOperationsInput | string
+    user_email?: StringFieldUpdateOperationsInput | string
+    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
     user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: StringFieldUpdateOperationsInput | string
-    user_sex?: StringFieldUpdateOperationsInput | string
+    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
+    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUserNestedInput
@@ -32868,16 +32586,18 @@ export namespace Prisma {
     Cart?: CartUpdateManyWithoutUserNestedInput
   }
 
-  export type UserUncheckedUpdateWithoutUser_tokenInput = {
+  export type UserUncheckedUpdateWithoutTokenInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_name?: NullableStringFieldUpdateOperationsInput | string | null
-    user_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    user_password?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email_confirmed?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user_name?: StringFieldUpdateOperationsInput | string
+    user_full_name?: StringFieldUpdateOperationsInput | string
+    user_slug?: StringFieldUpdateOperationsInput | string
+    user_password?: StringFieldUpdateOperationsInput | string
+    user_email?: StringFieldUpdateOperationsInput | string
+    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
     user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: StringFieldUpdateOperationsInput | string
-    user_sex?: StringFieldUpdateOperationsInput | string
+    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
+    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     user_role?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32886,9 +32606,9 @@ export namespace Prisma {
   }
 
   export type RoleCreateWithoutUserInput = {
-    role_name?: $Enums.role_name | null
-    role_slug?: string | null
-    role_status?: $Enums.role_status | null
+    role_name?: $Enums.role_name
+    role_slug: string
+    role_status?: $Enums.role_status
     created_at?: Date | string
     updated_at?: Date | string
     role_grants?: GrantCreateNestedManyWithoutRoleInput
@@ -32896,9 +32616,9 @@ export namespace Prisma {
 
   export type RoleUncheckedCreateWithoutUserInput = {
     id?: number
-    role_name?: $Enums.role_name | null
-    role_slug?: string | null
-    role_status?: $Enums.role_status | null
+    role_name?: $Enums.role_name
+    role_slug: string
+    role_status?: $Enums.role_status
     created_at?: Date | string
     updated_at?: Date | string
     role_grants?: GrantUncheckedCreateNestedManyWithoutRoleInput
@@ -32910,6 +32630,7 @@ export namespace Prisma {
   }
 
   export type TokenCreateWithoutUserInput = {
+    id?: string
     public_key?: string | null
     private_key?: string | null
     refresh_token?: string | null
@@ -32919,6 +32640,7 @@ export namespace Prisma {
   }
 
   export type TokenUncheckedCreateWithoutUserInput = {
+    id?: string
     public_key?: string | null
     private_key?: string | null
     refresh_token?: string | null
@@ -32930,6 +32652,11 @@ export namespace Prisma {
   export type TokenCreateOrConnectWithoutUserInput = {
     where: TokenWhereUniqueInput
     create: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput>
+  }
+
+  export type TokenCreateManyUserInputEnvelope = {
+    data: TokenCreateManyUserInput | TokenCreateManyUserInput[]
+    skipDuplicates?: boolean
   }
 
   export type CommentCreateWithoutUserInput = {
@@ -33004,9 +32731,9 @@ export namespace Prisma {
   }
 
   export type RoleUpdateWithoutUserInput = {
-    role_name?: NullableEnumrole_nameFieldUpdateOperationsInput | $Enums.role_name | null
-    role_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    role_status?: NullableEnumrole_statusFieldUpdateOperationsInput | $Enums.role_status | null
+    role_name?: Enumrole_nameFieldUpdateOperationsInput | $Enums.role_name
+    role_slug?: StringFieldUpdateOperationsInput | string
+    role_status?: Enumrole_statusFieldUpdateOperationsInput | $Enums.role_status
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role_grants?: GrantUpdateManyWithoutRoleNestedInput
@@ -33014,41 +32741,42 @@ export namespace Prisma {
 
   export type RoleUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    role_name?: NullableEnumrole_nameFieldUpdateOperationsInput | $Enums.role_name | null
-    role_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    role_status?: NullableEnumrole_statusFieldUpdateOperationsInput | $Enums.role_status | null
+    role_name?: Enumrole_nameFieldUpdateOperationsInput | $Enums.role_name
+    role_slug?: StringFieldUpdateOperationsInput | string
+    role_status?: Enumrole_statusFieldUpdateOperationsInput | $Enums.role_status
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role_grants?: GrantUncheckedUpdateManyWithoutRoleNestedInput
   }
 
-  export type TokenUpsertWithoutUserInput = {
+  export type TokenUpsertWithWhereUniqueWithoutUserInput = {
+    where: TokenWhereUniqueInput
     update: XOR<TokenUpdateWithoutUserInput, TokenUncheckedUpdateWithoutUserInput>
     create: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput>
-    where?: TokenWhereInput
   }
 
-  export type TokenUpdateToOneWithWhereWithoutUserInput = {
-    where?: TokenWhereInput
+  export type TokenUpdateWithWhereUniqueWithoutUserInput = {
+    where: TokenWhereUniqueInput
     data: XOR<TokenUpdateWithoutUserInput, TokenUncheckedUpdateWithoutUserInput>
   }
 
-  export type TokenUpdateWithoutUserInput = {
-    public_key?: NullableStringFieldUpdateOperationsInput | string | null
-    private_key?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_used?: TokenUpdaterefresh_token_usedInput | string[]
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type TokenUpdateManyWithWhereWithoutUserInput = {
+    where: TokenScalarWhereInput
+    data: XOR<TokenUpdateManyMutationInput, TokenUncheckedUpdateManyWithoutUserInput>
   }
 
-  export type TokenUncheckedUpdateWithoutUserInput = {
-    public_key?: NullableStringFieldUpdateOperationsInput | string | null
-    private_key?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_used?: TokenUpdaterefresh_token_usedInput | string[]
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  export type TokenScalarWhereInput = {
+    AND?: TokenScalarWhereInput | TokenScalarWhereInput[]
+    OR?: TokenScalarWhereInput[]
+    NOT?: TokenScalarWhereInput | TokenScalarWhereInput[]
+    id?: StringFilter<"Token"> | string
+    user_id?: StringFilter<"Token"> | string
+    public_key?: StringNullableFilter<"Token"> | string | null
+    private_key?: StringNullableFilter<"Token"> | string | null
+    refresh_token?: StringNullableFilter<"Token"> | string | null
+    refresh_token_used?: StringNullableListFilter<"Token">
+    created_at?: DateTimeFilter<"Token"> | Date | string
+    updated_at?: DateTimeFilter<"Token"> | Date | string
   }
 
   export type CommentUpsertWithWhereUniqueWithoutUserInput = {
@@ -33443,14 +33171,16 @@ export namespace Prisma {
 
   export type UserCreateManyRoleInput = {
     id?: string
-    user_name?: string | null
-    user_slug?: string | null
-    user_password?: string | null
-    user_email?: string | null
-    user_email_confirmed?: boolean | null
+    user_name: string
+    user_full_name: string
+    user_slug: string
+    user_password: string
+    user_email: string
+    user_email_confirmed?: boolean
     user_salt?: string | null
-    user_phone: string
-    user_sex: string
+    user_phone?: string | null
+    user_sex?: string | null
+    user_status?: $Enums.UserStatus
     created_at?: Date | string
     updated_at?: Date | string
   }
@@ -33475,50 +33205,66 @@ export namespace Prisma {
 
   export type UserUpdateWithoutRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_name?: NullableStringFieldUpdateOperationsInput | string | null
-    user_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    user_password?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email_confirmed?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user_name?: StringFieldUpdateOperationsInput | string
+    user_full_name?: StringFieldUpdateOperationsInput | string
+    user_slug?: StringFieldUpdateOperationsInput | string
+    user_password?: StringFieldUpdateOperationsInput | string
+    user_email?: StringFieldUpdateOperationsInput | string
+    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
     user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: StringFieldUpdateOperationsInput | string
-    user_sex?: StringFieldUpdateOperationsInput | string
+    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
+    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_token?: TokenUpdateOneWithoutUserNestedInput
+    Token?: TokenUpdateManyWithoutUserNestedInput
     Comment?: CommentUpdateManyWithoutUserNestedInput
     Cart?: CartUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_name?: NullableStringFieldUpdateOperationsInput | string | null
-    user_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    user_password?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email_confirmed?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user_name?: StringFieldUpdateOperationsInput | string
+    user_full_name?: StringFieldUpdateOperationsInput | string
+    user_slug?: StringFieldUpdateOperationsInput | string
+    user_password?: StringFieldUpdateOperationsInput | string
+    user_email?: StringFieldUpdateOperationsInput | string
+    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
     user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: StringFieldUpdateOperationsInput | string
-    user_sex?: StringFieldUpdateOperationsInput | string
+    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
+    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user_token?: TokenUncheckedUpdateOneWithoutUserNestedInput
+    Token?: TokenUncheckedUpdateManyWithoutUserNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
     Cart?: CartUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutRoleInput = {
     id?: StringFieldUpdateOperationsInput | string
-    user_name?: NullableStringFieldUpdateOperationsInput | string | null
-    user_slug?: NullableStringFieldUpdateOperationsInput | string | null
-    user_password?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email?: NullableStringFieldUpdateOperationsInput | string | null
-    user_email_confirmed?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    user_name?: StringFieldUpdateOperationsInput | string
+    user_full_name?: StringFieldUpdateOperationsInput | string
+    user_slug?: StringFieldUpdateOperationsInput | string
+    user_password?: StringFieldUpdateOperationsInput | string
+    user_email?: StringFieldUpdateOperationsInput | string
+    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
     user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: StringFieldUpdateOperationsInput | string
-    user_sex?: StringFieldUpdateOperationsInput | string
+    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
+    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TokenCreateManyUserInput = {
+    id?: string
+    public_key?: string | null
+    private_key?: string | null
+    refresh_token?: string | null
+    refresh_token_used?: TokenCreaterefresh_token_usedInput | string[]
+    created_at?: Date | string
+    updated_at?: Date | string
   }
 
   export type CommentCreateManyUserInput = {
@@ -33538,6 +33284,36 @@ export namespace Prisma {
     cart_count_product?: number
     created_at?: Date | string
     updated_at?: Date | string
+  }
+
+  export type TokenUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    public_key?: NullableStringFieldUpdateOperationsInput | string | null
+    private_key?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token_used?: TokenUpdaterefresh_token_usedInput | string[]
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TokenUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    public_key?: NullableStringFieldUpdateOperationsInput | string | null
+    private_key?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token_used?: TokenUpdaterefresh_token_usedInput | string[]
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TokenUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    public_key?: NullableStringFieldUpdateOperationsInput | string | null
+    private_key?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    refresh_token_used?: TokenUpdaterefresh_token_usedInput | string[]
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentUpdateWithoutUserInput = {
@@ -33684,10 +33460,6 @@ export namespace Prisma {
      * @deprecated Use DiscountDefaultArgs instead
      */
     export type DiscountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = DiscountDefaultArgs<ExtArgs>
-    /**
-     * @deprecated Use KeyTokenDefaultArgs instead
-     */
-    export type KeyTokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = KeyTokenDefaultArgs<ExtArgs>
     /**
      * @deprecated Use NotificationDefaultArgs instead
      */

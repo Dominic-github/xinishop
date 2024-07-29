@@ -142,12 +142,6 @@ model Discount {
   updated_at DateTime @updatedAt
 }
 
-model KeyToken {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-}
-
 model Notification {
   id         String   @id @default(uuid())
   created_at DateTime @default(now())
@@ -181,26 +175,39 @@ model Payment {
 }
 
 model Product {
-  id             String   @id @default(uuid())
-  username       String   @unique @db.VarChar(20)
-  password       String
-  email          String   @unique
-  emailConfirmed Boolean  @default(false)
-  created_at     DateTime @default(now())
-  updated_at     DateTime @updatedAt
+  id                     String      @id @default(uuid())
+  product_name           String      @db.VarChar(150)
+  product_thumb          String
+  product_description    String
+  product_slug           String
+  product_price          Int
+  product_quality        Int
+  product_type           ProductType
+  product_shop           String
+  product_attributes     String
+  product_ratingsAverage Float
+  product_variations     String
+  isDraft                String
+  isPublished            Boolean
+  created_at             DateTime    @default(now())
+  updated_at             DateTime    @updatedAt
 
   Comment     Comment[]
   CartProduct CartProduct[]
 }
 
+enum ProductType {
+  clothing
+}
+
 model Role {
-  id          Int          @id @default(autoincrement())
-  role_name   role_name?   @default(user)
-  role_slug   String?
-  role_status role_status?
+  id          Int         @id @default(autoincrement())
+  role_name   role_name   @default(user)
+  role_slug   String
+  role_status role_status @default(pending)
   role_grants Grant[]
-  created_at  DateTime     @default(now())
-  updated_at  DateTime     @updatedAt
+  created_at  DateTime    @default(now())
+  updated_at  DateTime    @updatedAt
 
   User User[]
 }
@@ -243,18 +250,27 @@ model Shipping {
 }
 
 model Shop {
-  id             String   @id @default(uuid())
-  username       String   @unique @db.VarChar(20)
-  password       String
-  email          String   @unique
-  emailConfirmed Boolean  @default(false)
-  created_at     DateTime @default(now())
-  updated_at     DateTime @updatedAt
+  user_id       String     @id
+  shop_name     String
+  shop_password String
+  shop_email    String     @unique
+  shop_msisdn   String
+  shop_status   ShopStatus @default(active)
+  shop_verify   Boolean    @default(false)
+  created_at    DateTime   @default(now())
+  updated_at    DateTime   @updatedAt
+}
+
+enum ShopStatus {
+  active
+  inactive
+  deleted
 }
 
 model Token {
   // Relation fields
-  user               User?    @relation(fields: [user_id], references: [id])
+  id                 String   @id @unique @default(uuid())
+  user               User     @relation(fields: [user_id], references: [id])
   user_id            String   @unique
   public_key         String?
   private_key        String?
@@ -265,21 +281,29 @@ model Token {
 }
 
 model User {
-  id                   String   @id @default(uuid())
-  user_name            String?  @unique @db.VarChar(20)
-  user_slug            String?
-  user_password        String?
-  user_email           String?  @unique
-  user_email_confirmed Boolean? @default(false)
+  id                   String     @id @default(uuid())
+  user_name            String     @unique @db.VarChar(20)
+  user_full_name       String
+  user_slug            String
+  user_password        String
+  user_email           String     @unique
+  user_email_confirmed Boolean    @default(false)
   user_salt            String?
-  user_phone           String
-  user_sex             String
-  role                 Role     @relation(fields: [user_role], references: [id])
-  user_role            Int      @unique
-  user_token           Token?
-  created_at           DateTime @default(now())
-  updated_at           DateTime @updatedAt
+  user_phone           String?
+  user_sex             String?
+  user_status          UserStatus @default(pending)
+  role                 Role       @relation(fields: [user_role], references: [id])
+  user_role            Int        @unique
+  created_at           DateTime   @default(now())
+  updated_at           DateTime   @updatedAt
 
+  Token   Token[]
   Comment Comment[]
   Cart    Cart[]
+}
+
+enum UserStatus {
+  pending
+  active
+  block
 }

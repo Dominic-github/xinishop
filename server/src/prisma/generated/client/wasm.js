@@ -224,12 +224,6 @@ exports.Prisma.DiscountScalarFieldEnum = {
   updated_at: 'updated_at'
 };
 
-exports.Prisma.KeyTokenScalarFieldEnum = {
-  id: 'id',
-  created_at: 'created_at',
-  updated_at: 'updated_at'
-};
-
 exports.Prisma.NotificationScalarFieldEnum = {
   id: 'id',
   created_at: 'created_at',
@@ -264,10 +258,19 @@ exports.Prisma.PaymentScalarFieldEnum = {
 
 exports.Prisma.ProductScalarFieldEnum = {
   id: 'id',
-  username: 'username',
-  password: 'password',
-  email: 'email',
-  emailConfirmed: 'emailConfirmed',
+  product_name: 'product_name',
+  product_thumb: 'product_thumb',
+  product_description: 'product_description',
+  product_slug: 'product_slug',
+  product_price: 'product_price',
+  product_quality: 'product_quality',
+  product_type: 'product_type',
+  product_shop: 'product_shop',
+  product_attributes: 'product_attributes',
+  product_ratingsAverage: 'product_ratingsAverage',
+  product_variations: 'product_variations',
+  isDraft: 'isDraft',
+  isPublished: 'isPublished',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
@@ -295,16 +298,19 @@ exports.Prisma.ShippingScalarFieldEnum = {
 };
 
 exports.Prisma.ShopScalarFieldEnum = {
-  id: 'id',
-  username: 'username',
-  password: 'password',
-  email: 'email',
-  emailConfirmed: 'emailConfirmed',
+  user_id: 'user_id',
+  shop_name: 'shop_name',
+  shop_password: 'shop_password',
+  shop_email: 'shop_email',
+  shop_msisdn: 'shop_msisdn',
+  shop_status: 'shop_status',
+  shop_verify: 'shop_verify',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
 
 exports.Prisma.TokenScalarFieldEnum = {
+  id: 'id',
   user_id: 'user_id',
   public_key: 'public_key',
   private_key: 'private_key',
@@ -317,6 +323,7 @@ exports.Prisma.TokenScalarFieldEnum = {
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   user_name: 'user_name',
+  user_full_name: 'user_full_name',
   user_slug: 'user_slug',
   user_password: 'user_password',
   user_email: 'user_email',
@@ -324,6 +331,7 @@ exports.Prisma.UserScalarFieldEnum = {
   user_salt: 'user_salt',
   user_phone: 'user_phone',
   user_sex: 'user_sex',
+  user_status: 'user_status',
   user_role: 'user_role',
   created_at: 'created_at',
   updated_at: 'updated_at'
@@ -351,6 +359,10 @@ exports.cart_state = exports.$Enums.cart_state = {
   lock: 'lock'
 };
 
+exports.ProductType = exports.$Enums.ProductType = {
+  clothing: 'clothing'
+};
+
 exports.role_name = exports.$Enums.role_name = {
   user: 'user',
   shop: 'shop',
@@ -358,6 +370,18 @@ exports.role_name = exports.$Enums.role_name = {
 };
 
 exports.role_status = exports.$Enums.role_status = {
+  pending: 'pending',
+  active: 'active',
+  block: 'block'
+};
+
+exports.ShopStatus = exports.$Enums.ShopStatus = {
+  active: 'active',
+  inactive: 'inactive',
+  deleted: 'deleted'
+};
+
+exports.UserStatus = exports.$Enums.UserStatus = {
   pending: 'pending',
   active: 'active',
   block: 'block'
@@ -376,7 +400,6 @@ exports.Prisma.ModelName = {
   Category: 'Category',
   Comment: 'Comment',
   Discount: 'Discount',
-  KeyToken: 'KeyToken',
   Notification: 'Notification',
   Order: 'Order',
   Otp: 'Otp',

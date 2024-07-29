@@ -1,8 +1,8 @@
 model Token {
   // Relation fields
   id                 String   @id @unique @default(uuid())
-  user               User?    @relation(fields: [user_id], references: [id])
-  user_id            String?
+  user               User     @relation(fields: [user_id], references: [id])
+  user_id            String   @unique
   public_key         String?
   private_key        String?
   refresh_token      String?
