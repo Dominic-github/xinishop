@@ -3106,13 +3106,11 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
-    Token: number
     Comment: number
     Cart: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    Token?: boolean | UserCountOutputTypeCountTokenArgs
     Comment?: boolean | UserCountOutputTypeCountCommentArgs
     Cart?: boolean | UserCountOutputTypeCountCartArgs
   }
@@ -3126,13 +3124,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserCountOutputType
      */
     select?: UserCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeCountTokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TokenWhereInput
   }
 
   /**
@@ -10022,7 +10013,7 @@ export namespace Prisma {
   }
 
   export type CartMinAggregateOutputType = {
-    id: string | null
+    cart_id: string | null
     cart_state: $Enums.cart_state | null
     cart_count_product: number | null
     cart_user_id: string | null
@@ -10031,7 +10022,7 @@ export namespace Prisma {
   }
 
   export type CartMaxAggregateOutputType = {
-    id: string | null
+    cart_id: string | null
     cart_state: $Enums.cart_state | null
     cart_count_product: number | null
     cart_user_id: string | null
@@ -10040,7 +10031,7 @@ export namespace Prisma {
   }
 
   export type CartCountAggregateOutputType = {
-    id: number
+    cart_id: number
     cart_state: number
     cart_count_product: number
     cart_user_id: number
@@ -10059,7 +10050,7 @@ export namespace Prisma {
   }
 
   export type CartMinAggregateInputType = {
-    id?: true
+    cart_id?: true
     cart_state?: true
     cart_count_product?: true
     cart_user_id?: true
@@ -10068,7 +10059,7 @@ export namespace Prisma {
   }
 
   export type CartMaxAggregateInputType = {
-    id?: true
+    cart_id?: true
     cart_state?: true
     cart_count_product?: true
     cart_user_id?: true
@@ -10077,7 +10068,7 @@ export namespace Prisma {
   }
 
   export type CartCountAggregateInputType = {
-    id?: true
+    cart_id?: true
     cart_state?: true
     cart_count_product?: true
     cart_user_id?: true
@@ -10173,7 +10164,7 @@ export namespace Prisma {
   }
 
   export type CartGroupByOutputType = {
-    id: string
+    cart_id: string
     cart_state: $Enums.cart_state
     cart_count_product: number
     cart_user_id: string
@@ -10201,7 +10192,7 @@ export namespace Prisma {
 
 
   export type CartSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    cart_id?: boolean
     cart_state?: boolean
     cart_count_product?: boolean
     cart_user_id?: boolean
@@ -10213,7 +10204,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["cart"]>
 
   export type CartSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    cart_id?: boolean
     cart_state?: boolean
     cart_count_product?: boolean
     cart_user_id?: boolean
@@ -10223,7 +10214,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["cart"]>
 
   export type CartSelectScalar = {
-    id?: boolean
+    cart_id?: boolean
     cart_state?: boolean
     cart_count_product?: boolean
     cart_user_id?: boolean
@@ -10247,7 +10238,7 @@ export namespace Prisma {
       user: Prisma.$UserPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      cart_id: string
       cart_state: $Enums.cart_state
       cart_count_product: number
       cart_user_id: string
@@ -10336,8 +10327,8 @@ export namespace Prisma {
      * // Get first 10 Carts
      * const carts = await prisma.cart.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const cartWithIdOnly = await prisma.cart.findMany({ select: { id: true } })
+     * // Only select the `cart_id`
+     * const cartWithCart_idOnly = await prisma.cart.findMany({ select: { cart_id: true } })
      * 
      */
     findMany<T extends CartFindManyArgs>(args?: SelectSubset<T, CartFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CartPayload<ExtArgs>, T, "findMany">>
@@ -10381,9 +10372,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Carts and only return the `id`
-     * const cartWithIdOnly = await prisma.cart.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many Carts and only return the `cart_id`
+     * const cartWithCart_idOnly = await prisma.cart.createManyAndReturn({ 
+     *   select: { cart_id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -10648,7 +10639,7 @@ export namespace Prisma {
    * Fields of the Cart model
    */ 
   interface CartFieldRefs {
-    readonly id: FieldRef<"Cart", 'String'>
+    readonly cart_id: FieldRef<"Cart", 'String'>
     readonly cart_state: FieldRef<"Cart", 'cart_state'>
     readonly cart_count_product: FieldRef<"Cart", 'Int'>
     readonly cart_user_id: FieldRef<"Cart", 'String'>
@@ -11944,19 +11935,19 @@ export namespace Prisma {
   }
 
   export type CategoryMinAggregateOutputType = {
-    id: string | null
+    cate_id: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type CategoryMaxAggregateOutputType = {
-    id: string | null
+    cate_id: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type CategoryCountAggregateOutputType = {
-    id: number
+    cate_id: number
     created_at: number
     updated_at: number
     _all: number
@@ -11964,19 +11955,19 @@ export namespace Prisma {
 
 
   export type CategoryMinAggregateInputType = {
-    id?: true
+    cate_id?: true
     created_at?: true
     updated_at?: true
   }
 
   export type CategoryMaxAggregateInputType = {
-    id?: true
+    cate_id?: true
     created_at?: true
     updated_at?: true
   }
 
   export type CategoryCountAggregateInputType = {
-    id?: true
+    cate_id?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -12055,7 +12046,7 @@ export namespace Prisma {
   }
 
   export type CategoryGroupByOutputType = {
-    id: string
+    cate_id: string
     created_at: Date
     updated_at: Date
     _count: CategoryCountAggregateOutputType | null
@@ -12078,19 +12069,19 @@ export namespace Prisma {
 
 
   export type CategorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    cate_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    cate_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["category"]>
 
   export type CategorySelectScalar = {
-    id?: boolean
+    cate_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
@@ -12100,7 +12091,7 @@ export namespace Prisma {
     name: "Category"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      cate_id: string
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["category"]>
@@ -12186,8 +12177,8 @@ export namespace Prisma {
      * // Get first 10 Categories
      * const categories = await prisma.category.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const categoryWithIdOnly = await prisma.category.findMany({ select: { id: true } })
+     * // Only select the `cate_id`
+     * const categoryWithCate_idOnly = await prisma.category.findMany({ select: { cate_id: true } })
      * 
      */
     findMany<T extends CategoryFindManyArgs>(args?: SelectSubset<T, CategoryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findMany">>
@@ -12231,9 +12222,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Categories and only return the `id`
-     * const categoryWithIdOnly = await prisma.category.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many Categories and only return the `cate_id`
+     * const categoryWithCate_idOnly = await prisma.category.createManyAndReturn({ 
+     *   select: { cate_id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -12496,7 +12487,7 @@ export namespace Prisma {
    * Fields of the Category model
    */ 
   interface CategoryFieldRefs {
-    readonly id: FieldRef<"Category", 'String'>
+    readonly cate_id: FieldRef<"Category", 'String'>
     readonly created_at: FieldRef<"Category", 'DateTime'>
     readonly updated_at: FieldRef<"Category", 'DateTime'>
   }
@@ -13823,19 +13814,19 @@ export namespace Prisma {
   }
 
   export type DiscountMinAggregateOutputType = {
-    id: string | null
+    discount_id: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type DiscountMaxAggregateOutputType = {
-    id: string | null
+    discount_id: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type DiscountCountAggregateOutputType = {
-    id: number
+    discount_id: number
     created_at: number
     updated_at: number
     _all: number
@@ -13843,19 +13834,19 @@ export namespace Prisma {
 
 
   export type DiscountMinAggregateInputType = {
-    id?: true
+    discount_id?: true
     created_at?: true
     updated_at?: true
   }
 
   export type DiscountMaxAggregateInputType = {
-    id?: true
+    discount_id?: true
     created_at?: true
     updated_at?: true
   }
 
   export type DiscountCountAggregateInputType = {
-    id?: true
+    discount_id?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -13934,7 +13925,7 @@ export namespace Prisma {
   }
 
   export type DiscountGroupByOutputType = {
-    id: string
+    discount_id: string
     created_at: Date
     updated_at: Date
     _count: DiscountCountAggregateOutputType | null
@@ -13957,19 +13948,19 @@ export namespace Prisma {
 
 
   export type DiscountSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    discount_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["discount"]>
 
   export type DiscountSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    discount_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["discount"]>
 
   export type DiscountSelectScalar = {
-    id?: boolean
+    discount_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
@@ -13979,7 +13970,7 @@ export namespace Prisma {
     name: "Discount"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      discount_id: string
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["discount"]>
@@ -14065,8 +14056,8 @@ export namespace Prisma {
      * // Get first 10 Discounts
      * const discounts = await prisma.discount.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const discountWithIdOnly = await prisma.discount.findMany({ select: { id: true } })
+     * // Only select the `discount_id`
+     * const discountWithDiscount_idOnly = await prisma.discount.findMany({ select: { discount_id: true } })
      * 
      */
     findMany<T extends DiscountFindManyArgs>(args?: SelectSubset<T, DiscountFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DiscountPayload<ExtArgs>, T, "findMany">>
@@ -14110,9 +14101,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Discounts and only return the `id`
-     * const discountWithIdOnly = await prisma.discount.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many Discounts and only return the `discount_id`
+     * const discountWithDiscount_idOnly = await prisma.discount.createManyAndReturn({ 
+     *   select: { discount_id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -14375,7 +14366,7 @@ export namespace Prisma {
    * Fields of the Discount model
    */ 
   interface DiscountFieldRefs {
-    readonly id: FieldRef<"Discount", 'String'>
+    readonly discount_id: FieldRef<"Discount", 'String'>
     readonly created_at: FieldRef<"Discount", 'DateTime'>
     readonly updated_at: FieldRef<"Discount", 'DateTime'>
   }
@@ -14677,19 +14668,19 @@ export namespace Prisma {
   }
 
   export type NotificationMinAggregateOutputType = {
-    id: string | null
+    noti_id: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type NotificationMaxAggregateOutputType = {
-    id: string | null
+    noti_id: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type NotificationCountAggregateOutputType = {
-    id: number
+    noti_id: number
     created_at: number
     updated_at: number
     _all: number
@@ -14697,19 +14688,19 @@ export namespace Prisma {
 
 
   export type NotificationMinAggregateInputType = {
-    id?: true
+    noti_id?: true
     created_at?: true
     updated_at?: true
   }
 
   export type NotificationMaxAggregateInputType = {
-    id?: true
+    noti_id?: true
     created_at?: true
     updated_at?: true
   }
 
   export type NotificationCountAggregateInputType = {
-    id?: true
+    noti_id?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -14788,7 +14779,7 @@ export namespace Prisma {
   }
 
   export type NotificationGroupByOutputType = {
-    id: string
+    noti_id: string
     created_at: Date
     updated_at: Date
     _count: NotificationCountAggregateOutputType | null
@@ -14811,19 +14802,19 @@ export namespace Prisma {
 
 
   export type NotificationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    noti_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["notification"]>
 
   export type NotificationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    noti_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["notification"]>
 
   export type NotificationSelectScalar = {
-    id?: boolean
+    noti_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
@@ -14833,7 +14824,7 @@ export namespace Prisma {
     name: "Notification"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      noti_id: string
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["notification"]>
@@ -14919,8 +14910,8 @@ export namespace Prisma {
      * // Get first 10 Notifications
      * const notifications = await prisma.notification.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const notificationWithIdOnly = await prisma.notification.findMany({ select: { id: true } })
+     * // Only select the `noti_id`
+     * const notificationWithNoti_idOnly = await prisma.notification.findMany({ select: { noti_id: true } })
      * 
      */
     findMany<T extends NotificationFindManyArgs>(args?: SelectSubset<T, NotificationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany">>
@@ -14964,9 +14955,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Notifications and only return the `id`
-     * const notificationWithIdOnly = await prisma.notification.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many Notifications and only return the `noti_id`
+     * const notificationWithNoti_idOnly = await prisma.notification.createManyAndReturn({ 
+     *   select: { noti_id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -15229,7 +15220,7 @@ export namespace Prisma {
    * Fields of the Notification model
    */ 
   interface NotificationFieldRefs {
-    readonly id: FieldRef<"Notification", 'String'>
+    readonly noti_id: FieldRef<"Notification", 'String'>
     readonly created_at: FieldRef<"Notification", 'DateTime'>
     readonly updated_at: FieldRef<"Notification", 'DateTime'>
   }
@@ -15531,19 +15522,19 @@ export namespace Prisma {
   }
 
   export type OrderMinAggregateOutputType = {
-    id: string | null
+    order_id: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type OrderMaxAggregateOutputType = {
-    id: string | null
+    order_id: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type OrderCountAggregateOutputType = {
-    id: number
+    order_id: number
     created_at: number
     updated_at: number
     _all: number
@@ -15551,19 +15542,19 @@ export namespace Prisma {
 
 
   export type OrderMinAggregateInputType = {
-    id?: true
+    order_id?: true
     created_at?: true
     updated_at?: true
   }
 
   export type OrderMaxAggregateInputType = {
-    id?: true
+    order_id?: true
     created_at?: true
     updated_at?: true
   }
 
   export type OrderCountAggregateInputType = {
-    id?: true
+    order_id?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -15642,7 +15633,7 @@ export namespace Prisma {
   }
 
   export type OrderGroupByOutputType = {
-    id: string
+    order_id: string
     created_at: Date
     updated_at: Date
     _count: OrderCountAggregateOutputType | null
@@ -15665,19 +15656,19 @@ export namespace Prisma {
 
 
   export type OrderSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    order_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    order_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["order"]>
 
   export type OrderSelectScalar = {
-    id?: boolean
+    order_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
@@ -15687,7 +15678,7 @@ export namespace Prisma {
     name: "Order"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      order_id: string
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["order"]>
@@ -15773,8 +15764,8 @@ export namespace Prisma {
      * // Get first 10 Orders
      * const orders = await prisma.order.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const orderWithIdOnly = await prisma.order.findMany({ select: { id: true } })
+     * // Only select the `order_id`
+     * const orderWithOrder_idOnly = await prisma.order.findMany({ select: { order_id: true } })
      * 
      */
     findMany<T extends OrderFindManyArgs>(args?: SelectSubset<T, OrderFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$OrderPayload<ExtArgs>, T, "findMany">>
@@ -15818,9 +15809,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Orders and only return the `id`
-     * const orderWithIdOnly = await prisma.order.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many Orders and only return the `order_id`
+     * const orderWithOrder_idOnly = await prisma.order.createManyAndReturn({ 
+     *   select: { order_id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -16083,7 +16074,7 @@ export namespace Prisma {
    * Fields of the Order model
    */ 
   interface OrderFieldRefs {
-    readonly id: FieldRef<"Order", 'String'>
+    readonly order_id: FieldRef<"Order", 'String'>
     readonly created_at: FieldRef<"Order", 'DateTime'>
     readonly updated_at: FieldRef<"Order", 'DateTime'>
   }
@@ -17287,31 +17278,19 @@ export namespace Prisma {
   }
 
   export type PaymentMinAggregateOutputType = {
-    id: string | null
-    username: string | null
-    password: string | null
-    email: string | null
-    emailConfirmed: boolean | null
+    payment_id: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type PaymentMaxAggregateOutputType = {
-    id: string | null
-    username: string | null
-    password: string | null
-    email: string | null
-    emailConfirmed: boolean | null
+    payment_id: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type PaymentCountAggregateOutputType = {
-    id: number
-    username: number
-    password: number
-    email: number
-    emailConfirmed: number
+    payment_id: number
     created_at: number
     updated_at: number
     _all: number
@@ -17319,31 +17298,19 @@ export namespace Prisma {
 
 
   export type PaymentMinAggregateInputType = {
-    id?: true
-    username?: true
-    password?: true
-    email?: true
-    emailConfirmed?: true
+    payment_id?: true
     created_at?: true
     updated_at?: true
   }
 
   export type PaymentMaxAggregateInputType = {
-    id?: true
-    username?: true
-    password?: true
-    email?: true
-    emailConfirmed?: true
+    payment_id?: true
     created_at?: true
     updated_at?: true
   }
 
   export type PaymentCountAggregateInputType = {
-    id?: true
-    username?: true
-    password?: true
-    email?: true
-    emailConfirmed?: true
+    payment_id?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -17422,11 +17389,7 @@ export namespace Prisma {
   }
 
   export type PaymentGroupByOutputType = {
-    id: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed: boolean
+    payment_id: string
     created_at: Date
     updated_at: Date
     _count: PaymentCountAggregateOutputType | null
@@ -17449,31 +17412,19 @@ export namespace Prisma {
 
 
   export type PaymentSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    username?: boolean
-    password?: boolean
-    email?: boolean
-    emailConfirmed?: boolean
+    payment_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["payment"]>
 
   export type PaymentSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    username?: boolean
-    password?: boolean
-    email?: boolean
-    emailConfirmed?: boolean
+    payment_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["payment"]>
 
   export type PaymentSelectScalar = {
-    id?: boolean
-    username?: boolean
-    password?: boolean
-    email?: boolean
-    emailConfirmed?: boolean
+    payment_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
@@ -17483,11 +17434,7 @@ export namespace Prisma {
     name: "Payment"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: string
-      username: string
-      password: string
-      email: string
-      emailConfirmed: boolean
+      payment_id: string
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["payment"]>
@@ -17573,8 +17520,8 @@ export namespace Prisma {
      * // Get first 10 Payments
      * const payments = await prisma.payment.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const paymentWithIdOnly = await prisma.payment.findMany({ select: { id: true } })
+     * // Only select the `payment_id`
+     * const paymentWithPayment_idOnly = await prisma.payment.findMany({ select: { payment_id: true } })
      * 
      */
     findMany<T extends PaymentFindManyArgs>(args?: SelectSubset<T, PaymentFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany">>
@@ -17618,9 +17565,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Payments and only return the `id`
-     * const paymentWithIdOnly = await prisma.payment.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many Payments and only return the `payment_id`
+     * const paymentWithPayment_idOnly = await prisma.payment.createManyAndReturn({ 
+     *   select: { payment_id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -17883,11 +17830,7 @@ export namespace Prisma {
    * Fields of the Payment model
    */ 
   interface PaymentFieldRefs {
-    readonly id: FieldRef<"Payment", 'String'>
-    readonly username: FieldRef<"Payment", 'String'>
-    readonly password: FieldRef<"Payment", 'String'>
-    readonly email: FieldRef<"Payment", 'String'>
-    readonly emailConfirmed: FieldRef<"Payment", 'Boolean'>
+    readonly payment_id: FieldRef<"Payment", 'String'>
     readonly created_at: FieldRef<"Payment", 'DateTime'>
     readonly updated_at: FieldRef<"Payment", 'DateTime'>
   }
@@ -18203,7 +18146,7 @@ export namespace Prisma {
   }
 
   export type ProductMinAggregateOutputType = {
-    id: string | null
+    product_id: string | null
     product_name: string | null
     product_thumb: string | null
     product_description: string | null
@@ -18222,7 +18165,7 @@ export namespace Prisma {
   }
 
   export type ProductMaxAggregateOutputType = {
-    id: string | null
+    product_id: string | null
     product_name: string | null
     product_thumb: string | null
     product_description: string | null
@@ -18241,7 +18184,7 @@ export namespace Prisma {
   }
 
   export type ProductCountAggregateOutputType = {
-    id: number
+    product_id: number
     product_name: number
     product_thumb: number
     product_description: number
@@ -18274,7 +18217,7 @@ export namespace Prisma {
   }
 
   export type ProductMinAggregateInputType = {
-    id?: true
+    product_id?: true
     product_name?: true
     product_thumb?: true
     product_description?: true
@@ -18293,7 +18236,7 @@ export namespace Prisma {
   }
 
   export type ProductMaxAggregateInputType = {
-    id?: true
+    product_id?: true
     product_name?: true
     product_thumb?: true
     product_description?: true
@@ -18312,7 +18255,7 @@ export namespace Prisma {
   }
 
   export type ProductCountAggregateInputType = {
-    id?: true
+    product_id?: true
     product_name?: true
     product_thumb?: true
     product_description?: true
@@ -18418,7 +18361,7 @@ export namespace Prisma {
   }
 
   export type ProductGroupByOutputType = {
-    id: string
+    product_id: string
     product_name: string
     product_thumb: string
     product_description: string
@@ -18456,7 +18399,7 @@ export namespace Prisma {
 
 
   export type ProductSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    product_id?: boolean
     product_name?: boolean
     product_thumb?: boolean
     product_description?: boolean
@@ -18478,7 +18421,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    product_id?: boolean
     product_name?: boolean
     product_thumb?: boolean
     product_description?: boolean
@@ -18497,7 +18440,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["product"]>
 
   export type ProductSelectScalar = {
-    id?: boolean
+    product_id?: boolean
     product_name?: boolean
     product_thumb?: boolean
     product_description?: boolean
@@ -18529,7 +18472,7 @@ export namespace Prisma {
       CartProduct: Prisma.$CartProductPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      product_id: string
       product_name: string
       product_thumb: string
       product_description: string
@@ -18628,8 +18571,8 @@ export namespace Prisma {
      * // Get first 10 Products
      * const products = await prisma.product.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const productWithIdOnly = await prisma.product.findMany({ select: { id: true } })
+     * // Only select the `product_id`
+     * const productWithProduct_idOnly = await prisma.product.findMany({ select: { product_id: true } })
      * 
      */
     findMany<T extends ProductFindManyArgs>(args?: SelectSubset<T, ProductFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findMany">>
@@ -18673,9 +18616,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Products and only return the `id`
-     * const productWithIdOnly = await prisma.product.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many Products and only return the `product_id`
+     * const productWithProduct_idOnly = await prisma.product.createManyAndReturn({ 
+     *   select: { product_id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -18940,7 +18883,7 @@ export namespace Prisma {
    * Fields of the Product model
    */ 
   interface ProductFieldRefs {
-    readonly id: FieldRef<"Product", 'String'>
+    readonly product_id: FieldRef<"Product", 'String'>
     readonly product_name: FieldRef<"Product", 'String'>
     readonly product_thumb: FieldRef<"Product", 'String'>
     readonly product_description: FieldRef<"Product", 'String'>
@@ -19337,15 +19280,15 @@ export namespace Prisma {
   }
 
   export type RoleAvgAggregateOutputType = {
-    id: number | null
+    role_id: number | null
   }
 
   export type RoleSumAggregateOutputType = {
-    id: number | null
+    role_id: number | null
   }
 
   export type RoleMinAggregateOutputType = {
-    id: number | null
+    role_id: number | null
     role_name: $Enums.role_name | null
     role_slug: string | null
     role_status: $Enums.role_status | null
@@ -19354,7 +19297,7 @@ export namespace Prisma {
   }
 
   export type RoleMaxAggregateOutputType = {
-    id: number | null
+    role_id: number | null
     role_name: $Enums.role_name | null
     role_slug: string | null
     role_status: $Enums.role_status | null
@@ -19363,7 +19306,7 @@ export namespace Prisma {
   }
 
   export type RoleCountAggregateOutputType = {
-    id: number
+    role_id: number
     role_name: number
     role_slug: number
     role_status: number
@@ -19374,15 +19317,15 @@ export namespace Prisma {
 
 
   export type RoleAvgAggregateInputType = {
-    id?: true
+    role_id?: true
   }
 
   export type RoleSumAggregateInputType = {
-    id?: true
+    role_id?: true
   }
 
   export type RoleMinAggregateInputType = {
-    id?: true
+    role_id?: true
     role_name?: true
     role_slug?: true
     role_status?: true
@@ -19391,7 +19334,7 @@ export namespace Prisma {
   }
 
   export type RoleMaxAggregateInputType = {
-    id?: true
+    role_id?: true
     role_name?: true
     role_slug?: true
     role_status?: true
@@ -19400,7 +19343,7 @@ export namespace Prisma {
   }
 
   export type RoleCountAggregateInputType = {
-    id?: true
+    role_id?: true
     role_name?: true
     role_slug?: true
     role_status?: true
@@ -19496,7 +19439,7 @@ export namespace Prisma {
   }
 
   export type RoleGroupByOutputType = {
-    id: number
+    role_id: number
     role_name: $Enums.role_name
     role_slug: string
     role_status: $Enums.role_status
@@ -19524,7 +19467,7 @@ export namespace Prisma {
 
 
   export type RoleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    role_id?: boolean
     role_name?: boolean
     role_slug?: boolean
     role_status?: boolean
@@ -19536,7 +19479,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["role"]>
 
   export type RoleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    role_id?: boolean
     role_name?: boolean
     role_slug?: boolean
     role_status?: boolean
@@ -19545,7 +19488,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["role"]>
 
   export type RoleSelectScalar = {
-    id?: boolean
+    role_id?: boolean
     role_name?: boolean
     role_slug?: boolean
     role_status?: boolean
@@ -19567,7 +19510,7 @@ export namespace Prisma {
       User: Prisma.$UserPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      role_id: number
       role_name: $Enums.role_name
       role_slug: string
       role_status: $Enums.role_status
@@ -19656,8 +19599,8 @@ export namespace Prisma {
      * // Get first 10 Roles
      * const roles = await prisma.role.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const roleWithIdOnly = await prisma.role.findMany({ select: { id: true } })
+     * // Only select the `role_id`
+     * const roleWithRole_idOnly = await prisma.role.findMany({ select: { role_id: true } })
      * 
      */
     findMany<T extends RoleFindManyArgs>(args?: SelectSubset<T, RoleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findMany">>
@@ -19701,9 +19644,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Roles and only return the `id`
-     * const roleWithIdOnly = await prisma.role.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many Roles and only return the `role_id`
+     * const roleWithRole_idOnly = await prisma.role.createManyAndReturn({ 
+     *   select: { role_id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -19968,7 +19911,7 @@ export namespace Prisma {
    * Fields of the Role model
    */ 
   interface RoleFieldRefs {
-    readonly id: FieldRef<"Role", 'Int'>
+    readonly role_id: FieldRef<"Role", 'Int'>
     readonly role_name: FieldRef<"Role", 'role_name'>
     readonly role_slug: FieldRef<"Role", 'String'>
     readonly role_status: FieldRef<"Role", 'role_status'>
@@ -21323,19 +21266,19 @@ export namespace Prisma {
   }
 
   export type ShippingMinAggregateOutputType = {
-    id: string | null
+    shipping_id: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type ShippingMaxAggregateOutputType = {
-    id: string | null
+    shipping_id: string | null
     created_at: Date | null
     updated_at: Date | null
   }
 
   export type ShippingCountAggregateOutputType = {
-    id: number
+    shipping_id: number
     created_at: number
     updated_at: number
     _all: number
@@ -21343,19 +21286,19 @@ export namespace Prisma {
 
 
   export type ShippingMinAggregateInputType = {
-    id?: true
+    shipping_id?: true
     created_at?: true
     updated_at?: true
   }
 
   export type ShippingMaxAggregateInputType = {
-    id?: true
+    shipping_id?: true
     created_at?: true
     updated_at?: true
   }
 
   export type ShippingCountAggregateInputType = {
-    id?: true
+    shipping_id?: true
     created_at?: true
     updated_at?: true
     _all?: true
@@ -21434,7 +21377,7 @@ export namespace Prisma {
   }
 
   export type ShippingGroupByOutputType = {
-    id: string
+    shipping_id: string
     created_at: Date
     updated_at: Date
     _count: ShippingCountAggregateOutputType | null
@@ -21457,19 +21400,19 @@ export namespace Prisma {
 
 
   export type ShippingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    shipping_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["shipping"]>
 
   export type ShippingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    shipping_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }, ExtArgs["result"]["shipping"]>
 
   export type ShippingSelectScalar = {
-    id?: boolean
+    shipping_id?: boolean
     created_at?: boolean
     updated_at?: boolean
   }
@@ -21479,7 +21422,7 @@ export namespace Prisma {
     name: "Shipping"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      shipping_id: string
       created_at: Date
       updated_at: Date
     }, ExtArgs["result"]["shipping"]>
@@ -21565,8 +21508,8 @@ export namespace Prisma {
      * // Get first 10 Shippings
      * const shippings = await prisma.shipping.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const shippingWithIdOnly = await prisma.shipping.findMany({ select: { id: true } })
+     * // Only select the `shipping_id`
+     * const shippingWithShipping_idOnly = await prisma.shipping.findMany({ select: { shipping_id: true } })
      * 
      */
     findMany<T extends ShippingFindManyArgs>(args?: SelectSubset<T, ShippingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShippingPayload<ExtArgs>, T, "findMany">>
@@ -21610,9 +21553,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Shippings and only return the `id`
-     * const shippingWithIdOnly = await prisma.shipping.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many Shippings and only return the `shipping_id`
+     * const shippingWithShipping_idOnly = await prisma.shipping.createManyAndReturn({ 
+     *   select: { shipping_id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -21875,7 +21818,7 @@ export namespace Prisma {
    * Fields of the Shipping model
    */ 
   interface ShippingFieldRefs {
-    readonly id: FieldRef<"Shipping", 'String'>
+    readonly shipping_id: FieldRef<"Shipping", 'String'>
     readonly created_at: FieldRef<"Shipping", 'DateTime'>
     readonly updated_at: FieldRef<"Shipping", 'DateTime'>
   }
@@ -22177,7 +22120,7 @@ export namespace Prisma {
   }
 
   export type ShopMinAggregateOutputType = {
-    user_id: string | null
+    shop_id: string | null
     shop_name: string | null
     shop_password: string | null
     shop_email: string | null
@@ -22189,7 +22132,7 @@ export namespace Prisma {
   }
 
   export type ShopMaxAggregateOutputType = {
-    user_id: string | null
+    shop_id: string | null
     shop_name: string | null
     shop_password: string | null
     shop_email: string | null
@@ -22201,7 +22144,7 @@ export namespace Prisma {
   }
 
   export type ShopCountAggregateOutputType = {
-    user_id: number
+    shop_id: number
     shop_name: number
     shop_password: number
     shop_email: number
@@ -22215,7 +22158,7 @@ export namespace Prisma {
 
 
   export type ShopMinAggregateInputType = {
-    user_id?: true
+    shop_id?: true
     shop_name?: true
     shop_password?: true
     shop_email?: true
@@ -22227,7 +22170,7 @@ export namespace Prisma {
   }
 
   export type ShopMaxAggregateInputType = {
-    user_id?: true
+    shop_id?: true
     shop_name?: true
     shop_password?: true
     shop_email?: true
@@ -22239,7 +22182,7 @@ export namespace Prisma {
   }
 
   export type ShopCountAggregateInputType = {
-    user_id?: true
+    shop_id?: true
     shop_name?: true
     shop_password?: true
     shop_email?: true
@@ -22324,7 +22267,7 @@ export namespace Prisma {
   }
 
   export type ShopGroupByOutputType = {
-    user_id: string
+    shop_id: string
     shop_name: string
     shop_password: string
     shop_email: string
@@ -22353,7 +22296,7 @@ export namespace Prisma {
 
 
   export type ShopSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    user_id?: boolean
+    shop_id?: boolean
     shop_name?: boolean
     shop_password?: boolean
     shop_email?: boolean
@@ -22365,7 +22308,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["shop"]>
 
   export type ShopSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    user_id?: boolean
+    shop_id?: boolean
     shop_name?: boolean
     shop_password?: boolean
     shop_email?: boolean
@@ -22377,7 +22320,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["shop"]>
 
   export type ShopSelectScalar = {
-    user_id?: boolean
+    shop_id?: boolean
     shop_name?: boolean
     shop_password?: boolean
     shop_email?: boolean
@@ -22393,7 +22336,7 @@ export namespace Prisma {
     name: "Shop"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      user_id: string
+      shop_id: string
       shop_name: string
       shop_password: string
       shop_email: string
@@ -22485,8 +22428,8 @@ export namespace Prisma {
      * // Get first 10 Shops
      * const shops = await prisma.shop.findMany({ take: 10 })
      * 
-     * // Only select the `user_id`
-     * const shopWithUser_idOnly = await prisma.shop.findMany({ select: { user_id: true } })
+     * // Only select the `shop_id`
+     * const shopWithShop_idOnly = await prisma.shop.findMany({ select: { shop_id: true } })
      * 
      */
     findMany<T extends ShopFindManyArgs>(args?: SelectSubset<T, ShopFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ShopPayload<ExtArgs>, T, "findMany">>
@@ -22530,9 +22473,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Shops and only return the `user_id`
-     * const shopWithUser_idOnly = await prisma.shop.createManyAndReturn({ 
-     *   select: { user_id: true },
+     * // Create many Shops and only return the `shop_id`
+     * const shopWithShop_idOnly = await prisma.shop.createManyAndReturn({ 
+     *   select: { shop_id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -22795,7 +22738,7 @@ export namespace Prisma {
    * Fields of the Shop model
    */ 
   interface ShopFieldRefs {
-    readonly user_id: FieldRef<"Shop", 'String'>
+    readonly shop_id: FieldRef<"Shop", 'String'>
     readonly shop_name: FieldRef<"Shop", 'String'>
     readonly shop_password: FieldRef<"Shop", 'String'>
     readonly shop_email: FieldRef<"Shop", 'String'>
@@ -23103,7 +23046,7 @@ export namespace Prisma {
   }
 
   export type TokenMinAggregateOutputType = {
-    id: string | null
+    token_id: string | null
     user_id: string | null
     public_key: string | null
     private_key: string | null
@@ -23113,7 +23056,7 @@ export namespace Prisma {
   }
 
   export type TokenMaxAggregateOutputType = {
-    id: string | null
+    token_id: string | null
     user_id: string | null
     public_key: string | null
     private_key: string | null
@@ -23123,7 +23066,7 @@ export namespace Prisma {
   }
 
   export type TokenCountAggregateOutputType = {
-    id: number
+    token_id: number
     user_id: number
     public_key: number
     private_key: number
@@ -23136,7 +23079,7 @@ export namespace Prisma {
 
 
   export type TokenMinAggregateInputType = {
-    id?: true
+    token_id?: true
     user_id?: true
     public_key?: true
     private_key?: true
@@ -23146,7 +23089,7 @@ export namespace Prisma {
   }
 
   export type TokenMaxAggregateInputType = {
-    id?: true
+    token_id?: true
     user_id?: true
     public_key?: true
     private_key?: true
@@ -23156,7 +23099,7 @@ export namespace Prisma {
   }
 
   export type TokenCountAggregateInputType = {
-    id?: true
+    token_id?: true
     user_id?: true
     public_key?: true
     private_key?: true
@@ -23240,11 +23183,11 @@ export namespace Prisma {
   }
 
   export type TokenGroupByOutputType = {
-    id: string
+    token_id: string
     user_id: string
-    public_key: string | null
-    private_key: string | null
-    refresh_token: string | null
+    public_key: string
+    private_key: string
+    refresh_token: string
     refresh_token_used: string[]
     created_at: Date
     updated_at: Date
@@ -23268,7 +23211,7 @@ export namespace Prisma {
 
 
   export type TokenSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    token_id?: boolean
     user_id?: boolean
     public_key?: boolean
     private_key?: boolean
@@ -23276,11 +23219,10 @@ export namespace Prisma {
     refresh_token_used?: boolean
     created_at?: boolean
     updated_at?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["token"]>
 
   export type TokenSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    token_id?: boolean
     user_id?: boolean
     public_key?: boolean
     private_key?: boolean
@@ -23288,11 +23230,10 @@ export namespace Prisma {
     refresh_token_used?: boolean
     created_at?: boolean
     updated_at?: boolean
-    user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["token"]>
 
   export type TokenSelectScalar = {
-    id?: boolean
+    token_id?: boolean
     user_id?: boolean
     public_key?: boolean
     private_key?: boolean
@@ -23302,24 +23243,16 @@ export namespace Prisma {
     updated_at?: boolean
   }
 
-  export type TokenInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
-  export type TokenIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    user?: boolean | UserDefaultArgs<ExtArgs>
-  }
 
   export type $TokenPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Token"
-    objects: {
-      user: Prisma.$UserPayload<ExtArgs>
-    }
+    objects: {}
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      token_id: string
       user_id: string
-      public_key: string | null
-      private_key: string | null
-      refresh_token: string | null
+      public_key: string
+      private_key: string
+      refresh_token: string
       refresh_token_used: string[]
       created_at: Date
       updated_at: Date
@@ -23406,8 +23339,8 @@ export namespace Prisma {
      * // Get first 10 Tokens
      * const tokens = await prisma.token.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const tokenWithIdOnly = await prisma.token.findMany({ select: { id: true } })
+     * // Only select the `token_id`
+     * const tokenWithToken_idOnly = await prisma.token.findMany({ select: { token_id: true } })
      * 
      */
     findMany<T extends TokenFindManyArgs>(args?: SelectSubset<T, TokenFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany">>
@@ -23451,9 +23384,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Tokens and only return the `id`
-     * const tokenWithIdOnly = await prisma.token.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many Tokens and only return the `token_id`
+     * const tokenWithToken_idOnly = await prisma.token.createManyAndReturn({ 
+     *   select: { token_id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -23687,7 +23620,6 @@ export namespace Prisma {
    */
   export interface Prisma__TokenClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -23717,7 +23649,7 @@ export namespace Prisma {
    * Fields of the Token model
    */ 
   interface TokenFieldRefs {
-    readonly id: FieldRef<"Token", 'String'>
+    readonly token_id: FieldRef<"Token", 'String'>
     readonly user_id: FieldRef<"Token", 'String'>
     readonly public_key: FieldRef<"Token", 'String'>
     readonly private_key: FieldRef<"Token", 'String'>
@@ -23738,10 +23670,6 @@ export namespace Prisma {
      */
     select?: TokenSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TokenInclude<ExtArgs> | null
-    /**
      * Filter, which Token to fetch.
      */
     where: TokenWhereUniqueInput
@@ -23756,10 +23684,6 @@ export namespace Prisma {
      */
     select?: TokenSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TokenInclude<ExtArgs> | null
-    /**
      * Filter, which Token to fetch.
      */
     where: TokenWhereUniqueInput
@@ -23773,10 +23697,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Token
      */
     select?: TokenSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TokenInclude<ExtArgs> | null
     /**
      * Filter, which Token to fetch.
      */
@@ -23822,10 +23742,6 @@ export namespace Prisma {
      */
     select?: TokenSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TokenInclude<ExtArgs> | null
-    /**
      * Filter, which Token to fetch.
      */
     where?: TokenWhereInput
@@ -23870,10 +23786,6 @@ export namespace Prisma {
      */
     select?: TokenSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TokenInclude<ExtArgs> | null
-    /**
      * Filter, which Tokens to fetch.
      */
     where?: TokenWhereInput
@@ -23913,10 +23825,6 @@ export namespace Prisma {
      */
     select?: TokenSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TokenInclude<ExtArgs> | null
-    /**
      * The data needed to create a Token.
      */
     data: XOR<TokenCreateInput, TokenUncheckedCreateInput>
@@ -23946,10 +23854,6 @@ export namespace Prisma {
      */
     data: TokenCreateManyInput | TokenCreateManyInput[]
     skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TokenIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -23960,10 +23864,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Token
      */
     select?: TokenSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TokenInclude<ExtArgs> | null
     /**
      * The data needed to update a Token.
      */
@@ -23997,10 +23897,6 @@ export namespace Prisma {
      */
     select?: TokenSelect<ExtArgs> | null
     /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TokenInclude<ExtArgs> | null
-    /**
      * The filter to search for the Token to update in case it exists.
      */
     where: TokenWhereUniqueInput
@@ -24022,10 +23918,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Token
      */
     select?: TokenSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TokenInclude<ExtArgs> | null
     /**
      * Filter which Token to delete.
      */
@@ -24050,10 +23942,6 @@ export namespace Prisma {
      * Select specific fields to fetch from the Token
      */
     select?: TokenSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TokenInclude<ExtArgs> | null
   }
 
 
@@ -24078,7 +23966,7 @@ export namespace Prisma {
   }
 
   export type UserMinAggregateOutputType = {
-    id: string | null
+    user_id: string | null
     user_name: string | null
     user_full_name: string | null
     user_slug: string | null
@@ -24095,7 +23983,7 @@ export namespace Prisma {
   }
 
   export type UserMaxAggregateOutputType = {
-    id: string | null
+    user_id: string | null
     user_name: string | null
     user_full_name: string | null
     user_slug: string | null
@@ -24112,7 +24000,7 @@ export namespace Prisma {
   }
 
   export type UserCountAggregateOutputType = {
-    id: number
+    user_id: number
     user_name: number
     user_full_name: number
     user_slug: number
@@ -24139,7 +24027,7 @@ export namespace Prisma {
   }
 
   export type UserMinAggregateInputType = {
-    id?: true
+    user_id?: true
     user_name?: true
     user_full_name?: true
     user_slug?: true
@@ -24156,7 +24044,7 @@ export namespace Prisma {
   }
 
   export type UserMaxAggregateInputType = {
-    id?: true
+    user_id?: true
     user_name?: true
     user_full_name?: true
     user_slug?: true
@@ -24173,7 +24061,7 @@ export namespace Prisma {
   }
 
   export type UserCountAggregateInputType = {
-    id?: true
+    user_id?: true
     user_name?: true
     user_full_name?: true
     user_slug?: true
@@ -24277,7 +24165,7 @@ export namespace Prisma {
   }
 
   export type UserGroupByOutputType = {
-    id: string
+    user_id: string
     user_name: string
     user_full_name: string
     user_slug: string
@@ -24313,7 +24201,7 @@ export namespace Prisma {
 
 
   export type UserSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    user_id?: boolean
     user_name?: boolean
     user_full_name?: boolean
     user_slug?: boolean
@@ -24328,14 +24216,13 @@ export namespace Prisma {
     created_at?: boolean
     updated_at?: boolean
     role?: boolean | RoleDefaultArgs<ExtArgs>
-    Token?: boolean | User$TokenArgs<ExtArgs>
     Comment?: boolean | User$CommentArgs<ExtArgs>
     Cart?: boolean | User$CartArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
+    user_id?: boolean
     user_name?: boolean
     user_full_name?: boolean
     user_slug?: boolean
@@ -24353,7 +24240,7 @@ export namespace Prisma {
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
-    id?: boolean
+    user_id?: boolean
     user_name?: boolean
     user_full_name?: boolean
     user_slug?: boolean
@@ -24371,7 +24258,6 @@ export namespace Prisma {
 
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     role?: boolean | RoleDefaultArgs<ExtArgs>
-    Token?: boolean | User$TokenArgs<ExtArgs>
     Comment?: boolean | User$CommentArgs<ExtArgs>
     Cart?: boolean | User$CartArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -24384,12 +24270,11 @@ export namespace Prisma {
     name: "User"
     objects: {
       role: Prisma.$RolePayload<ExtArgs>
-      Token: Prisma.$TokenPayload<ExtArgs>[]
       Comment: Prisma.$CommentPayload<ExtArgs>[]
       Cart: Prisma.$CartPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: string
+      user_id: string
       user_name: string
       user_full_name: string
       user_slug: string
@@ -24486,8 +24371,8 @@ export namespace Prisma {
      * // Get first 10 Users
      * const users = await prisma.user.findMany({ take: 10 })
      * 
-     * // Only select the `id`
-     * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
+     * // Only select the `user_id`
+     * const userWithUser_idOnly = await prisma.user.findMany({ select: { user_id: true } })
      * 
      */
     findMany<T extends UserFindManyArgs>(args?: SelectSubset<T, UserFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany">>
@@ -24531,9 +24416,9 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Create many Users and only return the `id`
-     * const userWithIdOnly = await prisma.user.createManyAndReturn({ 
-     *   select: { id: true },
+     * // Create many Users and only return the `user_id`
+     * const userWithUser_idOnly = await prisma.user.createManyAndReturn({ 
+     *   select: { user_id: true },
      *   data: [
      *     // ... provide data here
      *   ]
@@ -24768,7 +24653,6 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     role<T extends RoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoleDefaultArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow"> | Null, Null, ExtArgs>
-    Token<T extends User$TokenArgs<ExtArgs> = {}>(args?: Subset<T, User$TokenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany"> | Null>
     Comment<T extends User$CommentArgs<ExtArgs> = {}>(args?: Subset<T, User$CommentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CommentPayload<ExtArgs>, T, "findMany"> | Null>
     Cart<T extends User$CartArgs<ExtArgs> = {}>(args?: Subset<T, User$CartArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CartPayload<ExtArgs>, T, "findMany"> | Null>
     /**
@@ -24800,7 +24684,7 @@ export namespace Prisma {
    * Fields of the User model
    */ 
   interface UserFieldRefs {
-    readonly id: FieldRef<"User", 'String'>
+    readonly user_id: FieldRef<"User", 'String'>
     readonly user_name: FieldRef<"User", 'String'>
     readonly user_full_name: FieldRef<"User", 'String'>
     readonly user_slug: FieldRef<"User", 'String'>
@@ -25132,26 +25016,6 @@ export namespace Prisma {
   }
 
   /**
-   * User.Token
-   */
-  export type User$TokenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Token
-     */
-    select?: TokenSelect<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TokenInclude<ExtArgs> | null
-    where?: TokenWhereInput
-    orderBy?: TokenOrderByWithRelationInput | TokenOrderByWithRelationInput[]
-    cursor?: TokenWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: TokenScalarFieldEnum | TokenScalarFieldEnum[]
-  }
-
-  /**
    * User.Comment
    */
   export type User$CommentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -25307,7 +25171,7 @@ export namespace Prisma {
 
 
   export const CartScalarFieldEnum: {
-    id: 'id',
+    cart_id: 'cart_id',
     cart_state: 'cart_state',
     cart_count_product: 'cart_count_product',
     cart_user_id: 'cart_user_id',
@@ -25329,7 +25193,7 @@ export namespace Prisma {
 
 
   export const CategoryScalarFieldEnum: {
-    id: 'id',
+    cate_id: 'cate_id',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -25353,7 +25217,7 @@ export namespace Prisma {
 
 
   export const DiscountScalarFieldEnum: {
-    id: 'id',
+    discount_id: 'discount_id',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -25362,7 +25226,7 @@ export namespace Prisma {
 
 
   export const NotificationScalarFieldEnum: {
-    id: 'id',
+    noti_id: 'noti_id',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -25371,7 +25235,7 @@ export namespace Prisma {
 
 
   export const OrderScalarFieldEnum: {
-    id: 'id',
+    order_id: 'order_id',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -25393,11 +25257,7 @@ export namespace Prisma {
 
 
   export const PaymentScalarFieldEnum: {
-    id: 'id',
-    username: 'username',
-    password: 'password',
-    email: 'email',
-    emailConfirmed: 'emailConfirmed',
+    payment_id: 'payment_id',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -25406,7 +25266,7 @@ export namespace Prisma {
 
 
   export const ProductScalarFieldEnum: {
-    id: 'id',
+    product_id: 'product_id',
     product_name: 'product_name',
     product_thumb: 'product_thumb',
     product_description: 'product_description',
@@ -25428,7 +25288,7 @@ export namespace Prisma {
 
 
   export const RoleScalarFieldEnum: {
-    id: 'id',
+    role_id: 'role_id',
     role_name: 'role_name',
     role_slug: 'role_slug',
     role_status: 'role_status',
@@ -25450,7 +25310,7 @@ export namespace Prisma {
 
 
   export const ShippingScalarFieldEnum: {
-    id: 'id',
+    shipping_id: 'shipping_id',
     created_at: 'created_at',
     updated_at: 'updated_at'
   };
@@ -25459,7 +25319,7 @@ export namespace Prisma {
 
 
   export const ShopScalarFieldEnum: {
-    user_id: 'user_id',
+    shop_id: 'shop_id',
     shop_name: 'shop_name',
     shop_password: 'shop_password',
     shop_email: 'shop_email',
@@ -25474,7 +25334,7 @@ export namespace Prisma {
 
 
   export const TokenScalarFieldEnum: {
-    id: 'id',
+    token_id: 'token_id',
     user_id: 'user_id',
     public_key: 'public_key',
     private_key: 'private_key',
@@ -25488,7 +25348,7 @@ export namespace Prisma {
 
 
   export const UserScalarFieldEnum: {
-    id: 'id',
+    user_id: 'user_id',
     user_name: 'user_name',
     user_full_name: 'user_full_name',
     user_slug: 'user_slug',
@@ -26110,14 +25970,14 @@ export namespace Prisma {
 
   export type ApiKeyWhereUniqueInput = Prisma.AtLeast<{
     key?: string
-    status?: boolean
-    permissions?: string[]
     AND?: ApiKeyWhereInput | ApiKeyWhereInput[]
     OR?: ApiKeyWhereInput[]
     NOT?: ApiKeyWhereInput | ApiKeyWhereInput[]
+    status?: BoolFilter<"ApiKey"> | boolean
+    permissions?: StringNullableListFilter<"ApiKey">
     created_at?: DateTimeFilter<"ApiKey"> | Date | string
     updated_at?: DateTimeFilter<"ApiKey"> | Date | string
-  }, "key" | "status" | "permissions">
+  }, "key">
 
   export type ApiKeyOrderByWithAggregationInput = {
     key?: SortOrder
@@ -26145,7 +26005,7 @@ export namespace Prisma {
     AND?: CartWhereInput | CartWhereInput[]
     OR?: CartWhereInput[]
     NOT?: CartWhereInput | CartWhereInput[]
-    id?: StringFilter<"Cart"> | string
+    cart_id?: StringFilter<"Cart"> | string
     cart_state?: Enumcart_stateFilter<"Cart"> | $Enums.cart_state
     cart_count_product?: IntFilter<"Cart"> | number
     cart_user_id?: StringFilter<"Cart"> | string
@@ -26156,7 +26016,7 @@ export namespace Prisma {
   }
 
   export type CartOrderByWithRelationInput = {
-    id?: SortOrder
+    cart_id?: SortOrder
     cart_state?: SortOrder
     cart_count_product?: SortOrder
     cart_user_id?: SortOrder
@@ -26167,7 +26027,7 @@ export namespace Prisma {
   }
 
   export type CartWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    cart_id?: string
     AND?: CartWhereInput | CartWhereInput[]
     OR?: CartWhereInput[]
     NOT?: CartWhereInput | CartWhereInput[]
@@ -26178,10 +26038,10 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"Cart"> | Date | string
     cart_products?: CartProductListRelationFilter
     user?: XOR<UserRelationFilter, UserWhereInput>
-  }, "id">
+  }, "cart_id">
 
   export type CartOrderByWithAggregationInput = {
-    id?: SortOrder
+    cart_id?: SortOrder
     cart_state?: SortOrder
     cart_count_product?: SortOrder
     cart_user_id?: SortOrder
@@ -26198,7 +26058,7 @@ export namespace Prisma {
     AND?: CartScalarWhereWithAggregatesInput | CartScalarWhereWithAggregatesInput[]
     OR?: CartScalarWhereWithAggregatesInput[]
     NOT?: CartScalarWhereWithAggregatesInput | CartScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Cart"> | string
+    cart_id?: StringWithAggregatesFilter<"Cart"> | string
     cart_state?: Enumcart_stateWithAggregatesFilter<"Cart"> | $Enums.cart_state
     cart_count_product?: IntWithAggregatesFilter<"Cart"> | number
     cart_user_id?: StringWithAggregatesFilter<"Cart"> | string
@@ -26264,28 +26124,28 @@ export namespace Prisma {
     AND?: CategoryWhereInput | CategoryWhereInput[]
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
-    id?: StringFilter<"Category"> | string
+    cate_id?: StringFilter<"Category"> | string
     created_at?: DateTimeFilter<"Category"> | Date | string
     updated_at?: DateTimeFilter<"Category"> | Date | string
   }
 
   export type CategoryOrderByWithRelationInput = {
-    id?: SortOrder
+    cate_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type CategoryWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    cate_id?: string
     AND?: CategoryWhereInput | CategoryWhereInput[]
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
     created_at?: DateTimeFilter<"Category"> | Date | string
     updated_at?: DateTimeFilter<"Category"> | Date | string
-  }, "id">
+  }, "cate_id">
 
   export type CategoryOrderByWithAggregationInput = {
-    id?: SortOrder
+    cate_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: CategoryCountOrderByAggregateInput
@@ -26297,7 +26157,7 @@ export namespace Prisma {
     AND?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
     OR?: CategoryScalarWhereWithAggregatesInput[]
     NOT?: CategoryScalarWhereWithAggregatesInput | CategoryScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Category"> | string
+    cate_id?: StringWithAggregatesFilter<"Category"> | string
     created_at?: DateTimeWithAggregatesFilter<"Category"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Category"> | Date | string
   }
@@ -26387,28 +26247,28 @@ export namespace Prisma {
     AND?: DiscountWhereInput | DiscountWhereInput[]
     OR?: DiscountWhereInput[]
     NOT?: DiscountWhereInput | DiscountWhereInput[]
-    id?: StringFilter<"Discount"> | string
+    discount_id?: StringFilter<"Discount"> | string
     created_at?: DateTimeFilter<"Discount"> | Date | string
     updated_at?: DateTimeFilter<"Discount"> | Date | string
   }
 
   export type DiscountOrderByWithRelationInput = {
-    id?: SortOrder
+    discount_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type DiscountWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    discount_id?: string
     AND?: DiscountWhereInput | DiscountWhereInput[]
     OR?: DiscountWhereInput[]
     NOT?: DiscountWhereInput | DiscountWhereInput[]
     created_at?: DateTimeFilter<"Discount"> | Date | string
     updated_at?: DateTimeFilter<"Discount"> | Date | string
-  }, "id">
+  }, "discount_id">
 
   export type DiscountOrderByWithAggregationInput = {
-    id?: SortOrder
+    discount_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: DiscountCountOrderByAggregateInput
@@ -26420,7 +26280,7 @@ export namespace Prisma {
     AND?: DiscountScalarWhereWithAggregatesInput | DiscountScalarWhereWithAggregatesInput[]
     OR?: DiscountScalarWhereWithAggregatesInput[]
     NOT?: DiscountScalarWhereWithAggregatesInput | DiscountScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Discount"> | string
+    discount_id?: StringWithAggregatesFilter<"Discount"> | string
     created_at?: DateTimeWithAggregatesFilter<"Discount"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Discount"> | Date | string
   }
@@ -26429,28 +26289,28 @@ export namespace Prisma {
     AND?: NotificationWhereInput | NotificationWhereInput[]
     OR?: NotificationWhereInput[]
     NOT?: NotificationWhereInput | NotificationWhereInput[]
-    id?: StringFilter<"Notification"> | string
+    noti_id?: StringFilter<"Notification"> | string
     created_at?: DateTimeFilter<"Notification"> | Date | string
     updated_at?: DateTimeFilter<"Notification"> | Date | string
   }
 
   export type NotificationOrderByWithRelationInput = {
-    id?: SortOrder
+    noti_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type NotificationWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    noti_id?: string
     AND?: NotificationWhereInput | NotificationWhereInput[]
     OR?: NotificationWhereInput[]
     NOT?: NotificationWhereInput | NotificationWhereInput[]
     created_at?: DateTimeFilter<"Notification"> | Date | string
     updated_at?: DateTimeFilter<"Notification"> | Date | string
-  }, "id">
+  }, "noti_id">
 
   export type NotificationOrderByWithAggregationInput = {
-    id?: SortOrder
+    noti_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: NotificationCountOrderByAggregateInput
@@ -26462,7 +26322,7 @@ export namespace Prisma {
     AND?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
     OR?: NotificationScalarWhereWithAggregatesInput[]
     NOT?: NotificationScalarWhereWithAggregatesInput | NotificationScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Notification"> | string
+    noti_id?: StringWithAggregatesFilter<"Notification"> | string
     created_at?: DateTimeWithAggregatesFilter<"Notification"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Notification"> | Date | string
   }
@@ -26471,28 +26331,28 @@ export namespace Prisma {
     AND?: OrderWhereInput | OrderWhereInput[]
     OR?: OrderWhereInput[]
     NOT?: OrderWhereInput | OrderWhereInput[]
-    id?: StringFilter<"Order"> | string
+    order_id?: StringFilter<"Order"> | string
     created_at?: DateTimeFilter<"Order"> | Date | string
     updated_at?: DateTimeFilter<"Order"> | Date | string
   }
 
   export type OrderOrderByWithRelationInput = {
-    id?: SortOrder
+    order_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type OrderWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    order_id?: string
     AND?: OrderWhereInput | OrderWhereInput[]
     OR?: OrderWhereInput[]
     NOT?: OrderWhereInput | OrderWhereInput[]
     created_at?: DateTimeFilter<"Order"> | Date | string
     updated_at?: DateTimeFilter<"Order"> | Date | string
-  }, "id">
+  }, "order_id">
 
   export type OrderOrderByWithAggregationInput = {
-    id?: SortOrder
+    order_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: OrderCountOrderByAggregateInput
@@ -26504,7 +26364,7 @@ export namespace Prisma {
     AND?: OrderScalarWhereWithAggregatesInput | OrderScalarWhereWithAggregatesInput[]
     OR?: OrderScalarWhereWithAggregatesInput[]
     NOT?: OrderScalarWhereWithAggregatesInput | OrderScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Order"> | string
+    order_id?: StringWithAggregatesFilter<"Order"> | string
     created_at?: DateTimeWithAggregatesFilter<"Order"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Order"> | Date | string
   }
@@ -26575,44 +26435,28 @@ export namespace Prisma {
     AND?: PaymentWhereInput | PaymentWhereInput[]
     OR?: PaymentWhereInput[]
     NOT?: PaymentWhereInput | PaymentWhereInput[]
-    id?: StringFilter<"Payment"> | string
-    username?: StringFilter<"Payment"> | string
-    password?: StringFilter<"Payment"> | string
-    email?: StringFilter<"Payment"> | string
-    emailConfirmed?: BoolFilter<"Payment"> | boolean
+    payment_id?: StringFilter<"Payment"> | string
     created_at?: DateTimeFilter<"Payment"> | Date | string
     updated_at?: DateTimeFilter<"Payment"> | Date | string
   }
 
   export type PaymentOrderByWithRelationInput = {
-    id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    payment_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type PaymentWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    username?: string
-    email?: string
+    payment_id?: string
     AND?: PaymentWhereInput | PaymentWhereInput[]
     OR?: PaymentWhereInput[]
     NOT?: PaymentWhereInput | PaymentWhereInput[]
-    password?: StringFilter<"Payment"> | string
-    emailConfirmed?: BoolFilter<"Payment"> | boolean
     created_at?: DateTimeFilter<"Payment"> | Date | string
     updated_at?: DateTimeFilter<"Payment"> | Date | string
-  }, "id" | "username" | "email">
+  }, "payment_id">
 
   export type PaymentOrderByWithAggregationInput = {
-    id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    payment_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: PaymentCountOrderByAggregateInput
@@ -26624,11 +26468,7 @@ export namespace Prisma {
     AND?: PaymentScalarWhereWithAggregatesInput | PaymentScalarWhereWithAggregatesInput[]
     OR?: PaymentScalarWhereWithAggregatesInput[]
     NOT?: PaymentScalarWhereWithAggregatesInput | PaymentScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Payment"> | string
-    username?: StringWithAggregatesFilter<"Payment"> | string
-    password?: StringWithAggregatesFilter<"Payment"> | string
-    email?: StringWithAggregatesFilter<"Payment"> | string
-    emailConfirmed?: BoolWithAggregatesFilter<"Payment"> | boolean
+    payment_id?: StringWithAggregatesFilter<"Payment"> | string
     created_at?: DateTimeWithAggregatesFilter<"Payment"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Payment"> | Date | string
   }
@@ -26637,7 +26477,7 @@ export namespace Prisma {
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
-    id?: StringFilter<"Product"> | string
+    product_id?: StringFilter<"Product"> | string
     product_name?: StringFilter<"Product"> | string
     product_thumb?: StringFilter<"Product"> | string
     product_description?: StringFilter<"Product"> | string
@@ -26658,7 +26498,7 @@ export namespace Prisma {
   }
 
   export type ProductOrderByWithRelationInput = {
-    id?: SortOrder
+    product_id?: SortOrder
     product_name?: SortOrder
     product_thumb?: SortOrder
     product_description?: SortOrder
@@ -26679,7 +26519,7 @@ export namespace Prisma {
   }
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    product_id?: string
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
@@ -26700,10 +26540,10 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"Product"> | Date | string
     Comment?: CommentListRelationFilter
     CartProduct?: CartProductListRelationFilter
-  }, "id">
+  }, "product_id">
 
   export type ProductOrderByWithAggregationInput = {
-    id?: SortOrder
+    product_id?: SortOrder
     product_name?: SortOrder
     product_thumb?: SortOrder
     product_description?: SortOrder
@@ -26730,7 +26570,7 @@ export namespace Prisma {
     AND?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
     OR?: ProductScalarWhereWithAggregatesInput[]
     NOT?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Product"> | string
+    product_id?: StringWithAggregatesFilter<"Product"> | string
     product_name?: StringWithAggregatesFilter<"Product"> | string
     product_thumb?: StringWithAggregatesFilter<"Product"> | string
     product_description?: StringWithAggregatesFilter<"Product"> | string
@@ -26752,7 +26592,7 @@ export namespace Prisma {
     AND?: RoleWhereInput | RoleWhereInput[]
     OR?: RoleWhereInput[]
     NOT?: RoleWhereInput | RoleWhereInput[]
-    id?: IntFilter<"Role"> | number
+    role_id?: IntFilter<"Role"> | number
     role_name?: Enumrole_nameFilter<"Role"> | $Enums.role_name
     role_slug?: StringFilter<"Role"> | string
     role_status?: Enumrole_statusFilter<"Role"> | $Enums.role_status
@@ -26763,7 +26603,7 @@ export namespace Prisma {
   }
 
   export type RoleOrderByWithRelationInput = {
-    id?: SortOrder
+    role_id?: SortOrder
     role_name?: SortOrder
     role_slug?: SortOrder
     role_status?: SortOrder
@@ -26774,7 +26614,7 @@ export namespace Prisma {
   }
 
   export type RoleWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    role_id?: number
     AND?: RoleWhereInput | RoleWhereInput[]
     OR?: RoleWhereInput[]
     NOT?: RoleWhereInput | RoleWhereInput[]
@@ -26785,10 +26625,10 @@ export namespace Prisma {
     updated_at?: DateTimeFilter<"Role"> | Date | string
     role_grants?: GrantListRelationFilter
     User?: UserListRelationFilter
-  }, "id">
+  }, "role_id">
 
   export type RoleOrderByWithAggregationInput = {
-    id?: SortOrder
+    role_id?: SortOrder
     role_name?: SortOrder
     role_slug?: SortOrder
     role_status?: SortOrder
@@ -26805,7 +26645,7 @@ export namespace Prisma {
     AND?: RoleScalarWhereWithAggregatesInput | RoleScalarWhereWithAggregatesInput[]
     OR?: RoleScalarWhereWithAggregatesInput[]
     NOT?: RoleScalarWhereWithAggregatesInput | RoleScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Role"> | number
+    role_id?: IntWithAggregatesFilter<"Role"> | number
     role_name?: Enumrole_nameWithAggregatesFilter<"Role"> | $Enums.role_name
     role_slug?: StringWithAggregatesFilter<"Role"> | string
     role_status?: Enumrole_statusWithAggregatesFilter<"Role"> | $Enums.role_status
@@ -26869,28 +26709,28 @@ export namespace Prisma {
     AND?: ShippingWhereInput | ShippingWhereInput[]
     OR?: ShippingWhereInput[]
     NOT?: ShippingWhereInput | ShippingWhereInput[]
-    id?: StringFilter<"Shipping"> | string
+    shipping_id?: StringFilter<"Shipping"> | string
     created_at?: DateTimeFilter<"Shipping"> | Date | string
     updated_at?: DateTimeFilter<"Shipping"> | Date | string
   }
 
   export type ShippingOrderByWithRelationInput = {
-    id?: SortOrder
+    shipping_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type ShippingWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    shipping_id?: string
     AND?: ShippingWhereInput | ShippingWhereInput[]
     OR?: ShippingWhereInput[]
     NOT?: ShippingWhereInput | ShippingWhereInput[]
     created_at?: DateTimeFilter<"Shipping"> | Date | string
     updated_at?: DateTimeFilter<"Shipping"> | Date | string
-  }, "id">
+  }, "shipping_id">
 
   export type ShippingOrderByWithAggregationInput = {
-    id?: SortOrder
+    shipping_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
     _count?: ShippingCountOrderByAggregateInput
@@ -26902,7 +26742,7 @@ export namespace Prisma {
     AND?: ShippingScalarWhereWithAggregatesInput | ShippingScalarWhereWithAggregatesInput[]
     OR?: ShippingScalarWhereWithAggregatesInput[]
     NOT?: ShippingScalarWhereWithAggregatesInput | ShippingScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Shipping"> | string
+    shipping_id?: StringWithAggregatesFilter<"Shipping"> | string
     created_at?: DateTimeWithAggregatesFilter<"Shipping"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Shipping"> | Date | string
   }
@@ -26911,7 +26751,7 @@ export namespace Prisma {
     AND?: ShopWhereInput | ShopWhereInput[]
     OR?: ShopWhereInput[]
     NOT?: ShopWhereInput | ShopWhereInput[]
-    user_id?: StringFilter<"Shop"> | string
+    shop_id?: StringFilter<"Shop"> | string
     shop_name?: StringFilter<"Shop"> | string
     shop_password?: StringFilter<"Shop"> | string
     shop_email?: StringFilter<"Shop"> | string
@@ -26923,7 +26763,7 @@ export namespace Prisma {
   }
 
   export type ShopOrderByWithRelationInput = {
-    user_id?: SortOrder
+    shop_id?: SortOrder
     shop_name?: SortOrder
     shop_password?: SortOrder
     shop_email?: SortOrder
@@ -26935,7 +26775,7 @@ export namespace Prisma {
   }
 
   export type ShopWhereUniqueInput = Prisma.AtLeast<{
-    user_id?: string
+    shop_id?: string
     shop_email?: string
     AND?: ShopWhereInput | ShopWhereInput[]
     OR?: ShopWhereInput[]
@@ -26947,10 +26787,10 @@ export namespace Prisma {
     shop_verify?: BoolFilter<"Shop"> | boolean
     created_at?: DateTimeFilter<"Shop"> | Date | string
     updated_at?: DateTimeFilter<"Shop"> | Date | string
-  }, "user_id" | "shop_email">
+  }, "shop_id" | "shop_email">
 
   export type ShopOrderByWithAggregationInput = {
-    user_id?: SortOrder
+    shop_id?: SortOrder
     shop_name?: SortOrder
     shop_password?: SortOrder
     shop_email?: SortOrder
@@ -26968,7 +26808,7 @@ export namespace Prisma {
     AND?: ShopScalarWhereWithAggregatesInput | ShopScalarWhereWithAggregatesInput[]
     OR?: ShopScalarWhereWithAggregatesInput[]
     NOT?: ShopScalarWhereWithAggregatesInput | ShopScalarWhereWithAggregatesInput[]
-    user_id?: StringWithAggregatesFilter<"Shop"> | string
+    shop_id?: StringWithAggregatesFilter<"Shop"> | string
     shop_name?: StringWithAggregatesFilter<"Shop"> | string
     shop_password?: StringWithAggregatesFilter<"Shop"> | string
     shop_email?: StringWithAggregatesFilter<"Shop"> | string
@@ -26983,50 +26823,47 @@ export namespace Prisma {
     AND?: TokenWhereInput | TokenWhereInput[]
     OR?: TokenWhereInput[]
     NOT?: TokenWhereInput | TokenWhereInput[]
-    id?: StringFilter<"Token"> | string
+    token_id?: StringFilter<"Token"> | string
     user_id?: StringFilter<"Token"> | string
-    public_key?: StringNullableFilter<"Token"> | string | null
-    private_key?: StringNullableFilter<"Token"> | string | null
-    refresh_token?: StringNullableFilter<"Token"> | string | null
+    public_key?: StringFilter<"Token"> | string
+    private_key?: StringFilter<"Token"> | string
+    refresh_token?: StringFilter<"Token"> | string
     refresh_token_used?: StringNullableListFilter<"Token">
     created_at?: DateTimeFilter<"Token"> | Date | string
     updated_at?: DateTimeFilter<"Token"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
   }
 
   export type TokenOrderByWithRelationInput = {
-    id?: SortOrder
+    token_id?: SortOrder
     user_id?: SortOrder
-    public_key?: SortOrderInput | SortOrder
-    private_key?: SortOrderInput | SortOrder
-    refresh_token?: SortOrderInput | SortOrder
+    public_key?: SortOrder
+    private_key?: SortOrder
+    refresh_token?: SortOrder
     refresh_token_used?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
-    user?: UserOrderByWithRelationInput
   }
 
   export type TokenWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    token_id?: string
     user_id?: string
     AND?: TokenWhereInput | TokenWhereInput[]
     OR?: TokenWhereInput[]
     NOT?: TokenWhereInput | TokenWhereInput[]
-    public_key?: StringNullableFilter<"Token"> | string | null
-    private_key?: StringNullableFilter<"Token"> | string | null
-    refresh_token?: StringNullableFilter<"Token"> | string | null
+    public_key?: StringFilter<"Token"> | string
+    private_key?: StringFilter<"Token"> | string
+    refresh_token?: StringFilter<"Token"> | string
     refresh_token_used?: StringNullableListFilter<"Token">
     created_at?: DateTimeFilter<"Token"> | Date | string
     updated_at?: DateTimeFilter<"Token"> | Date | string
-    user?: XOR<UserRelationFilter, UserWhereInput>
-  }, "id" | "id" | "user_id">
+  }, "token_id" | "token_id" | "user_id">
 
   export type TokenOrderByWithAggregationInput = {
-    id?: SortOrder
+    token_id?: SortOrder
     user_id?: SortOrder
-    public_key?: SortOrderInput | SortOrder
-    private_key?: SortOrderInput | SortOrder
-    refresh_token?: SortOrderInput | SortOrder
+    public_key?: SortOrder
+    private_key?: SortOrder
+    refresh_token?: SortOrder
     refresh_token_used?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -27039,11 +26876,11 @@ export namespace Prisma {
     AND?: TokenScalarWhereWithAggregatesInput | TokenScalarWhereWithAggregatesInput[]
     OR?: TokenScalarWhereWithAggregatesInput[]
     NOT?: TokenScalarWhereWithAggregatesInput | TokenScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Token"> | string
+    token_id?: StringWithAggregatesFilter<"Token"> | string
     user_id?: StringWithAggregatesFilter<"Token"> | string
-    public_key?: StringNullableWithAggregatesFilter<"Token"> | string | null
-    private_key?: StringNullableWithAggregatesFilter<"Token"> | string | null
-    refresh_token?: StringNullableWithAggregatesFilter<"Token"> | string | null
+    public_key?: StringWithAggregatesFilter<"Token"> | string
+    private_key?: StringWithAggregatesFilter<"Token"> | string
+    refresh_token?: StringWithAggregatesFilter<"Token"> | string
     refresh_token_used?: StringNullableListFilter<"Token">
     created_at?: DateTimeWithAggregatesFilter<"Token"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Token"> | Date | string
@@ -27053,7 +26890,7 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    id?: StringFilter<"User"> | string
+    user_id?: StringFilter<"User"> | string
     user_name?: StringFilter<"User"> | string
     user_full_name?: StringFilter<"User"> | string
     user_slug?: StringFilter<"User"> | string
@@ -27068,13 +26905,12 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"User"> | Date | string
     updated_at?: DateTimeFilter<"User"> | Date | string
     role?: XOR<RoleRelationFilter, RoleWhereInput>
-    Token?: TokenListRelationFilter
     Comment?: CommentListRelationFilter
     Cart?: CartListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
-    id?: SortOrder
+    user_id?: SortOrder
     user_name?: SortOrder
     user_full_name?: SortOrder
     user_slug?: SortOrder
@@ -27089,13 +26925,12 @@ export namespace Prisma {
     created_at?: SortOrder
     updated_at?: SortOrder
     role?: RoleOrderByWithRelationInput
-    Token?: TokenOrderByRelationAggregateInput
     Comment?: CommentOrderByRelationAggregateInput
     Cart?: CartOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
+    user_id?: string
     user_name?: string
     user_email?: string
     user_role?: number
@@ -27113,13 +26948,12 @@ export namespace Prisma {
     created_at?: DateTimeFilter<"User"> | Date | string
     updated_at?: DateTimeFilter<"User"> | Date | string
     role?: XOR<RoleRelationFilter, RoleWhereInput>
-    Token?: TokenListRelationFilter
     Comment?: CommentListRelationFilter
     Cart?: CartListRelationFilter
-  }, "id" | "user_name" | "user_email" | "user_role">
+  }, "user_id" | "user_name" | "user_email" | "user_role">
 
   export type UserOrderByWithAggregationInput = {
-    id?: SortOrder
+    user_id?: SortOrder
     user_name?: SortOrder
     user_full_name?: SortOrder
     user_slug?: SortOrder
@@ -27144,7 +26978,7 @@ export namespace Prisma {
     AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"User"> | string
+    user_id?: StringWithAggregatesFilter<"User"> | string
     user_name?: StringWithAggregatesFilter<"User"> | string
     user_full_name?: StringWithAggregatesFilter<"User"> | string
     user_slug?: StringWithAggregatesFilter<"User"> | string
@@ -27628,7 +27462,7 @@ export namespace Prisma {
   }
 
   export type CartCreateInput = {
-    id?: string
+    cart_id?: string
     cart_state?: $Enums.cart_state
     cart_count_product?: number
     created_at?: Date | string
@@ -27638,7 +27472,7 @@ export namespace Prisma {
   }
 
   export type CartUncheckedCreateInput = {
-    id?: string
+    cart_id?: string
     cart_state?: $Enums.cart_state
     cart_count_product?: number
     cart_user_id: string
@@ -27648,7 +27482,7 @@ export namespace Prisma {
   }
 
   export type CartUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    cart_id?: StringFieldUpdateOperationsInput | string
     cart_state?: Enumcart_stateFieldUpdateOperationsInput | $Enums.cart_state
     cart_count_product?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27658,7 +27492,7 @@ export namespace Prisma {
   }
 
   export type CartUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    cart_id?: StringFieldUpdateOperationsInput | string
     cart_state?: Enumcart_stateFieldUpdateOperationsInput | $Enums.cart_state
     cart_count_product?: IntFieldUpdateOperationsInput | number
     cart_user_id?: StringFieldUpdateOperationsInput | string
@@ -27668,7 +27502,7 @@ export namespace Prisma {
   }
 
   export type CartCreateManyInput = {
-    id?: string
+    cart_id?: string
     cart_state?: $Enums.cart_state
     cart_count_product?: number
     cart_user_id: string
@@ -27677,7 +27511,7 @@ export namespace Prisma {
   }
 
   export type CartUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    cart_id?: StringFieldUpdateOperationsInput | string
     cart_state?: Enumcart_stateFieldUpdateOperationsInput | $Enums.cart_state
     cart_count_product?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27685,7 +27519,7 @@ export namespace Prisma {
   }
 
   export type CartUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    cart_id?: StringFieldUpdateOperationsInput | string
     cart_state?: Enumcart_stateFieldUpdateOperationsInput | $Enums.cart_state
     cart_count_product?: IntFieldUpdateOperationsInput | number
     cart_user_id?: StringFieldUpdateOperationsInput | string
@@ -27741,43 +27575,43 @@ export namespace Prisma {
   }
 
   export type CategoryCreateInput = {
-    id?: string
+    cate_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type CategoryUncheckedCreateInput = {
-    id?: string
+    cate_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type CategoryUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    cate_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CategoryUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    cate_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CategoryCreateManyInput = {
-    id?: string
+    cate_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type CategoryUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    cate_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CategoryUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    cate_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -27865,127 +27699,127 @@ export namespace Prisma {
   }
 
   export type DiscountCreateInput = {
-    id?: string
+    discount_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type DiscountUncheckedCreateInput = {
-    id?: string
+    discount_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type DiscountUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    discount_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DiscountUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    discount_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DiscountCreateManyInput = {
-    id?: string
+    discount_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type DiscountUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    discount_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type DiscountUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    discount_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NotificationCreateInput = {
-    id?: string
+    noti_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type NotificationUncheckedCreateInput = {
-    id?: string
+    noti_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type NotificationUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    noti_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NotificationUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    noti_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NotificationCreateManyInput = {
-    id?: string
+    noti_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type NotificationUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    noti_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type NotificationUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    noti_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderCreateInput = {
-    id?: string
+    order_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type OrderUncheckedCreateInput = {
-    id?: string
+    order_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type OrderUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    order_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    order_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderCreateManyInput = {
-    id?: string
+    order_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type OrderUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    order_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    order_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -28061,77 +27895,49 @@ export namespace Prisma {
   }
 
   export type PaymentCreateInput = {
-    id?: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed?: boolean
+    payment_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type PaymentUncheckedCreateInput = {
-    id?: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed?: boolean
+    payment_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type PaymentUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    payment_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PaymentUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    payment_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PaymentCreateManyInput = {
-    id?: string
-    username: string
-    password: string
-    email: string
-    emailConfirmed?: boolean
+    payment_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type PaymentUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    payment_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type PaymentUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    username?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    emailConfirmed?: BoolFieldUpdateOperationsInput | boolean
+    payment_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ProductCreateInput = {
-    id?: string
+    product_id?: string
     product_name: string
     product_thumb: string
     product_description: string
@@ -28152,7 +27958,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedCreateInput = {
-    id?: string
+    product_id?: string
     product_name: string
     product_thumb: string
     product_description: string
@@ -28173,7 +27979,7 @@ export namespace Prisma {
   }
 
   export type ProductUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
     product_name?: StringFieldUpdateOperationsInput | string
     product_thumb?: StringFieldUpdateOperationsInput | string
     product_description?: StringFieldUpdateOperationsInput | string
@@ -28194,7 +28000,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
     product_name?: StringFieldUpdateOperationsInput | string
     product_thumb?: StringFieldUpdateOperationsInput | string
     product_description?: StringFieldUpdateOperationsInput | string
@@ -28215,7 +28021,7 @@ export namespace Prisma {
   }
 
   export type ProductCreateManyInput = {
-    id?: string
+    product_id?: string
     product_name: string
     product_thumb: string
     product_description: string
@@ -28234,7 +28040,7 @@ export namespace Prisma {
   }
 
   export type ProductUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
     product_name?: StringFieldUpdateOperationsInput | string
     product_thumb?: StringFieldUpdateOperationsInput | string
     product_description?: StringFieldUpdateOperationsInput | string
@@ -28253,7 +28059,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
     product_name?: StringFieldUpdateOperationsInput | string
     product_thumb?: StringFieldUpdateOperationsInput | string
     product_description?: StringFieldUpdateOperationsInput | string
@@ -28282,7 +28088,7 @@ export namespace Prisma {
   }
 
   export type RoleUncheckedCreateInput = {
-    id?: number
+    role_id?: number
     role_name?: $Enums.role_name
     role_slug: string
     role_status?: $Enums.role_status
@@ -28303,7 +28109,7 @@ export namespace Prisma {
   }
 
   export type RoleUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    role_id?: IntFieldUpdateOperationsInput | number
     role_name?: Enumrole_nameFieldUpdateOperationsInput | $Enums.role_name
     role_slug?: StringFieldUpdateOperationsInput | string
     role_status?: Enumrole_statusFieldUpdateOperationsInput | $Enums.role_status
@@ -28314,7 +28120,7 @@ export namespace Prisma {
   }
 
   export type RoleCreateManyInput = {
-    id?: number
+    role_id?: number
     role_name?: $Enums.role_name
     role_slug: string
     role_status?: $Enums.role_status
@@ -28331,7 +28137,7 @@ export namespace Prisma {
   }
 
   export type RoleUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    role_id?: IntFieldUpdateOperationsInput | number
     role_name?: Enumrole_nameFieldUpdateOperationsInput | $Enums.role_name
     role_slug?: StringFieldUpdateOperationsInput | string
     role_status?: Enumrole_statusFieldUpdateOperationsInput | $Enums.role_status
@@ -28388,49 +28194,49 @@ export namespace Prisma {
   }
 
   export type ShippingCreateInput = {
-    id?: string
+    shipping_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type ShippingUncheckedCreateInput = {
-    id?: string
+    shipping_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type ShippingUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    shipping_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ShippingUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    shipping_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ShippingCreateManyInput = {
-    id?: string
+    shipping_id?: string
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type ShippingUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    shipping_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ShippingUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    shipping_id?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ShopCreateInput = {
-    user_id: string
+    shop_id?: string
     shop_name: string
     shop_password: string
     shop_email: string
@@ -28442,7 +28248,7 @@ export namespace Prisma {
   }
 
   export type ShopUncheckedCreateInput = {
-    user_id: string
+    shop_id?: string
     shop_name: string
     shop_password: string
     shop_email: string
@@ -28454,7 +28260,7 @@ export namespace Prisma {
   }
 
   export type ShopUpdateInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
+    shop_id?: StringFieldUpdateOperationsInput | string
     shop_name?: StringFieldUpdateOperationsInput | string
     shop_password?: StringFieldUpdateOperationsInput | string
     shop_email?: StringFieldUpdateOperationsInput | string
@@ -28466,7 +28272,7 @@ export namespace Prisma {
   }
 
   export type ShopUncheckedUpdateInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
+    shop_id?: StringFieldUpdateOperationsInput | string
     shop_name?: StringFieldUpdateOperationsInput | string
     shop_password?: StringFieldUpdateOperationsInput | string
     shop_email?: StringFieldUpdateOperationsInput | string
@@ -28478,7 +28284,7 @@ export namespace Prisma {
   }
 
   export type ShopCreateManyInput = {
-    user_id: string
+    shop_id?: string
     shop_name: string
     shop_password: string
     shop_email: string
@@ -28490,7 +28296,7 @@ export namespace Prisma {
   }
 
   export type ShopUpdateManyMutationInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
+    shop_id?: StringFieldUpdateOperationsInput | string
     shop_name?: StringFieldUpdateOperationsInput | string
     shop_password?: StringFieldUpdateOperationsInput | string
     shop_email?: StringFieldUpdateOperationsInput | string
@@ -28502,7 +28308,7 @@ export namespace Prisma {
   }
 
   export type ShopUncheckedUpdateManyInput = {
-    user_id?: StringFieldUpdateOperationsInput | string
+    shop_id?: StringFieldUpdateOperationsInput | string
     shop_name?: StringFieldUpdateOperationsInput | string
     shop_password?: StringFieldUpdateOperationsInput | string
     shop_email?: StringFieldUpdateOperationsInput | string
@@ -28514,83 +28320,84 @@ export namespace Prisma {
   }
 
   export type TokenCreateInput = {
-    id?: string
-    public_key?: string | null
-    private_key?: string | null
-    refresh_token?: string | null
+    token_id?: string
+    user_id: string
+    public_key: string
+    private_key: string
+    refresh_token: string
     refresh_token_used?: TokenCreaterefresh_token_usedInput | string[]
     created_at?: Date | string
     updated_at?: Date | string
-    user: UserCreateNestedOneWithoutTokenInput
   }
 
   export type TokenUncheckedCreateInput = {
-    id?: string
+    token_id?: string
     user_id: string
-    public_key?: string | null
-    private_key?: string | null
-    refresh_token?: string | null
+    public_key: string
+    private_key: string
+    refresh_token: string
     refresh_token_used?: TokenCreaterefresh_token_usedInput | string[]
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type TokenUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    public_key?: NullableStringFieldUpdateOperationsInput | string | null
-    private_key?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    token_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    public_key?: StringFieldUpdateOperationsInput | string
+    private_key?: StringFieldUpdateOperationsInput | string
+    refresh_token?: StringFieldUpdateOperationsInput | string
     refresh_token_used?: TokenUpdaterefresh_token_usedInput | string[]
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    user?: UserUpdateOneRequiredWithoutTokenNestedInput
   }
 
   export type TokenUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    token_id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
-    public_key?: NullableStringFieldUpdateOperationsInput | string | null
-    private_key?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    public_key?: StringFieldUpdateOperationsInput | string
+    private_key?: StringFieldUpdateOperationsInput | string
+    refresh_token?: StringFieldUpdateOperationsInput | string
     refresh_token_used?: TokenUpdaterefresh_token_usedInput | string[]
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TokenCreateManyInput = {
-    id?: string
+    token_id?: string
     user_id: string
-    public_key?: string | null
-    private_key?: string | null
-    refresh_token?: string | null
+    public_key: string
+    private_key: string
+    refresh_token: string
     refresh_token_used?: TokenCreaterefresh_token_usedInput | string[]
     created_at?: Date | string
     updated_at?: Date | string
   }
 
   export type TokenUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    public_key?: NullableStringFieldUpdateOperationsInput | string | null
-    private_key?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    token_id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
+    public_key?: StringFieldUpdateOperationsInput | string
+    private_key?: StringFieldUpdateOperationsInput | string
+    refresh_token?: StringFieldUpdateOperationsInput | string
     refresh_token_used?: TokenUpdaterefresh_token_usedInput | string[]
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type TokenUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    token_id?: StringFieldUpdateOperationsInput | string
     user_id?: StringFieldUpdateOperationsInput | string
-    public_key?: NullableStringFieldUpdateOperationsInput | string | null
-    private_key?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
+    public_key?: StringFieldUpdateOperationsInput | string
+    private_key?: StringFieldUpdateOperationsInput | string
+    refresh_token?: StringFieldUpdateOperationsInput | string
     refresh_token_used?: TokenUpdaterefresh_token_usedInput | string[]
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCreateInput = {
-    id?: string
+    user_id?: string
     user_name: string
     user_full_name: string
     user_slug: string
@@ -28604,13 +28411,12 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     role: RoleCreateNestedOneWithoutUserInput
-    Token?: TokenCreateNestedManyWithoutUserInput
     Comment?: CommentCreateNestedManyWithoutUserInput
     Cart?: CartCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
-    id?: string
+    user_id?: string
     user_name: string
     user_full_name: string
     user_slug: string
@@ -28624,13 +28430,12 @@ export namespace Prisma {
     user_role: number
     created_at?: Date | string
     updated_at?: Date | string
-    Token?: TokenUncheckedCreateNestedManyWithoutUserInput
     Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
     Cart?: CartUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_full_name?: StringFieldUpdateOperationsInput | string
     user_slug?: StringFieldUpdateOperationsInput | string
@@ -28644,13 +28449,12 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUserNestedInput
-    Token?: TokenUpdateManyWithoutUserNestedInput
     Comment?: CommentUpdateManyWithoutUserNestedInput
     Cart?: CartUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_full_name?: StringFieldUpdateOperationsInput | string
     user_slug?: StringFieldUpdateOperationsInput | string
@@ -28664,13 +28468,12 @@ export namespace Prisma {
     user_role?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    Token?: TokenUncheckedUpdateManyWithoutUserNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
     Cart?: CartUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
-    id?: string
+    user_id?: string
     user_name: string
     user_full_name: string
     user_slug: string
@@ -28687,7 +28490,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_full_name?: StringFieldUpdateOperationsInput | string
     user_slug?: StringFieldUpdateOperationsInput | string
@@ -28703,7 +28506,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_full_name?: StringFieldUpdateOperationsInput | string
     user_slug?: StringFieldUpdateOperationsInput | string
@@ -29171,7 +28974,7 @@ export namespace Prisma {
   }
 
   export type CartCountOrderByAggregateInput = {
-    id?: SortOrder
+    cart_id?: SortOrder
     cart_state?: SortOrder
     cart_count_product?: SortOrder
     cart_user_id?: SortOrder
@@ -29184,7 +28987,7 @@ export namespace Prisma {
   }
 
   export type CartMaxOrderByAggregateInput = {
-    id?: SortOrder
+    cart_id?: SortOrder
     cart_state?: SortOrder
     cart_count_product?: SortOrder
     cart_user_id?: SortOrder
@@ -29193,7 +28996,7 @@ export namespace Prisma {
   }
 
   export type CartMinOrderByAggregateInput = {
-    id?: SortOrder
+    cart_id?: SortOrder
     cart_state?: SortOrder
     cart_count_product?: SortOrder
     cart_user_id?: SortOrder
@@ -29252,19 +29055,19 @@ export namespace Prisma {
   }
 
   export type CategoryCountOrderByAggregateInput = {
-    id?: SortOrder
+    cate_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type CategoryMaxOrderByAggregateInput = {
-    id?: SortOrder
+    cate_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type CategoryMinOrderByAggregateInput = {
-    id?: SortOrder
+    cate_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -29321,55 +29124,55 @@ export namespace Prisma {
   }
 
   export type DiscountCountOrderByAggregateInput = {
-    id?: SortOrder
+    discount_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type DiscountMaxOrderByAggregateInput = {
-    id?: SortOrder
+    discount_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type DiscountMinOrderByAggregateInput = {
-    id?: SortOrder
+    discount_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type NotificationCountOrderByAggregateInput = {
-    id?: SortOrder
+    noti_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type NotificationMaxOrderByAggregateInput = {
-    id?: SortOrder
+    noti_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type NotificationMinOrderByAggregateInput = {
-    id?: SortOrder
+    noti_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type OrderCountOrderByAggregateInput = {
-    id?: SortOrder
+    order_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type OrderMaxOrderByAggregateInput = {
-    id?: SortOrder
+    order_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type OrderMinOrderByAggregateInput = {
-    id?: SortOrder
+    order_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -29405,31 +29208,19 @@ export namespace Prisma {
   }
 
   export type PaymentCountOrderByAggregateInput = {
-    id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    payment_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type PaymentMaxOrderByAggregateInput = {
-    id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    payment_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type PaymentMinOrderByAggregateInput = {
-    id?: SortOrder
-    username?: SortOrder
-    password?: SortOrder
-    email?: SortOrder
-    emailConfirmed?: SortOrder
+    payment_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -29463,7 +29254,7 @@ export namespace Prisma {
   }
 
   export type ProductCountOrderByAggregateInput = {
-    id?: SortOrder
+    product_id?: SortOrder
     product_name?: SortOrder
     product_thumb?: SortOrder
     product_description?: SortOrder
@@ -29488,7 +29279,7 @@ export namespace Prisma {
   }
 
   export type ProductMaxOrderByAggregateInput = {
-    id?: SortOrder
+    product_id?: SortOrder
     product_name?: SortOrder
     product_thumb?: SortOrder
     product_description?: SortOrder
@@ -29507,7 +29298,7 @@ export namespace Prisma {
   }
 
   export type ProductMinOrderByAggregateInput = {
-    id?: SortOrder
+    product_id?: SortOrder
     product_name?: SortOrder
     product_thumb?: SortOrder
     product_description?: SortOrder
@@ -29592,7 +29383,7 @@ export namespace Prisma {
   }
 
   export type RoleCountOrderByAggregateInput = {
-    id?: SortOrder
+    role_id?: SortOrder
     role_name?: SortOrder
     role_slug?: SortOrder
     role_status?: SortOrder
@@ -29601,11 +29392,11 @@ export namespace Prisma {
   }
 
   export type RoleAvgOrderByAggregateInput = {
-    id?: SortOrder
+    role_id?: SortOrder
   }
 
   export type RoleMaxOrderByAggregateInput = {
-    id?: SortOrder
+    role_id?: SortOrder
     role_name?: SortOrder
     role_slug?: SortOrder
     role_status?: SortOrder
@@ -29614,7 +29405,7 @@ export namespace Prisma {
   }
 
   export type RoleMinOrderByAggregateInput = {
-    id?: SortOrder
+    role_id?: SortOrder
     role_name?: SortOrder
     role_slug?: SortOrder
     role_status?: SortOrder
@@ -29623,7 +29414,7 @@ export namespace Prisma {
   }
 
   export type RoleSumOrderByAggregateInput = {
-    id?: SortOrder
+    role_id?: SortOrder
   }
 
   export type Enumrole_nameWithAggregatesFilter<$PrismaModel = never> = {
@@ -29708,19 +29499,19 @@ export namespace Prisma {
   }
 
   export type ShippingCountOrderByAggregateInput = {
-    id?: SortOrder
+    shipping_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type ShippingMaxOrderByAggregateInput = {
-    id?: SortOrder
+    shipping_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
 
   export type ShippingMinOrderByAggregateInput = {
-    id?: SortOrder
+    shipping_id?: SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
   }
@@ -29733,7 +29524,7 @@ export namespace Prisma {
   }
 
   export type ShopCountOrderByAggregateInput = {
-    user_id?: SortOrder
+    shop_id?: SortOrder
     shop_name?: SortOrder
     shop_password?: SortOrder
     shop_email?: SortOrder
@@ -29745,7 +29536,7 @@ export namespace Prisma {
   }
 
   export type ShopMaxOrderByAggregateInput = {
-    user_id?: SortOrder
+    shop_id?: SortOrder
     shop_name?: SortOrder
     shop_password?: SortOrder
     shop_email?: SortOrder
@@ -29757,7 +29548,7 @@ export namespace Prisma {
   }
 
   export type ShopMinOrderByAggregateInput = {
-    user_id?: SortOrder
+    shop_id?: SortOrder
     shop_name?: SortOrder
     shop_password?: SortOrder
     shop_email?: SortOrder
@@ -29779,7 +29570,7 @@ export namespace Prisma {
   }
 
   export type TokenCountOrderByAggregateInput = {
-    id?: SortOrder
+    token_id?: SortOrder
     user_id?: SortOrder
     public_key?: SortOrder
     private_key?: SortOrder
@@ -29790,7 +29581,7 @@ export namespace Prisma {
   }
 
   export type TokenMaxOrderByAggregateInput = {
-    id?: SortOrder
+    token_id?: SortOrder
     user_id?: SortOrder
     public_key?: SortOrder
     private_key?: SortOrder
@@ -29800,7 +29591,7 @@ export namespace Prisma {
   }
 
   export type TokenMinOrderByAggregateInput = {
-    id?: SortOrder
+    token_id?: SortOrder
     user_id?: SortOrder
     public_key?: SortOrder
     private_key?: SortOrder
@@ -29821,20 +29612,10 @@ export namespace Prisma {
     isNot?: RoleWhereInput
   }
 
-  export type TokenListRelationFilter = {
-    every?: TokenWhereInput
-    some?: TokenWhereInput
-    none?: TokenWhereInput
-  }
-
   export type CartListRelationFilter = {
     every?: CartWhereInput
     some?: CartWhereInput
     none?: CartWhereInput
-  }
-
-  export type TokenOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type CartOrderByRelationAggregateInput = {
@@ -29842,7 +29623,7 @@ export namespace Prisma {
   }
 
   export type UserCountOrderByAggregateInput = {
-    id?: SortOrder
+    user_id?: SortOrder
     user_name?: SortOrder
     user_full_name?: SortOrder
     user_slug?: SortOrder
@@ -29863,7 +29644,7 @@ export namespace Prisma {
   }
 
   export type UserMaxOrderByAggregateInput = {
-    id?: SortOrder
+    user_id?: SortOrder
     user_name?: SortOrder
     user_full_name?: SortOrder
     user_slug?: SortOrder
@@ -29880,7 +29661,7 @@ export namespace Prisma {
   }
 
   export type UserMinOrderByAggregateInput = {
-    id?: SortOrder
+    user_id?: SortOrder
     user_name?: SortOrder
     user_full_name?: SortOrder
     user_slug?: SortOrder
@@ -30615,36 +30396,15 @@ export namespace Prisma {
     set: string[]
   }
 
-  export type UserCreateNestedOneWithoutTokenInput = {
-    create?: XOR<UserCreateWithoutTokenInput, UserUncheckedCreateWithoutTokenInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTokenInput
-    connect?: UserWhereUniqueInput
-  }
-
   export type TokenUpdaterefresh_token_usedInput = {
     set?: string[]
     push?: string | string[]
-  }
-
-  export type UserUpdateOneRequiredWithoutTokenNestedInput = {
-    create?: XOR<UserCreateWithoutTokenInput, UserUncheckedCreateWithoutTokenInput>
-    connectOrCreate?: UserCreateOrConnectWithoutTokenInput
-    upsert?: UserUpsertWithoutTokenInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutTokenInput, UserUpdateWithoutTokenInput>, UserUncheckedUpdateWithoutTokenInput>
   }
 
   export type RoleCreateNestedOneWithoutUserInput = {
     create?: XOR<RoleCreateWithoutUserInput, RoleUncheckedCreateWithoutUserInput>
     connectOrCreate?: RoleCreateOrConnectWithoutUserInput
     connect?: RoleWhereUniqueInput
-  }
-
-  export type TokenCreateNestedManyWithoutUserInput = {
-    create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput> | TokenCreateWithoutUserInput[] | TokenUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TokenCreateOrConnectWithoutUserInput | TokenCreateOrConnectWithoutUserInput[]
-    createMany?: TokenCreateManyUserInputEnvelope
-    connect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
   }
 
   export type CommentCreateNestedManyWithoutUserInput = {
@@ -30659,13 +30419,6 @@ export namespace Prisma {
     connectOrCreate?: CartCreateOrConnectWithoutUserInput | CartCreateOrConnectWithoutUserInput[]
     createMany?: CartCreateManyUserInputEnvelope
     connect?: CartWhereUniqueInput | CartWhereUniqueInput[]
-  }
-
-  export type TokenUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput> | TokenCreateWithoutUserInput[] | TokenUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TokenCreateOrConnectWithoutUserInput | TokenCreateOrConnectWithoutUserInput[]
-    createMany?: TokenCreateManyUserInputEnvelope
-    connect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
   }
 
   export type CommentUncheckedCreateNestedManyWithoutUserInput = {
@@ -30694,20 +30447,6 @@ export namespace Prisma {
     update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutUserInput, RoleUpdateWithoutUserInput>, RoleUncheckedUpdateWithoutUserInput>
   }
 
-  export type TokenUpdateManyWithoutUserNestedInput = {
-    create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput> | TokenCreateWithoutUserInput[] | TokenUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TokenCreateOrConnectWithoutUserInput | TokenCreateOrConnectWithoutUserInput[]
-    upsert?: TokenUpsertWithWhereUniqueWithoutUserInput | TokenUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: TokenCreateManyUserInputEnvelope
-    set?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
-    disconnect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
-    delete?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
-    connect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
-    update?: TokenUpdateWithWhereUniqueWithoutUserInput | TokenUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: TokenUpdateManyWithWhereWithoutUserInput | TokenUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: TokenScalarWhereInput | TokenScalarWhereInput[]
-  }
-
   export type CommentUpdateManyWithoutUserNestedInput = {
     create?: XOR<CommentCreateWithoutUserInput, CommentUncheckedCreateWithoutUserInput> | CommentCreateWithoutUserInput[] | CommentUncheckedCreateWithoutUserInput[]
     connectOrCreate?: CommentCreateOrConnectWithoutUserInput | CommentCreateOrConnectWithoutUserInput[]
@@ -30734,20 +30473,6 @@ export namespace Prisma {
     update?: CartUpdateWithWhereUniqueWithoutUserInput | CartUpdateWithWhereUniqueWithoutUserInput[]
     updateMany?: CartUpdateManyWithWhereWithoutUserInput | CartUpdateManyWithWhereWithoutUserInput[]
     deleteMany?: CartScalarWhereInput | CartScalarWhereInput[]
-  }
-
-  export type TokenUncheckedUpdateManyWithoutUserNestedInput = {
-    create?: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput> | TokenCreateWithoutUserInput[] | TokenUncheckedCreateWithoutUserInput[]
-    connectOrCreate?: TokenCreateOrConnectWithoutUserInput | TokenCreateOrConnectWithoutUserInput[]
-    upsert?: TokenUpsertWithWhereUniqueWithoutUserInput | TokenUpsertWithWhereUniqueWithoutUserInput[]
-    createMany?: TokenCreateManyUserInputEnvelope
-    set?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
-    disconnect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
-    delete?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
-    connect?: TokenWhereUniqueInput | TokenWhereUniqueInput[]
-    update?: TokenUpdateWithWhereUniqueWithoutUserInput | TokenUpdateWithWhereUniqueWithoutUserInput[]
-    updateMany?: TokenUpdateManyWithWhereWithoutUserInput | TokenUpdateManyWithWhereWithoutUserInput[]
-    deleteMany?: TokenScalarWhereInput | TokenScalarWhereInput[]
   }
 
   export type CommentUncheckedUpdateManyWithoutUserNestedInput = {
@@ -31773,7 +31498,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutCartInput = {
-    id?: string
+    user_id?: string
     user_name: string
     user_full_name: string
     user_slug: string
@@ -31787,12 +31512,11 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     role: RoleCreateNestedOneWithoutUserInput
-    Token?: TokenCreateNestedManyWithoutUserInput
     Comment?: CommentCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCartInput = {
-    id?: string
+    user_id?: string
     user_name: string
     user_full_name: string
     user_slug: string
@@ -31806,7 +31530,6 @@ export namespace Prisma {
     user_role: number
     created_at?: Date | string
     updated_at?: Date | string
-    Token?: TokenUncheckedCreateNestedManyWithoutUserInput
     Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -31853,7 +31576,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutCartInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_full_name?: StringFieldUpdateOperationsInput | string
     user_slug?: StringFieldUpdateOperationsInput | string
@@ -31867,12 +31590,11 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUserNestedInput
-    Token?: TokenUpdateManyWithoutUserNestedInput
     Comment?: CommentUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCartInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_full_name?: StringFieldUpdateOperationsInput | string
     user_slug?: StringFieldUpdateOperationsInput | string
@@ -31886,12 +31608,11 @@ export namespace Prisma {
     user_role?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    Token?: TokenUncheckedUpdateManyWithoutUserNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type CartCreateWithoutCart_productsInput = {
-    id?: string
+    cart_id?: string
     cart_state?: $Enums.cart_state
     cart_count_product?: number
     created_at?: Date | string
@@ -31900,7 +31621,7 @@ export namespace Prisma {
   }
 
   export type CartUncheckedCreateWithoutCart_productsInput = {
-    id?: string
+    cart_id?: string
     cart_state?: $Enums.cart_state
     cart_count_product?: number
     cart_user_id: string
@@ -31914,7 +31635,7 @@ export namespace Prisma {
   }
 
   export type ProductCreateWithoutCartProductInput = {
-    id?: string
+    product_id?: string
     product_name: string
     product_thumb: string
     product_description: string
@@ -31934,7 +31655,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedCreateWithoutCartProductInput = {
-    id?: string
+    product_id?: string
     product_name: string
     product_thumb: string
     product_description: string
@@ -31970,7 +31691,7 @@ export namespace Prisma {
   }
 
   export type CartUpdateWithoutCart_productsInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    cart_id?: StringFieldUpdateOperationsInput | string
     cart_state?: Enumcart_stateFieldUpdateOperationsInput | $Enums.cart_state
     cart_count_product?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31979,7 +31700,7 @@ export namespace Prisma {
   }
 
   export type CartUncheckedUpdateWithoutCart_productsInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    cart_id?: StringFieldUpdateOperationsInput | string
     cart_state?: Enumcart_stateFieldUpdateOperationsInput | $Enums.cart_state
     cart_count_product?: IntFieldUpdateOperationsInput | number
     cart_user_id?: StringFieldUpdateOperationsInput | string
@@ -31999,7 +31720,7 @@ export namespace Prisma {
   }
 
   export type ProductUpdateWithoutCartProductInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
     product_name?: StringFieldUpdateOperationsInput | string
     product_thumb?: StringFieldUpdateOperationsInput | string
     product_description?: StringFieldUpdateOperationsInput | string
@@ -32019,7 +31740,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedUpdateWithoutCartProductInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
     product_name?: StringFieldUpdateOperationsInput | string
     product_thumb?: StringFieldUpdateOperationsInput | string
     product_description?: StringFieldUpdateOperationsInput | string
@@ -32039,7 +31760,7 @@ export namespace Prisma {
   }
 
   export type ProductCreateWithoutCommentInput = {
-    id?: string
+    product_id?: string
     product_name: string
     product_thumb: string
     product_description: string
@@ -32059,7 +31780,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedCreateWithoutCommentInput = {
-    id?: string
+    product_id?: string
     product_name: string
     product_thumb: string
     product_description: string
@@ -32084,7 +31805,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutCommentInput = {
-    id?: string
+    user_id?: string
     user_name: string
     user_full_name: string
     user_slug: string
@@ -32098,12 +31819,11 @@ export namespace Prisma {
     created_at?: Date | string
     updated_at?: Date | string
     role: RoleCreateNestedOneWithoutUserInput
-    Token?: TokenCreateNestedManyWithoutUserInput
     Cart?: CartCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutCommentInput = {
-    id?: string
+    user_id?: string
     user_name: string
     user_full_name: string
     user_slug: string
@@ -32117,7 +31837,6 @@ export namespace Prisma {
     user_role: number
     created_at?: Date | string
     updated_at?: Date | string
-    Token?: TokenUncheckedCreateNestedManyWithoutUserInput
     Cart?: CartUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -32138,7 +31857,7 @@ export namespace Prisma {
   }
 
   export type ProductUpdateWithoutCommentInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
     product_name?: StringFieldUpdateOperationsInput | string
     product_thumb?: StringFieldUpdateOperationsInput | string
     product_description?: StringFieldUpdateOperationsInput | string
@@ -32158,7 +31877,7 @@ export namespace Prisma {
   }
 
   export type ProductUncheckedUpdateWithoutCommentInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    product_id?: StringFieldUpdateOperationsInput | string
     product_name?: StringFieldUpdateOperationsInput | string
     product_thumb?: StringFieldUpdateOperationsInput | string
     product_description?: StringFieldUpdateOperationsInput | string
@@ -32189,7 +31908,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutCommentInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_full_name?: StringFieldUpdateOperationsInput | string
     user_slug?: StringFieldUpdateOperationsInput | string
@@ -32203,12 +31922,11 @@ export namespace Prisma {
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role?: RoleUpdateOneRequiredWithoutUserNestedInput
-    Token?: TokenUpdateManyWithoutUserNestedInput
     Cart?: CartUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutCommentInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_full_name?: StringFieldUpdateOperationsInput | string
     user_slug?: StringFieldUpdateOperationsInput | string
@@ -32222,7 +31940,6 @@ export namespace Prisma {
     user_role?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    Token?: TokenUncheckedUpdateManyWithoutUserNestedInput
     Cart?: CartUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -32350,7 +32067,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutRoleInput = {
-    id?: string
+    user_id?: string
     user_name: string
     user_full_name: string
     user_slug: string
@@ -32363,13 +32080,12 @@ export namespace Prisma {
     user_status?: $Enums.UserStatus
     created_at?: Date | string
     updated_at?: Date | string
-    Token?: TokenCreateNestedManyWithoutUserInput
     Comment?: CommentCreateNestedManyWithoutUserInput
     Cart?: CartCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRoleInput = {
-    id?: string
+    user_id?: string
     user_name: string
     user_full_name: string
     user_slug: string
@@ -32382,7 +32098,6 @@ export namespace Prisma {
     user_status?: $Enums.UserStatus
     created_at?: Date | string
     updated_at?: Date | string
-    Token?: TokenUncheckedCreateNestedManyWithoutUserInput
     Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
     Cart?: CartUncheckedCreateNestedManyWithoutUserInput
   }
@@ -32443,7 +32158,7 @@ export namespace Prisma {
     AND?: UserScalarWhereInput | UserScalarWhereInput[]
     OR?: UserScalarWhereInput[]
     NOT?: UserScalarWhereInput | UserScalarWhereInput[]
-    id?: StringFilter<"User"> | string
+    user_id?: StringFilter<"User"> | string
     user_name?: StringFilter<"User"> | string
     user_full_name?: StringFilter<"User"> | string
     user_slug?: StringFilter<"User"> | string
@@ -32469,7 +32184,7 @@ export namespace Prisma {
   }
 
   export type RoleUncheckedCreateWithoutRole_grantsInput = {
-    id?: number
+    role_id?: number
     role_name?: $Enums.role_name
     role_slug: string
     role_status?: $Enums.role_status
@@ -32504,105 +32219,13 @@ export namespace Prisma {
   }
 
   export type RoleUncheckedUpdateWithoutRole_grantsInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    role_id?: IntFieldUpdateOperationsInput | number
     role_name?: Enumrole_nameFieldUpdateOperationsInput | $Enums.role_name
     role_slug?: StringFieldUpdateOperationsInput | string
     role_status?: Enumrole_statusFieldUpdateOperationsInput | $Enums.role_status
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     User?: UserUncheckedUpdateManyWithoutRoleNestedInput
-  }
-
-  export type UserCreateWithoutTokenInput = {
-    id?: string
-    user_name: string
-    user_full_name: string
-    user_slug: string
-    user_password: string
-    user_email: string
-    user_email_confirmed?: boolean
-    user_salt?: string | null
-    user_phone?: string | null
-    user_sex?: string | null
-    user_status?: $Enums.UserStatus
-    created_at?: Date | string
-    updated_at?: Date | string
-    role: RoleCreateNestedOneWithoutUserInput
-    Comment?: CommentCreateNestedManyWithoutUserInput
-    Cart?: CartCreateNestedManyWithoutUserInput
-  }
-
-  export type UserUncheckedCreateWithoutTokenInput = {
-    id?: string
-    user_name: string
-    user_full_name: string
-    user_slug: string
-    user_password: string
-    user_email: string
-    user_email_confirmed?: boolean
-    user_salt?: string | null
-    user_phone?: string | null
-    user_sex?: string | null
-    user_status?: $Enums.UserStatus
-    user_role: number
-    created_at?: Date | string
-    updated_at?: Date | string
-    Comment?: CommentUncheckedCreateNestedManyWithoutUserInput
-    Cart?: CartUncheckedCreateNestedManyWithoutUserInput
-  }
-
-  export type UserCreateOrConnectWithoutTokenInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutTokenInput, UserUncheckedCreateWithoutTokenInput>
-  }
-
-  export type UserUpsertWithoutTokenInput = {
-    update: XOR<UserUpdateWithoutTokenInput, UserUncheckedUpdateWithoutTokenInput>
-    create: XOR<UserCreateWithoutTokenInput, UserUncheckedCreateWithoutTokenInput>
-    where?: UserWhereInput
-  }
-
-  export type UserUpdateToOneWithWhereWithoutTokenInput = {
-    where?: UserWhereInput
-    data: XOR<UserUpdateWithoutTokenInput, UserUncheckedUpdateWithoutTokenInput>
-  }
-
-  export type UserUpdateWithoutTokenInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    user_name?: StringFieldUpdateOperationsInput | string
-    user_full_name?: StringFieldUpdateOperationsInput | string
-    user_slug?: StringFieldUpdateOperationsInput | string
-    user_password?: StringFieldUpdateOperationsInput | string
-    user_email?: StringFieldUpdateOperationsInput | string
-    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
-    user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
-    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
-    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    role?: RoleUpdateOneRequiredWithoutUserNestedInput
-    Comment?: CommentUpdateManyWithoutUserNestedInput
-    Cart?: CartUpdateManyWithoutUserNestedInput
-  }
-
-  export type UserUncheckedUpdateWithoutTokenInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    user_name?: StringFieldUpdateOperationsInput | string
-    user_full_name?: StringFieldUpdateOperationsInput | string
-    user_slug?: StringFieldUpdateOperationsInput | string
-    user_password?: StringFieldUpdateOperationsInput | string
-    user_email?: StringFieldUpdateOperationsInput | string
-    user_email_confirmed?: BoolFieldUpdateOperationsInput | boolean
-    user_salt?: NullableStringFieldUpdateOperationsInput | string | null
-    user_phone?: NullableStringFieldUpdateOperationsInput | string | null
-    user_sex?: NullableStringFieldUpdateOperationsInput | string | null
-    user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
-    user_role?: IntFieldUpdateOperationsInput | number
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
-    Cart?: CartUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type RoleCreateWithoutUserInput = {
@@ -32615,7 +32238,7 @@ export namespace Prisma {
   }
 
   export type RoleUncheckedCreateWithoutUserInput = {
-    id?: number
+    role_id?: number
     role_name?: $Enums.role_name
     role_slug: string
     role_status?: $Enums.role_status
@@ -32627,36 +32250,6 @@ export namespace Prisma {
   export type RoleCreateOrConnectWithoutUserInput = {
     where: RoleWhereUniqueInput
     create: XOR<RoleCreateWithoutUserInput, RoleUncheckedCreateWithoutUserInput>
-  }
-
-  export type TokenCreateWithoutUserInput = {
-    id?: string
-    public_key?: string | null
-    private_key?: string | null
-    refresh_token?: string | null
-    refresh_token_used?: TokenCreaterefresh_token_usedInput | string[]
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type TokenUncheckedCreateWithoutUserInput = {
-    id?: string
-    public_key?: string | null
-    private_key?: string | null
-    refresh_token?: string | null
-    refresh_token_used?: TokenCreaterefresh_token_usedInput | string[]
-    created_at?: Date | string
-    updated_at?: Date | string
-  }
-
-  export type TokenCreateOrConnectWithoutUserInput = {
-    where: TokenWhereUniqueInput
-    create: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput>
-  }
-
-  export type TokenCreateManyUserInputEnvelope = {
-    data: TokenCreateManyUserInput | TokenCreateManyUserInput[]
-    skipDuplicates?: boolean
   }
 
   export type CommentCreateWithoutUserInput = {
@@ -32692,7 +32285,7 @@ export namespace Prisma {
   }
 
   export type CartCreateWithoutUserInput = {
-    id?: string
+    cart_id?: string
     cart_state?: $Enums.cart_state
     cart_count_product?: number
     created_at?: Date | string
@@ -32701,7 +32294,7 @@ export namespace Prisma {
   }
 
   export type CartUncheckedCreateWithoutUserInput = {
-    id?: string
+    cart_id?: string
     cart_state?: $Enums.cart_state
     cart_count_product?: number
     created_at?: Date | string
@@ -32740,43 +32333,13 @@ export namespace Prisma {
   }
 
   export type RoleUncheckedUpdateWithoutUserInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    role_id?: IntFieldUpdateOperationsInput | number
     role_name?: Enumrole_nameFieldUpdateOperationsInput | $Enums.role_name
     role_slug?: StringFieldUpdateOperationsInput | string
     role_status?: Enumrole_statusFieldUpdateOperationsInput | $Enums.role_status
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
     role_grants?: GrantUncheckedUpdateManyWithoutRoleNestedInput
-  }
-
-  export type TokenUpsertWithWhereUniqueWithoutUserInput = {
-    where: TokenWhereUniqueInput
-    update: XOR<TokenUpdateWithoutUserInput, TokenUncheckedUpdateWithoutUserInput>
-    create: XOR<TokenCreateWithoutUserInput, TokenUncheckedCreateWithoutUserInput>
-  }
-
-  export type TokenUpdateWithWhereUniqueWithoutUserInput = {
-    where: TokenWhereUniqueInput
-    data: XOR<TokenUpdateWithoutUserInput, TokenUncheckedUpdateWithoutUserInput>
-  }
-
-  export type TokenUpdateManyWithWhereWithoutUserInput = {
-    where: TokenScalarWhereInput
-    data: XOR<TokenUpdateManyMutationInput, TokenUncheckedUpdateManyWithoutUserInput>
-  }
-
-  export type TokenScalarWhereInput = {
-    AND?: TokenScalarWhereInput | TokenScalarWhereInput[]
-    OR?: TokenScalarWhereInput[]
-    NOT?: TokenScalarWhereInput | TokenScalarWhereInput[]
-    id?: StringFilter<"Token"> | string
-    user_id?: StringFilter<"Token"> | string
-    public_key?: StringNullableFilter<"Token"> | string | null
-    private_key?: StringNullableFilter<"Token"> | string | null
-    refresh_token?: StringNullableFilter<"Token"> | string | null
-    refresh_token_used?: StringNullableListFilter<"Token">
-    created_at?: DateTimeFilter<"Token"> | Date | string
-    updated_at?: DateTimeFilter<"Token"> | Date | string
   }
 
   export type CommentUpsertWithWhereUniqueWithoutUserInput = {
@@ -32815,7 +32378,7 @@ export namespace Prisma {
     AND?: CartScalarWhereInput | CartScalarWhereInput[]
     OR?: CartScalarWhereInput[]
     NOT?: CartScalarWhereInput | CartScalarWhereInput[]
-    id?: StringFilter<"Cart"> | string
+    cart_id?: StringFilter<"Cart"> | string
     cart_state?: Enumcart_stateFilter<"Cart"> | $Enums.cart_state
     cart_count_product?: IntFilter<"Cart"> | number
     cart_user_id?: StringFilter<"Cart"> | string
@@ -33170,7 +32733,7 @@ export namespace Prisma {
   }
 
   export type UserCreateManyRoleInput = {
-    id?: string
+    user_id?: string
     user_name: string
     user_full_name: string
     user_slug: string
@@ -33204,7 +32767,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutRoleInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_full_name?: StringFieldUpdateOperationsInput | string
     user_slug?: StringFieldUpdateOperationsInput | string
@@ -33217,13 +32780,12 @@ export namespace Prisma {
     user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    Token?: TokenUpdateManyWithoutUserNestedInput
     Comment?: CommentUpdateManyWithoutUserNestedInput
     Cart?: CartUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRoleInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_full_name?: StringFieldUpdateOperationsInput | string
     user_slug?: StringFieldUpdateOperationsInput | string
@@ -33236,13 +32798,12 @@ export namespace Prisma {
     user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    Token?: TokenUncheckedUpdateManyWithoutUserNestedInput
     Comment?: CommentUncheckedUpdateManyWithoutUserNestedInput
     Cart?: CartUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutRoleInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    user_id?: StringFieldUpdateOperationsInput | string
     user_name?: StringFieldUpdateOperationsInput | string
     user_full_name?: StringFieldUpdateOperationsInput | string
     user_slug?: StringFieldUpdateOperationsInput | string
@@ -33255,16 +32816,6 @@ export namespace Prisma {
     user_status?: EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TokenCreateManyUserInput = {
-    id?: string
-    public_key?: string | null
-    private_key?: string | null
-    refresh_token?: string | null
-    refresh_token_used?: TokenCreaterefresh_token_usedInput | string[]
-    created_at?: Date | string
-    updated_at?: Date | string
   }
 
   export type CommentCreateManyUserInput = {
@@ -33279,41 +32830,11 @@ export namespace Prisma {
   }
 
   export type CartCreateManyUserInput = {
-    id?: string
+    cart_id?: string
     cart_state?: $Enums.cart_state
     cart_count_product?: number
     created_at?: Date | string
     updated_at?: Date | string
-  }
-
-  export type TokenUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    public_key?: NullableStringFieldUpdateOperationsInput | string | null
-    private_key?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_used?: TokenUpdaterefresh_token_usedInput | string[]
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TokenUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    public_key?: NullableStringFieldUpdateOperationsInput | string | null
-    private_key?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_used?: TokenUpdaterefresh_token_usedInput | string[]
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TokenUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    public_key?: NullableStringFieldUpdateOperationsInput | string | null
-    private_key?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token?: NullableStringFieldUpdateOperationsInput | string | null
-    refresh_token_used?: TokenUpdaterefresh_token_usedInput | string[]
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type CommentUpdateWithoutUserInput = {
@@ -33350,7 +32871,7 @@ export namespace Prisma {
   }
 
   export type CartUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    cart_id?: StringFieldUpdateOperationsInput | string
     cart_state?: Enumcart_stateFieldUpdateOperationsInput | $Enums.cart_state
     cart_count_product?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33359,7 +32880,7 @@ export namespace Prisma {
   }
 
   export type CartUncheckedUpdateWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    cart_id?: StringFieldUpdateOperationsInput | string
     cart_state?: Enumcart_stateFieldUpdateOperationsInput | $Enums.cart_state
     cart_count_product?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33368,7 +32889,7 @@ export namespace Prisma {
   }
 
   export type CartUncheckedUpdateManyWithoutUserInput = {
-    id?: StringFieldUpdateOperationsInput | string
+    cart_id?: StringFieldUpdateOperationsInput | string
     cart_state?: Enumcart_stateFieldUpdateOperationsInput | $Enums.cart_state
     cart_count_product?: IntFieldUpdateOperationsInput | number
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string

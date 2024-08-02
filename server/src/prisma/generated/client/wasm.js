@@ -185,7 +185,7 @@ exports.Prisma.ApiKeyScalarFieldEnum = {
 };
 
 exports.Prisma.CartScalarFieldEnum = {
-  id: 'id',
+  cart_id: 'cart_id',
   cart_state: 'cart_state',
   cart_count_product: 'cart_count_product',
   cart_user_id: 'cart_user_id',
@@ -201,7 +201,7 @@ exports.Prisma.CartProductScalarFieldEnum = {
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
-  id: 'id',
+  cate_id: 'cate_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
@@ -219,19 +219,19 @@ exports.Prisma.CommentScalarFieldEnum = {
 };
 
 exports.Prisma.DiscountScalarFieldEnum = {
-  id: 'id',
+  discount_id: 'discount_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
 
 exports.Prisma.NotificationScalarFieldEnum = {
-  id: 'id',
+  noti_id: 'noti_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
 
 exports.Prisma.OrderScalarFieldEnum = {
-  id: 'id',
+  order_id: 'order_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
@@ -247,17 +247,13 @@ exports.Prisma.OtpScalarFieldEnum = {
 };
 
 exports.Prisma.PaymentScalarFieldEnum = {
-  id: 'id',
-  username: 'username',
-  password: 'password',
-  email: 'email',
-  emailConfirmed: 'emailConfirmed',
+  payment_id: 'payment_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
 
 exports.Prisma.ProductScalarFieldEnum = {
-  id: 'id',
+  product_id: 'product_id',
   product_name: 'product_name',
   product_thumb: 'product_thumb',
   product_description: 'product_description',
@@ -276,7 +272,7 @@ exports.Prisma.ProductScalarFieldEnum = {
 };
 
 exports.Prisma.RoleScalarFieldEnum = {
-  id: 'id',
+  role_id: 'role_id',
   role_name: 'role_name',
   role_slug: 'role_slug',
   role_status: 'role_status',
@@ -292,13 +288,13 @@ exports.Prisma.GrantScalarFieldEnum = {
 };
 
 exports.Prisma.ShippingScalarFieldEnum = {
-  id: 'id',
+  shipping_id: 'shipping_id',
   created_at: 'created_at',
   updated_at: 'updated_at'
 };
 
 exports.Prisma.ShopScalarFieldEnum = {
-  user_id: 'user_id',
+  shop_id: 'shop_id',
   shop_name: 'shop_name',
   shop_password: 'shop_password',
   shop_email: 'shop_email',
@@ -310,7 +306,7 @@ exports.Prisma.ShopScalarFieldEnum = {
 };
 
 exports.Prisma.TokenScalarFieldEnum = {
-  id: 'id',
+  token_id: 'token_id',
   user_id: 'user_id',
   public_key: 'public_key',
   private_key: 'private_key',
@@ -321,7 +317,7 @@ exports.Prisma.TokenScalarFieldEnum = {
 };
 
 exports.Prisma.UserScalarFieldEnum = {
-  id: 'id',
+  user_id: 'user_id',
   user_name: 'user_name',
   user_full_name: 'user_full_name',
   user_slug: 'user_slug',

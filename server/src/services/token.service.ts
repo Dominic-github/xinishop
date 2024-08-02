@@ -1,28 +1,33 @@
-import prisma from '~/prisma/client'
+import prisma from '~/models/client'
 
 class TokenService {
-  static createKeyToken = async (
-    userId: string,
-    publicKey: string,
-    privateKey: string,
+  static createKeyToken = async ({
+    userId,
+    publicKey,
+    privateKey,
+    refreshToken
+  }: {
+    userId: string
+    publicKey: string
+    privateKey: string
     refreshToken: string
-  ) => {
+  }) => {
     try {
       const filter = { user_id: userId },
-        update = {
+        data = {
           public_key: publicKey,
-          privateKey: privateKey,
+          private_key: privateKey,
           refresh_token: refreshToken,
-          refresh_token_used: []
+          refresh_token_used: ['']
         },
         create = {
-          user_id: userId,
-          ...update
+          ...data,
+          user_id: userId
         }
 
       const tokens = await prisma.token.upsert({
         where: filter,
-        update: update,
+        update: data,
         create: create
       })
 
@@ -34,25 +39,21 @@ class TokenService {
   }
 
   static findByUserId = async (userId: string) => {
-    return await prisma.token.findOne({ user_id: userId })
-  }
-
-  // logout
-  static removeKeyById = async (id) => {
-    return await prisma.token.remove(id)
+    return await prisma.token.findUnique({ where: { user_id: userId } })
   }
 
   static findByRefreshTokenUsed = async (refreshToken: string) => {
-    return await prisma.token
-      .findOne({ refreshTokensUsed: refreshToken })
-      .lean()
+    return await prisma.token.findFirst({
+      where: { refresh_token_used: { has: refreshToken } }
+    })
   }
 
   static findByRefreshToken = async (refreshToken: string) => {
-    return await prisma.token.findOne({ refreshToken })
+    return await prisma.token.findFirst({
+      where: { refresh_token: refreshToken }
+    })
   }
 
-  // refresh token
   static deleteKeyById = async (userId: string) => {
     return await prisma.token.delete({ where: { user_id: userId } })
   }

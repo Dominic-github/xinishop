@@ -20,7 +20,7 @@ i18next.use(middleware.LanguageDetector).init({
   defaultNS: 'translation',
   preload: [LANGUAGE.EN, LANGUAGE.VI],
   supportedLngs: [LANGUAGE.EN, LANGUAGE.VI],
-  fallbackLng: LANGUAGE.VI,
+  fallbackLng: LANGUAGE.EN,
   interpolation: { escapeValue: false }
 })
 

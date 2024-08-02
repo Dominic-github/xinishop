@@ -78,18 +78,18 @@ model Wards {
 
 model ApiKey {
   key         String   @unique
-  status      Boolean  @unique @default(true)
-  permissions String[] @unique
+  status      Boolean  @default(true)
+  permissions String[]
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
 }
 
 model Cart {
-  id                 String        @id @default(uuid())
+  cart_id            String        @id @default(uuid())
   cart_state         cart_state    @default(active)
   cart_products      CartProduct[]
   cart_count_product Int           @default(0)
-  user               User          @relation(fields: [cart_user_id], references: [id])
+  user               User          @relation(fields: [cart_user_id], references: [user_id])
   cart_user_id       String
   created_at         DateTime      @default(now())
   updated_at         DateTime      @updatedAt
@@ -104,9 +104,9 @@ enum cart_state {
 }
 
 model CartProduct {
-  cart       Cart     @relation(fields: [cart_id], references: [id])
+  cart       Cart     @relation(fields: [cart_id], references: [cart_id])
   cart_id    String
-  product    Product  @relation(fields: [product_id], references: [id])
+  product    Product  @relation(fields: [product_id], references: [product_id])
   product_id String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -115,14 +115,14 @@ model CartProduct {
 }
 
 model Category {
-  id         String   @id @default(uuid())
+  cate_id    String   @id @default(uuid())
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
 
 model Comment {
-  product            Product  @relation(fields: [comment_product_id], references: [id])
-  user               User     @relation(fields: [comment_user_id], references: [id])
+  product            Product  @relation(fields: [comment_product_id], references: [product_id])
+  user               User     @relation(fields: [comment_user_id], references: [user_id])
   comment_product_id String   @unique
   comment_user_id    String   @unique
   comment_left       Int
@@ -137,19 +137,19 @@ model Comment {
 }
 
 model Discount {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  discount_id String   @id @default(uuid())
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }
 
 model Notification {
-  id         String   @id @default(uuid())
+  noti_id    String   @id @default(uuid())
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
 
 model Order {
-  id         String   @id @default(uuid())
+  order_id   String   @id @default(uuid())
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
@@ -165,17 +165,13 @@ model Otp {
 }
 
 model Payment {
-  id             String   @id @default(uuid())
-  username       String   @unique @db.VarChar(20)
-  password       String
-  email          String   @unique
-  emailConfirmed Boolean  @default(false)
-  created_at     DateTime @default(now())
-  updated_at     DateTime @updatedAt
+  payment_id String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
 
 model Product {
-  id                     String      @id @default(uuid())
+  product_id             String      @id @default(uuid())
   product_name           String      @db.VarChar(150)
   product_thumb          String
   product_description    String
@@ -201,7 +197,7 @@ enum ProductType {
 }
 
 model Role {
-  id          Int         @id @default(autoincrement())
+  role_id     Int         @id @default(autoincrement())
   role_name   role_name   @default(user)
   role_slug   String
   role_status role_status @default(pending)
@@ -216,7 +212,7 @@ model Grant {
   resource   String  @id @default(uuid())
   actions    String?
   attributes String  @default("*")
-  Role       Role?   @relation(fields: [role_id], references: [id])
+  Role       Role?   @relation(fields: [role_id], references: [role_id])
   role_id    Int?
 }
 
@@ -244,13 +240,13 @@ generator client {
 }
 
 model Shipping {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  shipping_id String   @id @default(uuid())
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }
 
 model Shop {
-  user_id       String     @id
+  shop_id       String     @id @default(uuid())
   shop_name     String
   shop_password String
   shop_email    String     @unique
@@ -269,19 +265,19 @@ enum ShopStatus {
 
 model Token {
   // Relation fields
-  id                 String   @id @unique @default(uuid())
-  user               User     @relation(fields: [user_id], references: [id])
+  token_id           String   @id @unique @default(uuid())
+  // user               User     @relation(fields: [user_id], references: [user_id])
   user_id            String   @unique
-  public_key         String?
-  private_key        String?
-  refresh_token      String?
+  public_key         String
+  private_key        String
+  refresh_token      String
   refresh_token_used String[]
   created_at         DateTime @default(now())
   updated_at         DateTime @updatedAt
 }
 
 model User {
-  id                   String     @id @default(uuid())
+  user_id              String     @id @default(uuid())
   user_name            String     @unique @db.VarChar(20)
   user_full_name       String
   user_slug            String
@@ -292,12 +288,12 @@ model User {
   user_phone           String?
   user_sex             String?
   user_status          UserStatus @default(pending)
-  role                 Role       @relation(fields: [user_role], references: [id])
+  role                 Role       @relation(fields: [user_role], references: [role_id])
   user_role            Int        @unique
   created_at           DateTime   @default(now())
   updated_at           DateTime   @updatedAt
 
-  Token   Token[]
+  // Token   Token[]
   Comment Comment[]
   Cart    Cart[]
 }

@@ -1,6 +1,6 @@
 model Comment {
-  product            Product  @relation(fields: [comment_product_id], references: [id])
-  user               User     @relation(fields: [comment_user_id], references: [id])
+  product            Product  @relation(fields: [comment_product_id], references: [product_id])
+  user               User     @relation(fields: [comment_user_id], references: [user_id])
   comment_product_id String   @unique
   comment_user_id    String   @unique
   comment_left       Int

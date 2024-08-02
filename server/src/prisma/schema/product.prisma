@@ -1,5 +1,5 @@
 model Product {
-  id                     String      @id @default(uuid())
+  product_id             String      @id @default(uuid())
   product_name           String      @db.VarChar(150)
   product_thumb          String
   product_description    String

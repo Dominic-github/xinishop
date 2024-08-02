@@ -1,5 +1,5 @@
 model Shop {
-  user_id       String     @id
+  shop_id       String     @id @default(uuid())
   shop_name     String
   shop_password String
   shop_email    String     @unique

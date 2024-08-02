@@ -1,4 +1,4 @@
-import { config } from '~/configs/config'
+import config from '~/configs/config'
 import { Client, GatewayIntentBits } from 'discord.js'
 
 const discord = config.notification.discord
@@ -74,4 +74,4 @@ class DiscordLogConfig {
   }
 }
 
-export const instanceDiscord = DiscordLogConfig.getInstance()
+export default DiscordLogConfig.getInstance()

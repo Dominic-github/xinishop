@@ -1,9 +1,9 @@
 model Cart {
-  id                 String        @id @default(uuid())
+  cart_id            String        @id @default(uuid())
   cart_state         cart_state    @default(active)
   cart_products      CartProduct[]
   cart_count_product Int           @default(0)
-  user               User          @relation(fields: [cart_user_id], references: [id])
+  user               User          @relation(fields: [cart_user_id], references: [user_id])
   cart_user_id       String
   created_at         DateTime      @default(now())
   updated_at         DateTime      @updatedAt
@@ -18,9 +18,9 @@ enum cart_state {
 }
 
 model CartProduct {
-  cart       Cart     @relation(fields: [cart_id], references: [id])
+  cart       Cart     @relation(fields: [cart_id], references: [cart_id])
   cart_id    String
-  product    Product  @relation(fields: [product_id], references: [id])
+  product    Product  @relation(fields: [product_id], references: [product_id])
   product_id String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt

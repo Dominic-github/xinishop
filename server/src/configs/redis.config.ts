@@ -1,32 +1,35 @@
-import redis from 'redis'
-
-import { config } from '~/configs/config'
-
-const { host, port, username, password } = config.redis
+import { createClient } from 'redis'
+import config from '~/configs/config'
+const { host, port } = config.redis
 
 class RedisConf {
   static instance: any
+  client: any
   constructor() {
     this.connect()
   }
 
-  connect() {
-    const client: any = redis.createClient({
-      username: username,
-      password: password,
+  async connect() {
+    const client: any = createClient({
       socket: {
         host: host,
         port: Number(port)
       }
     })
+    this.client = client
 
+    client.connect()
     client.on('connect', () => {
-      console.log(`Connected: Redis connected host ${host} port ${port}!`)
+      console.log(`Connected: Redis connecting ${host}:${port}!`)
     })
-
     client.on('error', () => {
-      console.log(`Error: Redis connected host ${host} port ${port}!`)
+      console.log(`Error: Redis is not connected ${host}:${port}!`)
+      client.disconnect()
     })
+  }
+
+  getClient() {
+    return this.client
   }
 
   static getInstance() {
@@ -38,4 +41,4 @@ class RedisConf {
   }
 }
 
-export const instanceRedis = RedisConf.getInstance()
+export default RedisConf.getInstance()

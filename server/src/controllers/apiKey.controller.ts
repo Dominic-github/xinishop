@@ -1,4 +1,4 @@
-import { catchAsync } from '~/helpers/catchAsync.helper'
+import catchAsync from '~/helpers/catchAsync.helper'
 import { Request, Response } from 'express'
 import { CREATED } from '../core/success.response'
 import ApiKeyService from '~/services/apiKey.service'

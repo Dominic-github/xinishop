@@ -1,5 +1,5 @@
 model User {
-  id                   String     @id @default(uuid())
+  user_id              String     @id @default(uuid())
   user_name            String     @unique @db.VarChar(20)
   user_full_name       String
   user_slug            String
@@ -10,12 +10,12 @@ model User {
   user_phone           String?
   user_sex             String?
   user_status          UserStatus @default(pending)
-  role                 Role       @relation(fields: [user_role], references: [id])
+  role                 Role       @relation(fields: [user_role], references: [role_id])
   user_role            Int        @unique
   created_at           DateTime   @default(now())
   updated_at           DateTime   @updatedAt
 
-  Token   Token[]
+  // Token   Token[]
   Comment Comment[]
   Cart    Cart[]
 }

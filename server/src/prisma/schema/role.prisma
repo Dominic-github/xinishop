@@ -1,5 +1,5 @@
 model Role {
-  id          Int         @id @default(autoincrement())
+  role_id     Int         @id @default(autoincrement())
   role_name   role_name   @default(user)
   role_slug   String
   role_status role_status @default(pending)
@@ -14,7 +14,7 @@ model Grant {
   resource   String  @id @default(uuid())
   actions    String?
   attributes String  @default("*")
-  Role       Role?   @relation(fields: [role_id], references: [id])
+  Role       Role?   @relation(fields: [role_id], references: [role_id])
   role_id    Int?
 }
 

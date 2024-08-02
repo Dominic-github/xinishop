@@ -1,6 +1,6 @@
 import express from 'express'
 const router = express.Router()
-import healthController from '~/controllers/heath.controller'
+import healthController from '~/controllers/health.controller'
 
 /**
  * @swagger

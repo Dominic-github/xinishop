@@ -11,11 +11,11 @@ export class BaseError extends Error {
     isOperational: boolean
   ) {
     super(message)
-    Object.setPrototypeOf(this, new.target.prototype)
+    // Object.setPrototypeOf(this, new.target.prototype)
     this.status = status
     this.errors = errors
     this.isOperational = isOperational
-    Error.captureStackTrace(this, this.constructor)
+    // Error.captureStackTrace(this, this.constructor)
   }
 }
 

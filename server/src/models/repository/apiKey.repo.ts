@@ -1,5 +1,5 @@
 import crypto from 'crypto'
-import prisma from '~/prisma/client'
+import prisma from '~/models/client'
 
 export const createKey = async (permissions: Array<string> = ['0000']) => {
   const newKey = await prisma.apiKey.create({
