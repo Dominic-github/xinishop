@@ -1,15 +1,16 @@
-export const config = {
+const config = {
   app: {
     port: process.env.PORT,
     env: process.env.NODE_ENV
   },
   db: {
-    enable: process.env.MONGO_ENABLE,
-    host: process.env.MONGO_HOST,
-    port: process.env.MONGO_PORT,
-    name: process.env.MONGO_DATABASE,
-    username: process.env.MONGO_USERNAME,
-    password: process.env.MONGO_PASSWORD
+    enable: process.env.DATABASE_ENABLE,
+    host: process.env.DATABASE_HOST,
+    port: process.env.DATABASE_PORT,
+    name: process.env.DATABASE_NAME,
+    schema: process.env.DATABASE_SCHEMA,
+    username: process.env.DATABASE_USERNAME,
+    password: process.env.DATABASE_PASSWORD
   },
   redis: {
     enable: process.env.REDIS_ENABLE,
@@ -63,3 +64,5 @@ export const config = {
     api_secret: process.env.CLOUDINARY_API_SECRET
   }
 }
+
+export default config

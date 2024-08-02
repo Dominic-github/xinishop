@@ -1,12 +1,25 @@
 model Product {
-  id             String   @id @default(uuid())
-  username       String   @unique @db.VarChar(20)
-  password       String
-  email          String   @unique
-  emailConfirmed Boolean  @default(false)
-  created_at     DateTime @default(now())
-  updated_at     DateTime @updatedAt
+  product_id             String      @id @default(uuid())
+  product_name           String      @db.VarChar(150)
+  product_thumb          String
+  product_description    String
+  product_slug           String
+  product_price          Int
+  product_quality        Int
+  product_type           ProductType
+  product_shop           String
+  product_attributes     String
+  product_ratingsAverage Float
+  product_variations     String
+  isDraft                String
+  isPublished            Boolean
+  created_at             DateTime    @default(now())
+  updated_at             DateTime    @updatedAt
 
   Comment     Comment[]
   CartProduct CartProduct[]
+}
+
+enum ProductType {
+  clothing
 }

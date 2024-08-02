@@ -6,13 +6,13 @@ import {
   Api403Error
 } from '~/core/error.response'
 import { Request, Response, NextFunction } from 'express'
-import { instanceDiscord } from '~/configs/notification.config'
+import instanceDiscord from '~/configs/notification.config'
+import config from '../configs/config'
 
 interface IError {
   errmsg: any
   status: number
   name: string
-  statusCode: number
   isOperational: boolean
   message: string
   errors: object
@@ -20,34 +20,36 @@ interface IError {
 }
 
 export const logError = (error: any) => {
-  console.error(error)
+  console.log(error)
 }
 
 export const logErrorMiddleware = (
-  error: IError,
+  err: any,
   req: Request,
   res: Response,
   next: NextFunction
 ) => {
+  let error: any
+  if (config.app.env === 'production') {
+    error = handleError(err)
+  } else {
+    error = err
+  }
   logError(error)
   instanceDiscord.sendToFormatCode({
     code: req.method === 'GET' ? req.query : req.body,
     message: `${req.get('host')}${req.originalUrl}`,
     title: `Method: ${req.method}`
   })
-  next(error)
+  returnError(err, req, res)
+  next()
 }
 
-export const returnError = (err: IError, req: Request, res: Response) => {
+export const returnError = (err: any, req: Request, res: Response) => {
   const statusCode = err.status || 500
   let error: any
   if (err instanceof BaseError) {
-    error = {}
-    error.name = err.name
-    error.statusCode = err.statusCode
-    error.isOperational = err.isOperational
-    error.message = err.message
-    error.errors = err.errors
+    error = handleError(err)
   } else {
     error = { ...err }
     // mapping error
@@ -65,7 +67,7 @@ export const returnError = (err: IError, req: Request, res: Response) => {
   })
 }
 
-export const isOperationalError = (error: { isOperational: any }) => {
+export const isOperationalError = (error: { isOperational: boolean }) => {
   if (error instanceof BaseError) {
     return error.isOperational
   }
@@ -79,6 +81,18 @@ export const is404Handler = (
 ) => {
   const error = new Api404Error('Resource not found')
   next(error)
+}
+
+const handleError = (err: any) => {
+  const error: any = {}
+  if (err instanceof BaseError) {
+    error.name = err.name
+    error.statusCode = err.status
+    error.isOperational = err.isOperational
+    error.message = err.message
+    error.errors = err.errors
+  }
+  return error
 }
 
 const handleCastErrorDB = (error: any) => {

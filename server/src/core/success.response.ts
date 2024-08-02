@@ -40,8 +40,8 @@ class Create extends SuccessResponse {
 }
 
 export const CREATED = (
-  res: Response<any, Record<string, any>>,
-  message: any,
+  res: Response,
+  message: string,
   data: object,
   options = {}
 ) => {
@@ -49,7 +49,7 @@ export const CREATED = (
 }
 
 export const OK = (
-  res: Response<any, Record<string, any>>,
+  res: Response,
   message: string,
   data: object,
   options = {}

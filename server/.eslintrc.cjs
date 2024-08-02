@@ -6,6 +6,7 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   rules: {
     'no-unused-vars': 'off',
+    'no-useless-catch': 'off',
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-explicit-any': 'off'
   }

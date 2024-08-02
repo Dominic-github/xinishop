@@ -3,3 +3,75 @@ model Address {
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
+
+model AdministrativeRegions {
+  id           Int         @id @default(autoincrement())
+  name         String?
+  name_en      String?
+  code_name    String
+  code_name_en String
+  Provinces    Provinces[]
+}
+
+model AdministrativeUnits {
+  id            Int         @id @default(autoincrement())
+  full_name     String?
+  full_name_en  String?
+  short_name    String?
+  short_name_en String?
+  code_name     String?
+  code_name_en  String?
+  Provinces     Provinces[]
+  Districts     Districts[]
+  Wards         Wards[]
+}
+
+model Provinces {
+  code                     String                @id
+  name                     String
+  name_en                  String
+  full_name                String
+  full_name_en             String
+  code_name                String
+  administrativeRegions    AdministrativeRegions @relation(fields: [administrative_region_id], references: [id])
+  administrative_region_id Int
+  administrativeUnits      AdministrativeUnits   @relation(fields: [administrative_unit_id], references: [id])
+  administrative_unit_id   Int
+  Districts                Districts[]
+
+  @@index([administrative_region_id])
+  @@index([administrative_unit_id])
+}
+
+model Districts {
+  code                   String              @id
+  name                   String
+  name_en                String?
+  full_name              String?
+  full_name_en           String?
+  code_name              String?
+  provinces              Provinces           @relation(fields: [province_code], references: [code])
+  province_code          String
+  administrativeUnits    AdministrativeUnits @relation(fields: [administrative_unit_id], references: [id])
+  administrative_unit_id Int
+  Wards                  Wards[]
+
+  @@index([province_code])
+  @@index([administrative_unit_id])
+}
+
+model Wards {
+  code                   String              @id
+  name                   String
+  name_en                String?
+  full_name              String?
+  full_name_en           String?
+  code_name              String?
+  districts              Districts           @relation(fields: [district_code], references: [code])
+  district_code          String
+  administrativeUnits    AdministrativeUnits @relation(fields: [administrative_unit_id], references: [id])
+  administrative_unit_id Int
+
+  @@index([district_code])
+  @@index([administrative_unit_id])
+}

@@ -1,4 +1,4 @@
-import { catchAsync } from '~/helpers/catchAsync.helper'
+import catchAsync  from '~/helpers/catchAsync.helper'
 import { Request, Response } from 'express'
 import { OK } from '../core/success.response'
 import {

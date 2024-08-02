@@ -4,70 +4,228 @@ model Address {
   updated_at DateTime @updatedAt
 }
 
+model AdministrativeRegions {
+  id           Int         @id @default(autoincrement())
+  name         String?
+  name_en      String?
+  code_name    String
+  code_name_en String
+  Provinces    Provinces[]
+}
+
+model AdministrativeUnits {
+  id            Int         @id @default(autoincrement())
+  full_name     String?
+  full_name_en  String?
+  short_name    String?
+  short_name_en String?
+  code_name     String?
+  code_name_en  String?
+  Provinces     Provinces[]
+  Districts     Districts[]
+  Wards         Wards[]
+}
+
+model Provinces {
+  code                     String                @id
+  name                     String
+  name_en                  String
+  full_name                String
+  full_name_en             String
+  code_name                String
+  administrativeRegions    AdministrativeRegions @relation(fields: [administrative_region_id], references: [id])
+  administrative_region_id Int
+  administrativeUnits      AdministrativeUnits   @relation(fields: [administrative_unit_id], references: [id])
+  administrative_unit_id   Int
+  Districts                Districts[]
+
+  @@index([administrative_region_id])
+  @@index([administrative_unit_id])
+}
+
+model Districts {
+  code                   String              @id
+  name                   String
+  name_en                String?
+  full_name              String?
+  full_name_en           String?
+  code_name              String?
+  provinces              Provinces           @relation(fields: [province_code], references: [code])
+  province_code          String
+  administrativeUnits    AdministrativeUnits @relation(fields: [administrative_unit_id], references: [id])
+  administrative_unit_id Int
+  Wards                  Wards[]
+
+  @@index([province_code])
+  @@index([administrative_unit_id])
+}
+
+model Wards {
+  code                   String              @id
+  name                   String
+  name_en                String?
+  full_name              String?
+  full_name_en           String?
+  code_name              String?
+  districts              Districts           @relation(fields: [district_code], references: [code])
+  district_code          String
+  administrativeUnits    AdministrativeUnits @relation(fields: [administrative_unit_id], references: [id])
+  administrative_unit_id Int
+
+  @@index([district_code])
+  @@index([administrative_unit_id])
+}
+
 model ApiKey {
   key         String   @unique
-  status      Boolean  @unique @default(true)
-  permissions String[] @unique
+  status      Boolean  @default(true)
+  permissions String[]
   created_at  DateTime @default(now())
   updated_at  DateTime @updatedAt
 }
 
+model Cart {
+  cart_id            String        @id @default(uuid())
+  cart_state         cart_state    @default(active)
+  cart_products      CartProduct[]
+  cart_count_product Int           @default(0)
+  user               User          @relation(fields: [cart_user_id], references: [user_id])
+  cart_user_id       String
+  created_at         DateTime      @default(now())
+  updated_at         DateTime      @updatedAt
+}
+
+enum cart_state {
+  active
+  completed
+  fail
+  pending
+  lock
+}
+
+model CartProduct {
+  cart       Cart     @relation(fields: [cart_id], references: [cart_id])
+  cart_id    String
+  product    Product  @relation(fields: [product_id], references: [product_id])
+  product_id String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@id([cart_id, product_id])
+}
+
 model Category {
-  id         String   @id @default(uuid())
+  cate_id    String   @id @default(uuid())
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
 
 model Comment {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  product            Product  @relation(fields: [comment_product_id], references: [product_id])
+  user               User     @relation(fields: [comment_user_id], references: [user_id])
+  comment_product_id String   @unique
+  comment_user_id    String   @unique
+  comment_left       Int
+  comment_right      Int
+  comment_parent_id  String
+  is_deleted         Boolean  @default(false)
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
+  commentId          String
+
+  @@id([comment_product_id, comment_user_id])
 }
 
 model Discount {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-}
-
-model KeyToken {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  discount_id String   @id @default(uuid())
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }
 
 model Notification {
-  id         String   @id @default(uuid())
+  noti_id    String   @id @default(uuid())
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
 
 model Order {
-  id         String   @id @default(uuid())
+  order_id   String   @id @default(uuid())
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
 
 model Otp {
   id         String   @id @default(uuid())
+  key        String
+  otp        String
+  data       String
+  time       DateTime @default(now())
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 }
 
 model Payment {
-  id             String   @id @default(uuid())
-  username       String   @unique @db.VarChar(20)
-  password       String
-  email          String   @unique
-  emailConfirmed Boolean  @default(false)
-  created_at     DateTime @default(now())
-  updated_at     DateTime @updatedAt
+  payment_id String   @id @default(uuid())
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Product {
+  product_id             String      @id @default(uuid())
+  product_name           String      @db.VarChar(150)
+  product_thumb          String
+  product_description    String
+  product_slug           String
+  product_price          Int
+  product_quality        Int
+  product_type           ProductType
+  product_shop           String
+  product_attributes     String
+  product_ratingsAverage Float
+  product_variations     String
+  isDraft                String
+  isPublished            Boolean
+  created_at             DateTime    @default(now())
+  updated_at             DateTime    @updatedAt
+
+  Comment     Comment[]
+  CartProduct CartProduct[]
+}
+
+enum ProductType {
+  clothing
 }
 
 model Role {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  role_id     Int         @id @default(autoincrement())
+  role_name   role_name   @default(user)
+  role_slug   String
+  role_status role_status @default(pending)
+  role_grants Grant[]
+  created_at  DateTime    @default(now())
+  updated_at  DateTime    @updatedAt
+
+  User User[]
+}
+
+model Grant {
+  resource   String  @id @default(uuid())
+  actions    String?
+  attributes String  @default("*")
+  Role       Role?   @relation(fields: [role_id], references: [role_id])
+  role_id    Int?
+}
+
+enum role_name {
+  user
+  shop
+  admin
+}
+
+enum role_status {
+  pending
+  active
+  block
 }
 
 datasource db {
@@ -82,24 +240,66 @@ generator client {
 }
 
 model Shipping {
-  id         String   @id @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  shipping_id String   @id @default(uuid())
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
 }
 
 model Shop {
-  id         String   @id @default(uuid())
-  shopName   String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  shop_id       String     @id @default(uuid())
+  shop_name     String
+  shop_password String
+  shop_email    String     @unique
+  shop_msisdn   String
+  shop_status   ShopStatus @default(active)
+  shop_verify   Boolean    @default(false)
+  created_at    DateTime   @default(now())
+  updated_at    DateTime   @updatedAt
+}
+
+enum ShopStatus {
+  active
+  inactive
+  deleted
+}
+
+model Token {
+  // Relation fields
+  token_id           String   @id @unique @default(uuid())
+  // user               User     @relation(fields: [user_id], references: [user_id])
+  user_id            String   @unique
+  public_key         String
+  private_key        String
+  refresh_token      String
+  refresh_token_used String[]
+  created_at         DateTime @default(now())
+  updated_at         DateTime @updatedAt
 }
 
 model User {
-  id             String   @id @default(uuid())
-  username       String   @unique @db.VarChar(20)
-  password       String
-  email          String   @unique
-  emailConfirmed Boolean  @default(false)
-  created_at     DateTime @default(now())
-  updated_at     DateTime @updatedAt
+  user_id              String     @id @default(uuid())
+  user_name            String     @unique @db.VarChar(20)
+  user_full_name       String
+  user_slug            String
+  user_password        String
+  user_email           String     @unique
+  user_email_confirmed Boolean    @default(false)
+  user_salt            String?
+  user_phone           String?
+  user_sex             String?
+  user_status          UserStatus @default(pending)
+  role                 Role       @relation(fields: [user_role], references: [role_id])
+  user_role            Int        @unique
+  created_at           DateTime   @default(now())
+  updated_at           DateTime   @updatedAt
+
+  // Token   Token[]
+  Comment Comment[]
+  Cart    Cart[]
+}
+
+enum UserStatus {
+  pending
+  active
+  block
 }

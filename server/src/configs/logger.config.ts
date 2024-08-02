@@ -1,8 +1,6 @@
 import { createLogger, transports, format } from 'winston'
-import('winston-mongodb')
 import DailyRotateFile = require('winston-daily-rotate-file')
-import { config } from '~/configs/config'
-
+import config from '~/configs/config'
 const { serviceName } = config.logger
 
 // format log
@@ -15,7 +13,7 @@ const formatLog = format.combine(
 )
 
 // config file log rotate
-require('winston-daily-rotate-file')
+import('winston-daily-rotate-file')
 const transport = new DailyRotateFile({
   filename: `./logs/${serviceName}-%DATE%.log`,
   datePattern: 'YYYY-MM-DD-HH',
@@ -30,24 +28,6 @@ transport.on('rotate', function (oldFilename: any, newFilename: any) {
   console.log('oldFilename:  ', oldFilename)
   console.log('newFilename:  ', newFilename)
 })
-
-// config save log to mongodb
-/**
- * Requiring `winston-mongodb` will expose
- * `winston.transports.MongoDB`
- */
-
-// const { host, name, port, username, password } = config.db
-// const connectString = `mongodb://${username}:${password}@${host}:${port}/${name}?authSource=admin`
-// const configLogMongoDB = new transports.MongoDB({
-//   level: 'error',
-//   db: connectString,
-//   options: {
-//     ignoreUndefined: true,
-//     useUnifiedTopology: true
-//   },
-//   collection: 'app-logs'
-// })
 
 export const logger = createLogger({
   transports: [

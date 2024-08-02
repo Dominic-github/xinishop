@@ -1,10 +1,11 @@
 model Token {
   // Relation fields
-  user               User?    @relation(fields: [user_id], references: [id])
+  token_id           String   @id @unique @default(uuid())
+  // user               User     @relation(fields: [user_id], references: [user_id])
   user_id            String   @unique
-  public_key         String?
-  private_key        String?
-  refresh_token      String?
+  public_key         String
+  private_key        String
+  refresh_token      String
   refresh_token_used String[]
   created_at         DateTime @default(now())
   updated_at         DateTime @updatedAt

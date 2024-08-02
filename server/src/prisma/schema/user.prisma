@@ -1,19 +1,27 @@
 model User {
-  id                   String   @id @default(uuid())
-  user_name            String?  @unique @db.VarChar(20)
-  user_slug            String?
-  user_password        String?
-  user_email           String?  @unique
-  user_email_confirmed Boolean? @default(false)
+  user_id              String     @id @default(uuid())
+  user_name            String     @unique @db.VarChar(20)
+  user_full_name       String
+  user_slug            String
+  user_password        String
+  user_email           String     @unique
+  user_email_confirmed Boolean    @default(false)
   user_salt            String?
-  user_phone           String
-  user_sex             String
-  role                 Role     @relation(fields: [user_role], references: [id])
-  user_role            Int      @unique
-  user_token           Token?
-  created_at           DateTime @default(now())
-  updated_at           DateTime @updatedAt
+  user_phone           String?
+  user_sex             String?
+  user_status          UserStatus @default(pending)
+  role                 Role       @relation(fields: [user_role], references: [role_id])
+  user_role            Int        @unique
+  created_at           DateTime   @default(now())
+  updated_at           DateTime   @updatedAt
 
+  // Token   Token[]
   Comment Comment[]
   Cart    Cart[]
+}
+
+enum UserStatus {
+  pending
+  active
+  block
 }

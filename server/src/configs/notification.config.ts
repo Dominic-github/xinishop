@@ -1,4 +1,4 @@
-import { config } from '~/configs/config'
+import config from '~/configs/config'
 import { Client, GatewayIntentBits } from 'discord.js'
 
 const discord = config.notification.discord
@@ -45,7 +45,7 @@ class DiscordLogConfig {
   }) {
     const channel: any = this.client.channels.cache.get(this.channelId)
     if (!channel) {
-      console.error(`Couldn't find the channel ... ${this.channelId}`)
+      console.error(`Couldn't find the channel: ${this.channelId}`)
       return
     }
 
@@ -74,4 +74,4 @@ class DiscordLogConfig {
   }
 }
 
-export const instanceDiscord = DiscordLogConfig.getInstance()
+export default DiscordLogConfig.getInstance()

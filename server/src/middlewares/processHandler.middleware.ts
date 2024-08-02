@@ -25,11 +25,11 @@ process.on('unhandledRejection', (error) => {
   throw error
 })
 
-process.on('uncaughtException', (error: { isOperational: any }) => {
+process.on('uncaughtException', (error: { isOperational: boolean }) => {
   // if isOperational is false -> exit service
   if (!isOperationalError(error)) {
     logger.error(error)
   }
 })
 
-module.exports = this
+export default this

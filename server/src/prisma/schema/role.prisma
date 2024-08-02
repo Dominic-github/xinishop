@@ -1,11 +1,11 @@
 model Role {
-  id          Int          @id @default(autoincrement())
-  role_name   role_name?   @default(user)
-  role_slug   String?
-  role_status role_status?
+  role_id     Int         @id @default(autoincrement())
+  role_name   role_name   @default(user)
+  role_slug   String
+  role_status role_status @default(pending)
   role_grants Grant[]
-  created_at  DateTime     @default(now())
-  updated_at  DateTime     @updatedAt
+  created_at  DateTime    @default(now())
+  updated_at  DateTime    @updatedAt
 
   User User[]
 }
@@ -14,7 +14,7 @@ model Grant {
   resource   String  @id @default(uuid())
   actions    String?
   attributes String  @default("*")
-  Role       Role?   @relation(fields: [role_id], references: [id])
+  Role       Role?   @relation(fields: [role_id], references: [role_id])
   role_id    Int?
 }
 

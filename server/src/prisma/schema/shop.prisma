@@ -1,9 +1,17 @@
 model Shop {
-  id             String   @id @default(uuid())
-  username       String   @unique @db.VarChar(20)
-  password       String
-  email          String   @unique
-  emailConfirmed Boolean  @default(false)
-  created_at     DateTime @default(now())
-  updated_at     DateTime @updatedAt
+  shop_id       String     @id @default(uuid())
+  shop_name     String
+  shop_password String
+  shop_email    String     @unique
+  shop_msisdn   String
+  shop_status   ShopStatus @default(active)
+  shop_verify   Boolean    @default(false)
+  created_at    DateTime   @default(now())
+  updated_at    DateTime   @updatedAt
+}
+
+enum ShopStatus {
+  active
+  inactive
+  deleted
 }

@@ -4,10 +4,14 @@ const HEADER = {
   AUTHORIZATION: 'authorization'
 }
 
-import { findById } from '~/services/apiKey.service'
+import { findbyKey } from '~/models/repository/apiKey.repo'
 const URL_WHITELIST = ['/api-docs', '/healthcheck', '/api/v1/auth/register']
 
-export const apiKey = async (req: any, res: Response, next: NextFunction) => {
+export const apiKey = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     if (ignoreWhiteList(req)) return next()
 
@@ -16,7 +20,7 @@ export const apiKey = async (req: any, res: Response, next: NextFunction) => {
       return returnForbiddenError(res)
     }
     // check objKey
-    const objKey = await findById(key)
+    const objKey = await findbyKey(key)
     if (!objKey) {
       return returnForbiddenError(res)
     }
@@ -37,7 +41,6 @@ export const permission = (permissions: string) => {
       return returnPermissionDenied(res)
     }
 
-    console.log('permissions::', req.objKey.permissions)
     const validPermission = req.objKey.permissions.includes(permissions)
 
     if (!validPermission) {
